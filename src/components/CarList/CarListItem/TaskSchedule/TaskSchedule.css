@@ -1,0 +1,115 @@
+.CarListItem>.TaskSchedule {
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 4px;
+    width: 133px;
+    height: 38px;
+    /* Inside auto layout */
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+}
+
+.CarListItem>.TaskSchedule>.ScheduleLabel {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    width: 133px;
+    height: 18px;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.CarListItem>.TaskSchedule>.ScheduleLabel>.ScheduleLabelDetail {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px 8px 0px 0px;
+    gap: 4px;
+    width: 133px;
+    height: 18px;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.CarListItem>.TaskSchedule>.ScheduleLabel>.ScheduleLabelDetail>.ScheduleLabelText {
+    /* Ordering */
+    width: 125px;
+    height: 18px;
+    /* Body/14 Medium */
+    font-family: 'GT America';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 130%;
+    /* or 18px */
+    display: flex;
+    align-items: center;
+    /* Base-color/1 */
+    color: #000000;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.CarListItem>.TaskSchedule>.ScheduleTime {
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 1px;
+    width: 121px;
+    height: 16px;
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.CarListItem>.TaskSchedule>.ScheduleTime>.ScheduleTimeDetail {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 4px;
+    width: 121px;
+    height: 16px;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.CarListItem>.TaskSchedule>.ScheduleTime>.ScheduleTimeDetail>.ScheduleTimeText {
+    /* Name */
+    width: 121px;
+    height: 16px;
+    /* Body/12 Regular */
+    font-family: 'GT America';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 130%;
+    /* identical to box height, or 16px */
+    display: flex;
+    align-items: center;
+    /* Grey Scales / 8 */
+    color: #1F1F1F;
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}

@@ -1,0 +1,112 @@
+.CarListItem>.CarInfo {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* padding: 0px 171px 0px 0px; */
+    gap: 4px;
+    width: 327px;
+    height: 54px;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.CarListItem>.CarInfo>.CarLog {
+    /* Component 325 */
+    width: 127px;
+    height: 54px;
+    background: #FFFFFF;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.CarListItem>.CarInfo>.CarDetail {
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 6px;
+    width: 105px;
+    height: 41px;
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.CarListItem>.CarInfo>.CarDetail>.CarName {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 10px;
+    width: 92px;
+    height: 19px;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.CarListItem>.CarInfo>.CarDetail>.CarName>.CarNameText {
+    /* Name */
+    width: 92px;
+    height: 19px;
+    /* Headlines/H5 */
+    font-family: 'GT America';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    /* or 19px */
+    display: flex;
+    align-items: center;
+    /* Primary/Black */
+    color: #000000;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.CarListItem>.CarInfo>.CarDetail>.CarModel {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 10px;
+    width: 105px;
+    height: 16px;
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.CarListItem>.CarInfo>.CarDetail>.CarModel>.CarModelText {
+    /* DJ8474938304562 */
+    width: 105px;
+    height: 16px;
+    /* Body/12 Medium */
+    font-family: 'GT America';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 130%;
+    /* identical to box height, or 16px */
+    display: flex;
+    align-items: center;
+    /* Primary / 1 */
+    color: #456BD9;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
