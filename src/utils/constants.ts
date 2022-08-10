@@ -4,4 +4,6 @@ export const ENDPOINTS = {
 
 export const PATHS = {
   dashboard: '/',
+  vehicles: '/vehicles',
+  help: '/help',
 } as const;
