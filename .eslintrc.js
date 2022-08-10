@@ -23,7 +23,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    'no-unused-vars': 'off',
+    'no-unused-vars': 1,
     '@typescript-eslint/no-unused-vars': ['error'],
     'prettier/prettier': ['error'],
     'react-hooks/exhaustive-deps': 'warn',
