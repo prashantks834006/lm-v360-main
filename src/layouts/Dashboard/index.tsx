@@ -1,13 +1,14 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import Header from '../../components/Header/Header';
 
-function DashboardLayout() {
+const DashboardLayout = () => {
   return (
     <>
-      <nav> Header </nav>
+      <Header />
       <Outlet />
     </>
   );
-}
+};
 
 export default DashboardLayout;

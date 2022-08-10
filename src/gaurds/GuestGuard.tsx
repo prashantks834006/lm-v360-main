@@ -1,10 +1,11 @@
 import React from 'react';
-import { FCC } from '../types/react';
 
-type Props = {};
+type Props = {
+  children: React.ReactNode;
+};
 
-const GuestGuard: FCC<Props> = ({ children }) => {
-  return <>{children}</>;
+const GuestGuard = ({ children }: Props) => {
+  return <div>{children}</div>;
 };
 
 export default GuestGuard;
