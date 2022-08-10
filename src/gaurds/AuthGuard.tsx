@@ -4,8 +4,8 @@ type Props = {
   children: React.ReactNode;
 };
 
-function AuthGuard({ children }: Props) {
+const AuthGuard = ({ children }: Props) => {
   return <div>{children}</div>;
-}
+};
 
 export default AuthGuard;

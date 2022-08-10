@@ -1,6 +1,7 @@
-import React from 'react';
-import { CarList } from 'src/components/CarList/CarList';
+import { CarList } from '../components/CarList/CarList';
 
-export default function Dashboard() {
+const Dashboard = () => {
   return <CarList />;
-}
+};
+
+export default Dashboard;
