@@ -4,8 +4,7 @@ import { Provider } from 'react-redux';
 import Routes from './pages';
 import { store } from './redux/store';
 
-export default function App() {
-
+const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
@@ -13,4 +12,6 @@ export default function App() {
       </BrowserRouter>
     </Provider>
   );
-}
+};
+
+export default App;
