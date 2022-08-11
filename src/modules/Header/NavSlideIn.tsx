@@ -47,13 +47,13 @@ const NavigationDrawer: React.FC<Props> = ({ isOpen, setIsOpen }) => {
 
   return (
     <Drawer anchor="left" open={isOpen} onClose={toggleDrawer}>
-      <Box sx={{ width: 250, p: 3 }} role="presentation" onClick={toggleDrawer} onKeyDown={toggleDrawer}>
+      <Box sx={{ width: 200, p: 3 }} role="presentation" onClick={toggleDrawer} onKeyDown={toggleDrawer}>
         <List>
           {navItems.map(({ text, icon, path }) => (
             <Link to={path}>
               <ListItem key={text} disablePadding>
                 <ListItemButton sx={{ borderRadius: 2 }}>
-                  <ListItemIcon>
+                  <ListItemIcon sx={{ minWidth: 30 }}>
                     <Icon icon={icon} />
                   </ListItemIcon>
                   <ListItemText primary={text} />

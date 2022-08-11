@@ -7,3 +7,5 @@ export const PATHS = {
   vehicles: '/vehicles',
   help: '/help',
 } as const;
+
+export const notificationsRange = ['All', 'Today', 'Last 3 days', 'This week'] as const;

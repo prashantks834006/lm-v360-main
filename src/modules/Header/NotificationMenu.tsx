@@ -1,5 +1,6 @@
 import { Box, Divider, Menu, MenuItem, Select, SelectChangeEvent, Stack, Typography } from '@mui/material';
 import React, { FC, useCallback, useId, useState } from 'react';
+import { notificationsRange } from '../../utils/constants';
 
 type Props = {
   anchorEl: null | HTMLElement;
@@ -45,18 +46,11 @@ const NotificationMenu: FC<Props> = ({ id, anchorEl, handleMenuClose }) => {
               label=""
               sx={{ fontSize: 10 }}
             >
-              <MenuItem value="Last 3 days" sx={{ fontSize: 10 }}>
-                All
-              </MenuItem>
-              <MenuItem value="Last 3 days" sx={{ fontSize: 10 }}>
-                Today
-              </MenuItem>
-              <MenuItem value="Last 3 days" sx={{ fontSize: 10 }}>
-                Last 3 days
-              </MenuItem>
-              <MenuItem value="Last 3 days" sx={{ fontSize: 10 }}>
-                This Week
-              </MenuItem>
+              {notificationsRange.map((notification) => (
+                <MenuItem value="Last 3 days" sx={{ fontSize: 10 }}>
+                  {notification}
+                </MenuItem>
+              ))}
             </Select>
           </Stack>
           <Typography variant="caption" sx={{ cursor: 'pointer' }} color="primary">
