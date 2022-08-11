@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from '../components/Header/Header';
+import Header from '../modules/Header/Header';
 
 const Page: React.FC = () => {
   return (

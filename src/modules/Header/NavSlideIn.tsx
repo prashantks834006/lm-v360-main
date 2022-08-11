@@ -8,7 +8,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Icon } from '@iconify/react';
 import { PATHS } from '../../utils/constants';
-import Link from '../Link/Link';
+import Link from '../../components/Link/Link';
 
 type Props = {
   isOpen: boolean;
