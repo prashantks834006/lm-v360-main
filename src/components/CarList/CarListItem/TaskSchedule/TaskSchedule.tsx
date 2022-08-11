@@ -1,23 +1,21 @@
 import React from 'react';
-import './TaskSchedule.css';
+import { Stack, Typography } from '@mui/material';
 
-export interface TaskScheduleProps {
+interface IProps {
   schedule?: string;
 }
 
-export const TaskSchedule = ({ schedule }: TaskScheduleProps) => {
+const TaskSchedule: React.FC<IProps> = ({ schedule }) => {
   return (
-    <div className="TaskSchedule">
-      <div className="ScheduleLabel">
-        <div className="ScheduleLabelDetail">
-          <span className="ScheduleLabelText">Delivery Scheduled</span>
-        </div>
-      </div>
-      <div className="ScheduleTime">
-        <div className="ScheduleTimeDetail">
-          <span className="ScheduleTimeText">{schedule ?? '--'}</span>
-        </div>
-      </div>
-    </div>
+    <Stack direction="column" gap={0.5} width="28%">
+      {schedule && (
+        <>
+          <Typography variant="subtitle2">Delivery Scheduled</Typography>
+          <Typography variant="caption">{schedule}</Typography>
+        </>
+      )}
+    </Stack>
   );
 };
+
+export default TaskSchedule;

@@ -1,25 +1,21 @@
 import React from 'react';
+import { Stack, Typography } from '@mui/material';
 import { ReactComponent as SelectIcon } from './SelectIcon.svg';
-import './TaskCount.css';
 
-export interface TaskCountProps {
+interface IProps {
   count: number;
   scheduled?: boolean;
 }
 
-export const TaskCount = ({ count, scheduled }: TaskCountProps) => {
+const TaskCount: React.FC<IProps> = ({ count, scheduled }) => {
   return (
-    <div className="TaskCount">
-      <div>
-        <div>
-          <div className="TaskCountDetail">
-            <span className={`TaskCountText ${scheduled ? '' : ' Danger'}`}>{count} Task(s)</span>
-          </div>
-          <div className="SelectIcon">
-            <SelectIcon />
-          </div>
-        </div>
-      </div>
-    </div>
+    <Stack direction="row" gap={0.5} alignItems="center" width="16%">
+      <Typography variant="caption" fontWeight={500} color={scheduled ? 'red' : undefined}>
+        {count} Task(s)
+      </Typography>
+      <SelectIcon />
+    </Stack>
   );
 };
+
+export default TaskCount;

@@ -1,26 +1,28 @@
 import React from 'react';
+import { Box, Stack, Typography } from '@mui/material';
 import { ReactComponent as CarSvg } from './Car.svg';
-import './CarInfo.css';
 
-export interface CarInfoProps {
+interface IProps {
   name: string;
   model: string;
 }
 
-export const CarInfo = ({ name, model }: CarInfoProps) => {
+const CarInfo: React.FC<IProps> = ({ name, model }) => {
   return (
-    <div className="CarInfo">
-      <div className="CarLogo">
+    <Stack direction="row" gap={0.5} width="28%">
+      <Box>
         <CarSvg />
-      </div>
-      <div className="CarDetail">
-        <div className="CarName">
-          <span className="CarNameText">{name}</span>
-        </div>
-        <div className="CarModel">
-          <span className="CarModelText">{model}</span>
-        </div>
-      </div>
-    </div>
+      </Box>
+      <Stack direction="column">
+        <Typography variant="subtitle1" fontWeight={500}>
+          {name}
+        </Typography>
+        <Typography variant="caption" fontWeight={500} color="blue">
+          {model}
+        </Typography>
+      </Stack>
+    </Stack>
   );
 };
+
+export default CarInfo;

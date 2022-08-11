@@ -1,30 +1,28 @@
 import React from 'react';
-import './CarList.css';
-import { CarListItem } from './CarListItem/CarListItem';
+import { Stack } from '@mui/system';
+import CarListItem from './CarListItem/CarListItem';
+import ICar from '../../types/Car';
 
-export interface CarListProps {
-  id: string;
+interface IProps {
+  cars: ICar[];
 }
 
-export const CarList = () => {
+const CarList: React.FC<IProps> = ({ cars }) => {
   return (
-    <div className="CarList">
-      <CarListItem
-        name="Stephanie Nelson"
-        model="DJ8474938304562"
-        taskName="Ordering"
-        taskStatus="Collect information"
-        taskCount={2}
-        highlight
-      />
-      <CarListItem
-        name="Elsie Harper"
-        model="DJ8474938304562"
-        taskName="Production"
-        taskStatus="Body in White"
-        schedule="Sep. 12, 2022, 4:00PM"
-        taskCount={2}
-      />
-    </div>
+    <Stack direction="column" gap={2} width="850px">
+      {cars.map((car, index) => (
+        <CarListItem
+          name={car.name}
+          model={car.model}
+          taskName={car.taskName}
+          taskStatus={car.taskStatus}
+          schedule={car.schedule}
+          taskCount={car.taskCount}
+          highlight={index === 0}
+        />
+      ))}
+    </Stack>
   );
 };
+
+export default CarList;
