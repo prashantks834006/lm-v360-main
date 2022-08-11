@@ -20,7 +20,7 @@ const Search = styled('div')(({ theme }) => ({
     backgroundColor: alpha(theme.palette.common.black, 0.25),
   },
   marginRight: theme.spacing(2),
-  marginLeft: 0,
+  marginLeft: theme.spacing(2),
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(3),
     width: 'auto',
@@ -51,6 +51,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+const Image = styled('img')(({ theme }) => ({
+  [theme.breakpoints.down('md')]: {
+    width: '80px',
+  },
+}));
+
 const Header = () => {
   const [notificationMenuAnchorEl, setNotificationMenuAnchorEl] = React.useState<null | HTMLElement>(null);
   const [isSideNavOpen, setIsSideNavOpen] = React.useState<boolean>(false);
@@ -73,7 +79,7 @@ const Header = () => {
       <AppBar position="static" sx={{ backgroundColor: (theme) => theme.palette.grey[800] }}>
         <Toolbar>
           <IconButton
-            size="large"
+            size="small"
             edge="start"
             color="inherit"
             aria-label="open drawer"
@@ -82,7 +88,7 @@ const Header = () => {
           >
             <Icon icon="ci:hamburger" />
           </IconButton>
-          <img src={Logo} alt="LUCID" />
+          <Image src={Logo} alt="LUCID" />
           <Box sx={{ flexGrow: 1 }} />
           <Search>
             <StyledInputBase
