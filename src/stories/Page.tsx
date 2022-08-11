@@ -1,24 +1,11 @@
 import React from 'react';
 
-import Header from './Header';
-import './page.css';
+import Header from '../components/Header/Header';
 
-type User = {
-  name: string;
-};
-
-export const Page: React.FC = () => {
-  const [user, setUser] = React.useState<User>();
-
+const Page: React.FC = () => {
   return (
     <article>
-      <Header
-        user={user}
-        onLogin={() => setUser({ name: 'Jane Doe' })}
-        onLogout={() => setUser(undefined)}
-        onCreateAccount={() => setUser({ name: 'Jane Doe' })}
-      />
-
+      <Header />
       <section>
         <h2>Pages in Storybook</h2>
         <p>
@@ -34,7 +21,7 @@ export const Page: React.FC = () => {
         </p>
         <ul>
           <li>
-            Use a higher-level connected component. Storybook helps you compose such data from the "args" of child
+            Use a higher-level connected component. Storybook helps you compose such data from the Args of child
             component stories
           </li>
           <li>
@@ -69,3 +56,5 @@ export const Page: React.FC = () => {
     </article>
   );
 };
+
+export default Page;
