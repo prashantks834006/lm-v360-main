@@ -64,7 +64,6 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.18.6",
-    "@size-limit/preset-app": "^8.0.1",
     "@storybook/addon-actions": "^6.5.10",
     "@storybook/addon-essentials": "^6.5.10",
     "@storybook/addon-interactions": "^6.5.10",
@@ -96,7 +95,6 @@
     "prettier": "^2.7.1",
     "prop-types": "^15.8.1",
     "react-test-renderer": "^18.2.0",
-    "size-limit": "^8.0.1",
     "webpack": "^5.74.0"
   }
 }
