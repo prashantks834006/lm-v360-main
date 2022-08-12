@@ -1,7 +1,10 @@
 import React, { FC } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
+
+// @mui
 import { Box, Typography } from '@mui/material';
+
 import BaseOptionChart from '../../utils/BaseOptionChart';
 
 // ----------------------------------------------------------------------
@@ -9,19 +12,17 @@ import BaseOptionChart from '../../utils/BaseOptionChart';
 interface Props {
   chartData: {
     label: string;
-    onTrack: number;
-    offTrack: number;
+    homeDelivery: number;
+    pickup: number;
   }[];
   title: string;
 }
 
-// ----------------------------------------------------------------------
-
-const OffTrackChart: FC<Props> = ({ chartData, title }) => {
+const NextWeekDeliveriesChart: FC<Props> = ({ chartData, title }) => {
   const chartLabels = chartData.map((i) => i.label);
 
-  const chartOnTrackSeries = chartData.map((i) => i.onTrack);
-  const chartOffTrackSeries = chartData.map((i) => i.offTrack);
+  const chartHomeDeliverySeries = chartData.map((i) => i.homeDelivery);
+  const chartPickupSeries = chartData.map((i) => i.pickup);
 
   const chartOptions: ApexOptions = {
     ...BaseOptionChart(),
@@ -34,7 +35,7 @@ const OffTrackChart: FC<Props> = ({ chartData, title }) => {
       },
     },
     plotOptions: {
-      bar: { horizontal: true, barHeight: '38%', borderRadius: 1 },
+      bar: { horizontal: false, borderRadius: 5, columnWidth: '30%' },
     },
     xaxis: {
       categories: chartLabels,
@@ -66,8 +67,8 @@ const OffTrackChart: FC<Props> = ({ chartData, title }) => {
       <ReactApexChart
         type="bar"
         series={[
-          { data: chartOnTrackSeries, name: 'On Track', color: '#E04732' },
-          { data: chartOffTrackSeries, name: 'Off Track', color: '#E3E3E3' },
+          { data: chartHomeDeliverySeries, name: 'Home Delivery', color: '#4B96D8' },
+          { data: chartPickupSeries, name: 'Pickup', color: '#2649AD' },
         ]}
         options={chartOptions}
         height={180}
@@ -76,4 +77,4 @@ const OffTrackChart: FC<Props> = ({ chartData, title }) => {
   );
 };
 
-export default OffTrackChart;
+export default NextWeekDeliveriesChart;

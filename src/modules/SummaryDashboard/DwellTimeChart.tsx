@@ -35,7 +35,7 @@ const OffTrackChart: FC<Props> = ({ chartData, title }) => {
       },
     },
     plotOptions: {
-      bar: { barHeight: '38%', borderRadius: 1 },
+      bar: { horizontal: false, borderRadius: 5, columnWidth: '30%' },
     },
     xaxis: {
       categories: chartLabels,
@@ -63,17 +63,12 @@ const OffTrackChart: FC<Props> = ({ chartData, title }) => {
 
   return (
     <Box dir="ltr">
-      {title && (
-        <Typography variant="h6" sx={{ fontWeight: 500 }}>
-          {' '}
-          {title}{' '}
-        </Typography>
-      )}
+      {title && <Typography sx={{ fontWeight: 500, fontSize: '32px' }}> {title} </Typography>}
       <ReactApexChart
         type="bar"
         series={[
-          { data: chartOnTrackSeries, name: 'On Track', color: 'red' },
-          { data: chartOffTrackSeries, name: 'Off Track', color: '#ddd' },
+          { data: chartOnTrackSeries, name: 'Home Delivery', color: '#4B96D8' },
+          { data: chartOffTrackSeries, name: 'Pickup', color: '#2649AD' },
         ]}
         options={chartOptions}
         height={180}
