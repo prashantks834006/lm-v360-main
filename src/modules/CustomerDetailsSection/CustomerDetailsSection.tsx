@@ -1,12 +1,13 @@
-import { Alert, Box, Divider, Typography } from '@mui/material';
+import { Alert, Box, Divider, Paper, Typography } from '@mui/material';
 import React from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import { Stack } from '@mui/system';
+import Checkbox from '../../components/Checkbox';
 import Tabs from '../../components/Tabs';
 
 const CustomerDetailsSection: React.FC = () => {
   return (
-    <Box padding={2} height="100vh">
+    <Box padding={2}>
       <Box display="flex" alignItems="center">
         <Box display="flex" flex="1" mb={1}>
           <Box marginRight={1}>

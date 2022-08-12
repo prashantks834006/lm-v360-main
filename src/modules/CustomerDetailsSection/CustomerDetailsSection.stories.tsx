@@ -6,8 +6,15 @@ import { Box } from '@mui/system';
 import CustomerDetailsSection from './CustomerDetailsSection';
 
 export default {
-  title: 'CustomerDetailsSection',
+  title: 'Modules/CustomerDetailsSection',
   component: CustomerDetailsSection,
+  decorators: [
+    (Story) => (
+      <div style={{ width: '678px', height: 'auto' }}>
+        <Story />
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof CustomerDetailsSection>;
 
 export const Primary: ComponentStory<typeof CustomerDetailsSection> = () => (
