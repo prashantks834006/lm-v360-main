@@ -58,6 +58,7 @@ module.exports = {
         peerDependencies: true,
       },
     ],
+    '@typescript-eslint/no-explicit-any': 'off',
   },
   settings: {
     'import/resolver': {

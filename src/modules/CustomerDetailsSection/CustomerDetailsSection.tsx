@@ -65,6 +65,14 @@ const CustomerDetailsSection: React.FC = () => {
             <Checkbox />
           </Box>
         </Box>
+        <Typography variant="body1" fontWeight="600">
+          Collect Information
+        </Typography>
+      </Box>
+      <Paper elevation={0}>
+        <Box p={1}>
+          <Checkbox />
+        </Box>
       </Paper>
     </Box>
   );
