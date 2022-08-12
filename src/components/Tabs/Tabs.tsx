@@ -26,7 +26,7 @@ const Tab = styled(MUITab)<TabProps>(({ theme }) => ({
 const ATabs: React.FC = () => {
   return (
     <Box>
-      <Tabs value={0} disableRipple>
+      <Tabs value={0} disableTouchRipple disableRipple>
         <Tab label="Actions Required (2)" />
         <Tab label="Actions Completed (0)" />
       </Tabs>
