@@ -1,37 +1,60 @@
 import React from 'react';
-import { Box, Tab as MUITab, Tabs as MUITabs, TabsProps, TabProps } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import MuiTabs from '@mui/material/Tabs';
+import MuiTab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import { TabsProps } from './types';
 
-const Tabs = styled(MUITabs)<TabsProps>(() => ({
-  '& .MuiTabs': {
-    color: 'blue',
-  },
-  '& .MuiTabs-scroller .MuiTabs-indicator': {
-    backgroundColor: 'black',
-  },
-}));
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
 
-const Tab = styled(MUITab)<TabProps>(({ theme }) => ({
-  '&': {
-    padding: theme.spacing(1, 1),
-    fontSize: 12,
-    color: 'blue',
-  },
-  '&.Mui-selected': {
-    color: 'black',
-    fontWeight: 'bold',
-  },
-}));
+const TabPanel = (props: TabPanelProps) => {
+  const { children, value, index, ...other } = props;
 
-const ATabs: React.FC = () => {
   return (
-    <Box>
-      <Tabs value={0} disableRipple>
-        <Tab label="Actions Required (2)" />
-        <Tab label="Actions Completed (0)" />
-      </Tabs>
+    <div role="tabpanel" hidden={value !== index} id={`tabpanel-${index}`} aria-labelledby={`tab-${index}`} {...other}>
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+};
+
+function a11yProps(index: number) {
+  return {
+    id: `tab-${index}`,
+    'aria-controls': `tabpanel-${index}`,
+  };
+}
+
+const Tabs: React.FC<TabsProps> = ({ tabItems }) => {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+
+  return (
+    <Box sx={{ width: '100%' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <MuiTabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          {tabItems.map(({ label }) => (
+            <MuiTab label={label} {...a11yProps(0)} />
+          ))}
+        </MuiTabs>
+      </Box>
+      {tabItems.map(({ content }, index) => (
+        <TabPanel value={value} index={index}>
+          {content}
+        </TabPanel>
+      ))}
     </Box>
   );
 };
 
-export default ATabs;
+export default Tabs;
