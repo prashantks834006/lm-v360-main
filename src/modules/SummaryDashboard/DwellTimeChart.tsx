@@ -12,8 +12,7 @@ import BaseOptionChart from '../../utils/BaseOptionChart';
 interface Props extends CardProps {
   chartData: {
     label: string;
-    onTrack: number;
-    offTrack: number;
+    weeks: number;
   }[];
   title: string;
 }
@@ -21,8 +20,7 @@ interface Props extends CardProps {
 const OffTrackChart: FC<Props> = ({ chartData, title }) => {
   const chartLabels = chartData.map((i) => i.label);
 
-  const chartOnTrackSeries = chartData.map((i) => i.onTrack);
-  const chartOffTrackSeries = chartData.map((i) => i.offTrack);
+  const chartWeeksSeries = chartData.map((i) => i.weeks);
 
   const chartOptions: ApexOptions = {
     ...BaseOptionChart(),
@@ -34,8 +32,8 @@ const OffTrackChart: FC<Props> = ({ chartData, title }) => {
         },
       },
     },
-    plotOptions: {
-      bar: { horizontal: false, borderRadius: 5, columnWidth: '30%' },
+    stroke: {
+      curve: 'smooth',
     },
     xaxis: {
       categories: chartLabels,
@@ -57,19 +55,12 @@ const OffTrackChart: FC<Props> = ({ chartData, title }) => {
     },
   };
 
-  if (chartOptions.chart) {
-    chartOptions.chart.stacked = true;
-  }
-
   return (
     <Box dir="ltr">
       {title && <Typography sx={{ fontWeight: 500, fontSize: '32px' }}> {title} </Typography>}
       <ReactApexChart
-        type="bar"
-        series={[
-          { data: chartOnTrackSeries, name: 'Home Delivery', color: '#4B96D8' },
-          { data: chartOffTrackSeries, name: 'Pickup', color: '#2649AD' },
-        ]}
+        type="area"
+        series={[{ data: chartWeeksSeries, name: 'Home Delivery', color: '#74b9ff' }]}
         options={chartOptions}
         height={180}
       />

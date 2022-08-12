@@ -1,55 +1,16 @@
 import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import { Icon } from '@iconify/react';
 import { Avatar, Stack } from '@mui/material';
 import Logo from '../../assets/images/logo.png';
 import NavSlidein from './NavSlideIn';
 import NotificationMenu from './NotificationMenu';
-
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.black, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.black, 0.25),
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: theme.spacing(2),
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(3),
-    width: 'auto',
-  },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  right: 0,
-  top: 0,
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 0, 1, 1),
-    paddingRight: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    [theme.breakpoints.up('md')]: {
-      width: '400px',
-    },
-  },
-}));
+import SearchBar from './Search';
 
 const Image = styled('img')(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
@@ -90,15 +51,7 @@ const Header = () => {
           </IconButton>
           <Image src={Logo} alt="LUCID" />
           <Box sx={{ flexGrow: 1 }} />
-          <Search>
-            <StyledInputBase
-              placeholder="Search by VIN no, vehicle name, customer name..."
-              inputProps={{ 'aria-label': 'search' }}
-            />
-            <SearchIconWrapper>
-              <Icon icon="ant-design:search-outlined" />
-            </SearchIconWrapper>
-          </Search>
+          <SearchBar />
           <Box sx={{ flexGrow: 1 }} />
           <Stack direction="row" gap={2}>
             <IconButton
