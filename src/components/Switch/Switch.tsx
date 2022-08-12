@@ -10,7 +10,7 @@ const AntSwitch = styled(MUISwitch)(({ theme }) => ({
   margin: '0px 10px',
   display: 'flex',
   borderRadius: 10,
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: theme.palette.grey[50],
   '&:active': {
     '& .MuiSwitch-thumb': {
       width: 35,
@@ -47,6 +47,13 @@ const AntSwitch = styled(MUISwitch)(({ theme }) => ({
   },
 }));
 
+const CustomFormControlLabel = styled(FormControlLabel)(() => ({
+  '& .MuiFormControlLabel-label': {
+    fontSize: 12,
+    fontWeight: 500,
+  },
+}));
+
 interface CustomSwitchProps extends Omit<SwitchProps, 'onChange'> {
   label: string;
   labelPlacement?: 'top' | 'bottom' | 'end' | 'start';
@@ -55,10 +62,10 @@ interface CustomSwitchProps extends Omit<SwitchProps, 'onChange'> {
 
 const Switch: React.FC<CustomSwitchProps> = ({ label, labelPlacement, value, onChange, ...other }) => {
   return (
-    <FormControlLabel
+    <CustomFormControlLabel
       value={value}
       onChange={(e, c) => onChange(c)}
-      control={<AntSwitch {...other} />}
+      control={<AntSwitch {...other} sx={{ fontSize: 10 }} />}
       label={label}
       labelPlacement={labelPlacement}
     />

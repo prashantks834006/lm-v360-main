@@ -1,7 +1,6 @@
 import React from 'react';
 import MuiTabs from '@mui/material/Tabs';
 import MuiTab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { TabsProps } from './types';
 
@@ -16,11 +15,7 @@ const TabPanel = (props: TabPanelProps) => {
 
   return (
     <div role="tabpanel" hidden={value !== index} id={`tabpanel-${index}`} aria-labelledby={`tab-${index}`} {...other}>
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box>{children}</Box>}
     </div>
   );
 };
@@ -42,9 +37,9 @@ const Tabs: React.FC<TabsProps> = ({ tabItems }) => {
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <MuiTabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          {tabItems.map(({ label }) => (
-            <MuiTab label={label} {...a11yProps(0)} />
+        <MuiTabs value={value} onChange={handleChange}>
+          {tabItems.map(({ label }, index) => (
+            <MuiTab label={label} {...a11yProps(index)} disableFocusRipple disableRipple />
           ))}
         </MuiTabs>
       </Box>

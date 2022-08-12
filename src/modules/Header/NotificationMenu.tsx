@@ -1,6 +1,8 @@
 import { Box, Divider, Menu, MenuItem, Select, SelectChangeEvent, Stack, Typography } from '@mui/material';
 import React, { FC, useCallback, useId, useState } from 'react';
+import Tabs from '../../components/Tabs';
 import { notificationsRange } from '../../utils/constants';
+import Notification from './Notification';
 
 type Props = {
   anchorEl: null | HTMLElement;
@@ -16,6 +18,29 @@ const NotificationMenu: FC<Props> = ({ id, anchorEl, handleMenuClose }) => {
   const handleRangeChange = useCallback((e: SelectChangeEvent) => {
     setRange(e.target.value);
   }, []);
+
+  const tabItems = [
+    {
+      label: 'Unread',
+      content: (
+        <Box sx={{ maxHeight: 300, overflow: 'auto' }}>
+          {[...new Array(5)].map(() => (
+            <Notification />
+          ))}
+        </Box>
+      ),
+    },
+    {
+      label: 'read',
+      content: (
+        <Box sx={{ maxHeight: 300, overflow: 'auto' }}>
+          {[...new Array(2)].map(() => (
+            <Notification isRead />
+          ))}
+        </Box>
+      ),
+    },
+  ];
 
   return (
     <Menu
@@ -59,6 +84,7 @@ const NotificationMenu: FC<Props> = ({ id, anchorEl, handleMenuClose }) => {
         </Stack>
       </Box>
       <Divider />
+      <Tabs tabItems={tabItems} />
     </Menu>
   );
 };

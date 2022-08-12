@@ -1,4 +1,4 @@
-import { names, vehicles, statuses } from './mocks';
+import { names, vehicles, statuses, notifications } from './mocks';
 
 export const generateRandomString = (length: number) =>
   Array(length + 1)
@@ -8,3 +8,4 @@ export const generateRandomString = (length: number) =>
 export const generateRandomName = () => names[Math.floor(Math.random() * names.length)];
 export const generateRandomVehicle = () => vehicles[Math.floor(Math.random() * vehicles.length)];
 export const generateRandomStatus = () => statuses[Math.floor(Math.random() * statuses.length)];
+export const getRandomNotification = () => notifications[Math.floor(Math.random() * notifications.length)];

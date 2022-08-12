@@ -7,7 +7,7 @@ interface IProps {
 
 const TaskSchedule: React.FC<IProps> = ({ schedule }) => {
   return (
-    <Stack direction="column" gap={0.5} width="28%">
+    <Stack direction="column" gap={0.5} width="25%">
       {schedule && (
         <>
           <Typography variant="subtitle2">Delivery Scheduled</Typography>

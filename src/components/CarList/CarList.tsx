@@ -25,7 +25,7 @@ interface IProps {
 
 const CarList: React.FC<IProps> = ({ cars }) => {
   return (
-    <Stack direction="column" gap={1} width="850px">
+    <Stack direction="column" gap={1}>
       {cars.map((data, index) => {
         if (isICar(data)) {
           return renderCarListItem(data, index === 0);

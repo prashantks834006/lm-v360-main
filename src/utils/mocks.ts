@@ -28,3 +28,9 @@ export const names: string[] = [
 export const vehicles: string[] = ['Air Dream Edition(GT)', 'Air Dream Edition(Touring)'];
 
 export const statuses: string[] = ['On Track', 'Delayed'];
+
+export const notifications: string[] = [
+  'Collect payment from customer',
+  'Vehicle is put on hold, but delivery is scheduled for',
+  'Follow up with customer on purchase order',
+];

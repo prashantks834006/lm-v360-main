@@ -3,18 +3,18 @@ import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 
 // @mui
-import { Box, CardProps, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 import BaseOptionChart from '../../utils/BaseOptionChart';
 
 // ----------------------------------------------------------------------
 
-interface Props extends CardProps {
+interface Props {
   chartData: {
     label: string;
     weeks: number;
   }[];
-  title: string;
+  title: React.ReactNode;
 }
 
 const OffTrackChart: FC<Props> = ({ chartData, title }) => {
