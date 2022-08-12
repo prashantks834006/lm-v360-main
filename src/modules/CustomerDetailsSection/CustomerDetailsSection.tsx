@@ -28,7 +28,7 @@ const CustomerDetailsSection: React.FC = () => {
   ];
 
   return (
-    <Box padding={2} height="100vh">
+    <Box padding={2}>
       <Box display="flex" alignItems="center">
         <Box display="flex" flex="1" mb={1}>
           <Box marginRight={1}>

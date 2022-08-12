@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox should render properly 1`] = `
+<div
+  className="MuiBox-root css-0"
+>
+  <div
+    className="MuiFormGroup-root css-dmmspl-MuiFormGroup-root"
+  >
+    <label
+      className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+    >
+      <span
+        className="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorSuccess PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorSuccess Mui-checked css-16k3oqz-MuiButtonBase-root-MuiCheckbox-root"
+        onBlur={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={null}
+      >
+        <input
+          className="PrivateSwitchBase-input css-1m9pwf3"
+          data-indeterminate={false}
+          defaultChecked={true}
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="CheckBoxIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+          />
+        </svg>
+      </span>
+      <p
+        className="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
+      >
+        Collect DMV info
+      </p>
+    </label>
+    <label
+      className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+    >
+      <span
+        className="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorSuccess PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorSuccess css-16k3oqz-MuiButtonBase-root-MuiCheckbox-root"
+        onBlur={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={null}
+      >
+        <input
+          className="PrivateSwitchBase-input css-1m9pwf3"
+          data-indeterminate={false}
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="CheckBoxOutlineBlankIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+          />
+        </svg>
+      </span>
+      <p
+        className="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
+      >
+        Collect Delivery info
+      </p>
+    </label>
+    <label
+      className="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+    >
+      <span
+        className="MuiButtonBase-root MuiCheckbox-root MuiCheckbox-colorSuccess PrivateSwitchBase-root MuiCheckbox-root MuiCheckbox-colorSuccess css-16k3oqz-MuiButtonBase-root-MuiCheckbox-root"
+        onBlur={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={null}
+      >
+        <input
+          className="PrivateSwitchBase-input css-1m9pwf3"
+          data-indeterminate={false}
+          onChange={[Function]}
+          type="checkbox"
+        />
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="CheckBoxOutlineBlankIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+          />
+        </svg>
+      </span>
+      <p
+        className="MuiTypography-root MuiTypography-body2 css-e784if-MuiTypography-root"
+      >
+        Collect Registration info
+      </p>
+    </label>
+  </div>
+</div>
+`;
