@@ -49,7 +49,7 @@ const CustomerDetailsSection: React.FC = () => {
           </Alert>
         </Box>
       </Box>
-      <Tabs />
+      <Tabs tabs={['Actions Required (2)', 'Actions Completed (0)']} />
       <Box bgcolor="#fff" padding={1}>
         <Box mb={1}>
           <Typography variant="caption" color="red" fontWeight="600">

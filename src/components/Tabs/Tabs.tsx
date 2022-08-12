@@ -8,27 +8,42 @@ const Tabs = styled(MUITabs)<TabsProps>(() => ({
   },
   '& .MuiTabs-scroller .MuiTabs-indicator': {
     backgroundColor: 'black',
+    border: 4,
+  },
+  '& .MuiTabs-flexContainer': {
+    gap: '24px',
   },
 }));
 
 const Tab = styled(MUITab)<TabProps>(({ theme }) => ({
   '&': {
-    padding: theme.spacing(1, 1),
-    fontSize: 12,
+    padding: theme.spacing(0, 0),
+    textTransform: 'none',
+    fontSize: 14,
+    fontWeight: '500',
     color: 'blue',
   },
   '&.Mui-selected': {
     color: 'black',
-    fontWeight: 'bold',
   },
 }));
 
-const ATabs: React.FC = () => {
+interface IProps {
+  tabs: string[];
+  selectedTab?: number;
+  setselectedTab?: (selectedTab: number) => void;
+}
+
+const ATabs: React.FC<IProps> = ({ tabs, selectedTab, setselectedTab }) => {
+  const handleTabSelect = (index: number) => {
+    if (setselectedTab) setselectedTab(index);
+  };
   return (
     <Box>
-      <Tabs value={0} disableRipple>
-        <Tab label="Actions Required (2)" />
-        <Tab label="Actions Completed (0)" />
+      <Tabs value={selectedTab ?? 0} disableRipple>
+        {tabs.map((tab, index) => (
+          <Tab label={tab} onClick={() => handleTabSelect(index)} />
+        ))}
       </Tabs>
     </Box>
   );

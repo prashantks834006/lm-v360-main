@@ -7,4 +7,9 @@ interface ICar {
   taskCount: number;
 }
 
+export interface ICarsInDue {
+  due: string;
+  cars: ICar[];
+}
+
 export default ICar;
