@@ -1,12 +1,13 @@
-import { Alert, Box, Divider, Typography } from '@mui/material';
+import { Alert, Box, Divider, Paper, Typography } from '@mui/material';
 import React from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import { Stack } from '@mui/system';
+import Checkbox from '../../components/Checkbox';
 import Tabs from '../../components/Tabs';
 
 const CustomerDetailsSection: React.FC = () => {
   return (
-    <Box padding={2} height="100vh">
+    <Box padding={2}>
       <Box display="flex" alignItems="center">
         <Box display="flex" flex="1" mb={1}>
           <Box marginRight={1}>
@@ -50,16 +51,21 @@ const CustomerDetailsSection: React.FC = () => {
         </Box>
       </Box>
       <Tabs />
-      <Box bgcolor="#fff" padding={1}>
-        <Box mb={1}>
-          <Typography variant="caption" color="red" fontWeight="600">
-            Due on July 25, 2022
+      <Paper elevation={0}>
+        <Box p={2}>
+          <Box mb={1}>
+            <Typography variant="caption" color="red" fontWeight="600">
+              Due on July 25, 2022
+            </Typography>
+          </Box>
+          <Typography variant="body1" fontWeight="600">
+            Collect Information
           </Typography>
+          <Box>
+            <Checkbox />
+          </Box>
         </Box>
-        <Typography variant="body1" fontWeight="600">
-          Collect Information
-        </Typography>
-      </Box>
+      </Paper>
     </Box>
   );
 };

@@ -26,7 +26,12 @@ module.exports = {
   rules: {
     'no-unused-vars': 1,
     '@typescript-eslint/no-unused-vars': ['error'],
-    'prettier/prettier': ['error'],
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
     'react-hooks/exhaustive-deps': 'warn',
     'react-hooks/rules-of-hooks': 'error',
     'react/jsx-filename-extension': [
@@ -49,7 +54,7 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        devDependencies: ['**/*.stories.*', '**/.storybook/**/*.*'],
+        devDependencies: ['**/*.stories.*', '**/.storybook/**/*.*', '**/*.test.*'],
         peerDependencies: true,
       },
     ],
