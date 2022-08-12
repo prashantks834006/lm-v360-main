@@ -2,9 +2,26 @@ import { Alert, Box, Divider, Typography } from '@mui/material';
 import React from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import { Stack } from '@mui/system';
+import Select from '../../components/Select';
 import Tabs from '../../components/Tabs';
+import Checkbox from '../../components/Checkbox';
 
 const CustomerDetailsSection: React.FC = () => {
+  const options = [
+    {
+      label: 'Apple',
+      value: 'Apple',
+    },
+    {
+      label: 'Banana',
+      value: 'Banana',
+    },
+    {
+      label: 'Orange',
+      value: 'Orange',
+    },
+  ];
+
   return (
     <Box padding={2}>
       <Box display="flex" alignItems="center">
@@ -50,7 +67,7 @@ const CustomerDetailsSection: React.FC = () => {
         </Box>
       </Box>
       <Tabs />
-      <Box bgcolor="#fff" padding={1}>
+      <Box bgcolor="white" padding={1}>
         <Box mb={1}>
           <Typography variant="caption" color="red" fontWeight="600">
             Due on July 25, 2022
@@ -59,6 +76,10 @@ const CustomerDetailsSection: React.FC = () => {
         <Typography variant="body1" fontWeight="600">
           Collect Information
         </Typography>
+        <Checkbox />
+        <Box>
+          <Select options={options} />
+        </Box>
       </Box>
     </Box>
   );
