@@ -23,7 +23,6 @@ const Tab = styled(MUITab)<TabProps>(({ theme }) => ({
   },
 }));
 
-
 const ATabs: React.FC = () => {
   return (
     <Box>
