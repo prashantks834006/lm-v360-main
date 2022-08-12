@@ -31,7 +31,7 @@ const Tab = styled(MUITab)<TabProps>(({ theme }) => ({
 interface IProps {
   tabs: string[];
   selectedTab?: number;
-  setselectedTab?: (selectedTab: number) => void;
+  setselectedTab?: any;
 }
 
 const ATabs: React.FC<IProps> = ({ tabs, selectedTab, setselectedTab }) => {

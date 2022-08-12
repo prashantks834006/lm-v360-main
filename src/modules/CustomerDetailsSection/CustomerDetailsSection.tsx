@@ -61,6 +61,11 @@ const CustomerDetailsSection: React.FC = () => {
           Collect Information
         </Typography>
       </Box>
+      <Paper elevation={0}>
+        <Box p={1}>
+          <Checkbox />
+        </Box>
+      </Paper>
     </Box>
   );
 };
