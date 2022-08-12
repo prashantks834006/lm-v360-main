@@ -47,7 +47,7 @@ const NotificationMenu: FC<Props> = ({ id, anchorEl, handleMenuClose }) => {
               sx={{ fontSize: 10 }}
             >
               {notificationsRange.map((notification) => (
-                <MenuItem value="Last 3 days" sx={{ fontSize: 10 }}>
+                <MenuItem value={notification} sx={{ fontSize: 10 }}>
                   {notification}
                 </MenuItem>
               ))}

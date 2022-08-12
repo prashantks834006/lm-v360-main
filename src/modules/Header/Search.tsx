@@ -55,9 +55,9 @@ const vehicles = [
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.black, 0.15),
+  backgroundColor: alpha(theme.palette.common.black, 0.35),
   '&:hover': {
-    backgroundColor: alpha(theme.palette.common.black, 0.25),
+    backgroundColor: alpha(theme.palette.common.black, 0.45),
   },
   marginRight: theme.spacing(2),
   marginLeft: theme.spacing(2),

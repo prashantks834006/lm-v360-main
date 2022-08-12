@@ -7,7 +7,7 @@ const DashboardLayout = () => {
   return (
     <>
       <Header />
-      <Box sx={{ py: 1, px: 2 }}>
+      <Box sx={{ p: 3 }}>
         <Outlet />
       </Box>
     </>
