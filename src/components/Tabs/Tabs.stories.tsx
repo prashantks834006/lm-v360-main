@@ -1,6 +1,6 @@
 // Button.stories.ts|tsx
 
-import React, { useState } from 'react';
+import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box } from '@mui/system';
 import Tabs from './Tabs';
@@ -11,10 +11,14 @@ export default {
 } as ComponentMeta<typeof Tabs>;
 
 export const Primary: ComponentStory<typeof Tabs> = () => {
-  const [selectedTab, setselectedTab] = useState(0);
   return (
     <Box bgcolor="#FAFAFA">
-      <Tabs tabs={['Due Today', 'Upcoming Tasks']} selectedTab={selectedTab} setselectedTab={setselectedTab} />
+      <Tabs
+        tabItems={[
+          { label: 'Due Today', content: <div> Due today</div> },
+          { label: 'Upcoming Tasks', content: <div> Upcoming tasks </div> },
+        ]}
+      />
     </Box>
   );
 };

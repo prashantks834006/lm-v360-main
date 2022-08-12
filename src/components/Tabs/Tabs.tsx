@@ -39,16 +39,6 @@ const Tabs: React.FC<TabsProps> = ({ tabItems }) => {
     setValue(newValue);
   };
 
-interface IProps {
-  tabs: string[];
-  selectedTab?: number;
-  setselectedTab?: (selectedTab: number) => void;
-}
-
-const ATabs: React.FC<IProps> = ({ tabs, selectedTab, setselectedTab }) => {
-  const handleTabSelect = (index: number) => {
-    if (setselectedTab) setselectedTab(index);
-  };
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
