@@ -50,22 +50,17 @@ const CustomerDetailsSection: React.FC = () => {
           </Alert>
         </Box>
       </Box>
-      <Tabs />
-      <Paper elevation={0}>
-        <Box p={2}>
-          <Box mb={1}>
-            <Typography variant="caption" color="red" fontWeight="600">
-              Due on July 25, 2022
-            </Typography>
-          </Box>
-          <Typography variant="body1" fontWeight="600">
-            Collect Information
+      <Tabs tabs={['Actions Required (2)', 'Actions Completed (0)']} />
+      <Box bgcolor="#fff" padding={1}>
+        <Box mb={1}>
+          <Typography variant="caption" color="red" fontWeight="600">
+            Due on July 25, 2022
           </Typography>
-          <Box>
-            <Checkbox />
-          </Box>
         </Box>
-      </Paper>
+        <Typography variant="body1" fontWeight="600">
+          Collect Information
+        </Typography>
+      </Box>
     </Box>
   );
 };
