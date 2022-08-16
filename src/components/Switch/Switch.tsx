@@ -57,7 +57,7 @@ const CustomFormControlLabel = styled(FormControlLabel)(() => ({
 interface CustomSwitchProps extends Omit<SwitchProps, 'onChange'> {
   label: string;
   labelPlacement?: 'top' | 'bottom' | 'end' | 'start';
-  onChange: (checked: boolean) => void;
+  onChange(checked: boolean): void;
 }
 
 const Switch: React.FC<CustomSwitchProps> = ({ label, labelPlacement, value, onChange, ...other }) => {

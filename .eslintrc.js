@@ -26,7 +26,8 @@ module.exports = {
   rules: {
     'react/prop-types': 'off',
     'react/jsx-props-no-spreading': 'off',
-    'no-unused-vars': 1,
+    // this is deprecated refer : https://stackoverflow.com/a/63798664/11677223
+    // 'no-unused-vars': 1,
     '@typescript-eslint/no-unused-vars': ['error'],
     'prettier/prettier': [
       'error',
