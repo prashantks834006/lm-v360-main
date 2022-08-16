@@ -56,9 +56,6 @@ const CustomerDetailsSection: React.FC = () => {
             Due on July 25, 2022
           </Typography>
         </Box>
-        <Typography variant="body1" fontWeight="600">
-          Collect Information
-        </Typography>
       </Box>
     </Box>
   );
