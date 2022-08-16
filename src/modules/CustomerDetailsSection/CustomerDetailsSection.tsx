@@ -32,7 +32,7 @@ const CustomerDetailsSection: React.FC = () => {
       <Box display="flex" alignItems="center">
         <Box display="flex" flex="1" mb={1}>
           <Box marginRight={1}>
-            <Typography variant="h6" fontWeight="bold" fontSize={32} lineHeight={1}>
+            <Typography variant="h1" fontWeight="bold" fontSize={32} lineHeight={1}>
               Stephanie
             </Typography>
           </Box>
