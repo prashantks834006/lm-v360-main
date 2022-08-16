@@ -5,6 +5,28 @@ import { Stack } from '@mui/system';
 import Tabs from '../../components/Tabs';
 
 const CustomerDetailsSection: React.FC = () => {
+  const tabItems = [
+    {
+      label: 'Actions Required (2)',
+      content: (
+        <Box bgcolor="#fff" padding={1}>
+          <Box mb={1}>
+            <Typography variant="caption" color="red" fontWeight="600">
+              Due on July 25, 2022
+            </Typography>
+          </Box>
+          <Typography variant="body1" fontWeight="600">
+            Collect Information
+          </Typography>
+        </Box>
+      ),
+    },
+    {
+      label: 'Actions Completed (1)',
+      content: <Box> Actions completed list </Box>,
+    },
+  ];
+
   return (
     <Box padding={2}>
       <Box display="flex" alignItems="center">
@@ -49,14 +71,7 @@ const CustomerDetailsSection: React.FC = () => {
           </Alert>
         </Box>
       </Box>
-      <Tabs />
-      <Box bgcolor="#fff" padding={1}>
-        <Box mb={1}>
-          <Typography variant="caption" color="red" fontWeight="600">
-            Due on July 25, 2022
-          </Typography>
-        </Box>
-      </Box>
+      <Tabs tabItems={tabItems} />
     </Box>
   );
 };
