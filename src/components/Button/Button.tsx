@@ -1,14 +1,16 @@
 import React from 'react';
+import MuiButton, { ButtonProps } from '@mui/material/Button';
 
-interface Props {
+interface Props extends ButtonProps {
   children: React.ReactNode;
-  primary: boolean;
-  label: string;
-  size: 'large' | 'small';
 }
 
-const Button: React.FC<Props> = () => {
-  return <button type="submit">Click me</button>;
+const Button: React.FC<Props> = ({ children, ...other }) => {
+  return (
+    <MuiButton type="button" {...other}>
+      {children}
+    </MuiButton>
+  );
 };
 
 export default Button;
