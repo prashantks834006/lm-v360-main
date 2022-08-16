@@ -50,7 +50,7 @@ const NavigationDrawer: React.FC<Props> = ({ isOpen, setIsOpen }) => {
       <Box sx={{ width: 200, p: 3 }} role="presentation" onClick={toggleDrawer} onKeyDown={toggleDrawer}>
         <List>
           {navItems.map(({ text, icon, path }) => (
-            <Link to={path}>
+            <Link to={path} key={path}>
               <ListItem key={text} disablePadding>
                 <ListItemButton sx={{ borderRadius: 2 }}>
                   <ListItemIcon sx={{ minWidth: 30 }}>

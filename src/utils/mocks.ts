@@ -1,6 +1,10 @@
+import img1 from '../assets/images/image1.png';
+import img2 from '../assets/images/image2.png';
+import img3 from '../assets/images/image3.png';
+
 export const names: string[] = [
   'Lynn OLeeum',
-  'P. Ann O’Recital',
+  'P. Ann ORecital',
   'Ray OSun',
   'Lee A. Sun',
   'Ray Sin',
@@ -27,10 +31,31 @@ export const names: string[] = [
 
 export const vehicles: string[] = ['Air Dream Edition(GT)', 'Air Dream Edition(Touring)'];
 
-export const statuses: string[] = ['On Track', 'Delayed'];
+export const statuses: string[] = ['On Track', 'Off Track', 'Delayed'];
 
 export const notifications: string[] = [
   'Collect payment from customer',
   'Vehicle is put on hold, but delivery is scheduled for',
   'Follow up with customer on purchase order',
 ];
+
+export const stages: string[] = [
+  'Reservation',
+  'Order',
+  'Production',
+  'Transit',
+  'Inspection',
+  'Delivery',
+  'OwnerShip',
+];
+
+export const messages: string[] = [
+  'Collect information',
+  'In progress',
+  'Sign purchase agreement',
+  'Corrections in progress',
+  'Collecting customer info',
+  'Body in white',
+];
+
+export const carImages: string[] = [img1, img2, img3];

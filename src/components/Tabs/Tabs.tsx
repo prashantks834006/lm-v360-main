@@ -39,12 +39,12 @@ const Tabs: React.FC<TabsProps> = ({ tabItems }) => {
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <MuiTabs value={value} onChange={handleChange}>
           {tabItems.map(({ label }, index) => (
-            <MuiTab label={label} {...a11yProps(index)} disableFocusRipple disableRipple />
+            <MuiTab key={label} label={label} {...a11yProps(index)} disableFocusRipple disableRipple />
           ))}
         </MuiTabs>
       </Box>
-      {tabItems.map(({ content }, index) => (
-        <TabPanel value={value} index={index}>
+      {tabItems.map(({ content, label }, index) => (
+        <TabPanel value={value} index={index} key={label}>
           {content}
         </TabPanel>
       ))}

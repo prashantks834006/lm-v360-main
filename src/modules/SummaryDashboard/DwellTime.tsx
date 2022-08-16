@@ -9,7 +9,7 @@ const DwellTime = () => {
       <Typography variant="h5" sx={{ fontWeight: 500 }}>
         7 days
       </Typography>
-      <Typography variant="body2" sx={{ fontSize: 10 }}>
+      <Typography component="div" variant="body2" sx={{ fontSize: 10 }}>
         <Box component="span" sx={{ color: 'red', mr: 0.5 }}>
           <Icon icon="akar-icons:arrow-up" />4 days
         </Box>

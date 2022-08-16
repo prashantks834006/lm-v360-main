@@ -1,5 +1,6 @@
 import { Box, Divider, Menu, MenuItem, Select, SelectChangeEvent, Stack, Typography } from '@mui/material';
 import React, { FC, useCallback, useId, useState } from 'react';
+import { generateRandomString } from '../../utils/string';
 import Tabs from '../../components/Tabs';
 import { notificationsRange } from '../../utils/constants';
 import Notification from './Notification';
@@ -24,9 +25,11 @@ const NotificationMenu: FC<Props> = ({ id, anchorEl, handleMenuClose }) => {
       label: 'Unread',
       content: (
         <Box sx={{ maxHeight: 300, overflow: 'auto' }}>
-          {[...new Array(5)].map(() => (
-            <Notification />
-          ))}
+          {[...new Array(5)]
+            .map(() => generateRandomString(3))
+            .map((i) => (
+              <Notification key={i} />
+            ))}
         </Box>
       ),
     },
@@ -34,9 +37,11 @@ const NotificationMenu: FC<Props> = ({ id, anchorEl, handleMenuClose }) => {
       label: 'read',
       content: (
         <Box sx={{ maxHeight: 300, overflow: 'auto' }}>
-          {[...new Array(2)].map(() => (
-            <Notification isRead />
-          ))}
+          {[...new Array(2)]
+            .map(() => generateRandomString(3))
+            .map((i) => (
+              <Notification isRead key={i} />
+            ))}
         </Box>
       ),
     },
@@ -72,7 +77,7 @@ const NotificationMenu: FC<Props> = ({ id, anchorEl, handleMenuClose }) => {
               sx={{ fontSize: 10 }}
             >
               {notificationsRange.map((notification) => (
-                <MenuItem value={notification} sx={{ fontSize: 10 }}>
+                <MenuItem value={notification} sx={{ fontSize: 10 }} key={notification}>
                   {notification}
                 </MenuItem>
               ))}

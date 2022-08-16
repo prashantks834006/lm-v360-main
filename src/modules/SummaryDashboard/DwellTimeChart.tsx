@@ -3,7 +3,7 @@ import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 
 // @mui
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 
 import BaseOptionChart from '../../utils/BaseOptionChart';
 
@@ -57,7 +57,7 @@ const OffTrackChart: FC<Props> = ({ chartData, title }) => {
 
   return (
     <Box dir="ltr">
-      {title && <Typography sx={{ fontWeight: 500, fontSize: '32px' }}> {title} </Typography>}
+      {title && <Box sx={{ fontWeight: 500, fontSize: '32px' }}> {title} </Box>}
       <ReactApexChart
         type="area"
         series={[{ data: chartWeeksSeries, name: 'Home Delivery', color: '#74b9ff' }]}

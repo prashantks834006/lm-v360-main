@@ -125,7 +125,7 @@ export default function BaseOptionChart(): ApexOptions {
       // Bar
       bar: {
         columnWidth: '28%',
-        borderRadius: 4,
+        borderRadius: 1,
       },
       // Pie + Donut
       pie: {

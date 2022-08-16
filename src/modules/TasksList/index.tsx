@@ -1,18 +1,17 @@
-import { Box, Grid } from '@mui/material';
 import React from 'react';
-import CarListSection from '../CarListSection/CarListSection';
+
+import { Grid } from '@mui/material';
 import CustomerDetailsSection from '../CustomerDetailsSection';
+import CarList from '../CarList';
 
 const TasksList = () => {
   return (
-    <Grid container sx={{ mt: 4 }}>
-      <Grid item sm={12} md={7}>
-        <CarListSection />
+    <Grid container sx={{ mt: 2 }} spacing={4}>
+      <Grid item sm={12} md={8}>
+        <CarList />
       </Grid>
-      <Grid item sm={12} md={5}>
-        <Box bgcolor="#FAFAFA">
-          <CustomerDetailsSection />
-        </Box>
+      <Grid item sm={12} md={4}>
+        <CustomerDetailsSection />
       </Grid>
     </Grid>
   );
