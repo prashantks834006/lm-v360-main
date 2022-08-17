@@ -36,7 +36,7 @@ const Tabs: React.FC<TabsProps> = ({ tabItems, ...other }) => {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+      <Box>
         <MuiTabs value={value} onChange={handleChange} {...other}>
           {tabItems.map(({ label }, index) => (
             <MuiTab key={label} label={label} {...a11yProps(index)} disableFocusRipple disableRipple />
