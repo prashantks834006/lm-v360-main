@@ -27,7 +27,7 @@ function a11yProps(index: number) {
   };
 }
 
-const Tabs: React.FC<TabsProps> = ({ tabItems }) => {
+const Tabs: React.FC<TabsProps> = ({ tabItems, ...other }) => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -37,7 +37,7 @@ const Tabs: React.FC<TabsProps> = ({ tabItems }) => {
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <MuiTabs value={value} onChange={handleChange}>
+        <MuiTabs value={value} onChange={handleChange} {...other}>
           {tabItems.map(({ label }, index) => (
             <MuiTab key={label} label={label} {...a11yProps(index)} disableFocusRipple disableRipple />
           ))}
