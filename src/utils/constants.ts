@@ -5,6 +5,7 @@ export const ENDPOINTS = {
 export const PATHS = {
   dashboard: '/',
   vehicles: '/vehicles',
+  vahicle: (id: string) => `/vehicles/${id}`,
   help: '/help',
 } as const;
 
