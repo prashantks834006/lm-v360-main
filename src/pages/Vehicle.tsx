@@ -6,7 +6,7 @@ import VehicleVerticalTabs from '../modules/VehicleVerticalTabs';
 
 const Vehicle = () => {
   return (
-    <Page sx={{ bgcolor: (theme) => theme.palette.grey[300] }}>
+    <Page sx={{ bgcolor: (theme) => theme.palette.grey[100] }}>
       <Box>Header component</Box>
       <Box sx={{ p: 3 }}>
         <Grid container spacing={3}>
