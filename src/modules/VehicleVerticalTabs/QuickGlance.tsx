@@ -1,7 +1,8 @@
-import { Box, Divider, Grid } from '@mui/material';
+import { Box, Divider, Grid, Stack } from '@mui/material';
 import React from 'react';
 import Label from '../../pages/Vehicle/InfoHeader/Label';
 import img from '../../assets/images/image1.png';
+import Typography from '../../components/Typography/Typography';
 
 const QuickGlance = () => {
   return (
@@ -28,6 +29,13 @@ const QuickGlance = () => {
         </Grid>
         <Grid item xs={12}>
           <Divider />
+        </Grid>
+        <Grid item xs={12}>
+          <Stack>
+            <Typography size={12} weight={500} sx={{ textTransform: 'uppercase' }}>
+              team
+            </Typography>
+          </Stack>
         </Grid>
       </Grid>
     </Box>

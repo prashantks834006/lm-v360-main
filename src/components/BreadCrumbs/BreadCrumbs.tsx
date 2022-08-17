@@ -22,11 +22,7 @@ const Breadcrumbs: React.FC<Props> = ({ links }) => {
             {item.label}
           </Typography>
         ) : (
-          <Link to={item.link}>
-            <Typography variant="body2" sx={{ color: (theme) => theme.palette.primary.main, fontSize: 12 }}>
-              {item.label}
-            </Typography>
-          </Link>
+          <Link to={item.link}>{item.label}</Link>
         )
       ),
     [links]

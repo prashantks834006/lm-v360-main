@@ -6,7 +6,7 @@ import { Icon } from '@iconify/react';
 import { Typography, Divider, Stack, Box } from '@mui/material';
 import Link from '../../components/Link/Link';
 import { PATHS } from '../../utils/constants';
-import Label from '../../components/Label/Label';
+import Chip from '../../components/Chip/Chip';
 import {
   generateRandomName,
   generateRandomString,
@@ -122,7 +122,7 @@ const SearchBar = () => {
           {(groupedOptions as typeof vehicles).map((option, index) => (
             <>
               <li {...getOptionProps({ option, index })}>
-                <Link to={PATHS.vahicle(option.id)}>
+                <Link to={PATHS.vahicle(option.id)} sx={{ color: (theme) => theme.palette.common.black }}>
                   <Stack direction="row">
                     <Box sx={{ flexGrow: 1 }}>
                       <Typography sx={{ fontSize: 12, fontWeight: 'bold' }}>{option.id}</Typography>
@@ -131,7 +131,7 @@ const SearchBar = () => {
                       </Typography>
                     </Box>
                     <div>
-                      <Label text={option.status} />
+                      <Chip text={option.status} />
                     </div>
                   </Stack>
                 </Link>

@@ -6,7 +6,7 @@ import { stages } from '../../utils/mocks';
 import Stepper from '../../components/Stepper/Stepper';
 import Typography from '../../components/Typography/Typography';
 import ICar from '../../types/cars';
-import Label from '../../components/Label/Label';
+import Chip from '../../components/Chip/Chip';
 
 type Props = {
   car: ICar;
@@ -50,7 +50,7 @@ const CarTaskItem: FC<Props> = ({ car, isActive }) => {
               <Typography weight={400} size={12}>
                 {car.message}
               </Typography>
-              <Label text={car.status} />
+              <Chip text={car.status} />
             </Stack>
           </Stack>
         </Grid>

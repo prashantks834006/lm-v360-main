@@ -5,7 +5,7 @@ type Props = {
   text: string;
 };
 
-const LabelWrapper = styled(Box)(() => ({
+const ChipWrapper = styled(Box)(() => ({
   border: '0.8px solid black',
   width: 'max-content',
   fontSize: 10,
@@ -13,6 +13,6 @@ const LabelWrapper = styled(Box)(() => ({
   borderRadius: '3px',
 }));
 
-const Label: FC<Props> = ({ text }) => <LabelWrapper>{text}</LabelWrapper>;
+const Chip: FC<Props> = ({ text }) => <ChipWrapper>{text}</ChipWrapper>;
 
-export default Label;
+export default Chip;

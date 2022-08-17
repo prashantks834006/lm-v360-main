@@ -53,24 +53,12 @@ const SummaryDashboard = () => {
         </Stack>
         <Box>
           <Stack direction="row" alignItems="center" justifyContent="center" gap={1}>
-            <Link to={PATHS.vehicles}>
-              <Typography variant="body2" sx={{ color: (theme) => theme.palette.primary.main, fontSize: 12 }}>
-                All Vehicles
-              </Typography>
-            </Link>
+            <Link to={PATHS.vehicles}>All Vehicles</Link>
             <Divider orientation="vertical" flexItem />
             <Typography sx={{ fontSize: 12 }}>Search with saved filters:</Typography>
-            <Link to={PATHS.vehicles}>
-              <Typography variant="body2" sx={{ color: (theme) => theme.palette.primary.main, fontSize: 12 }}>
-                Upcoming Deliveries
-              </Typography>
-            </Link>
+            <Link to={PATHS.vehicles}>Upcoming Deliveries</Link>
             <Divider orientation="vertical" flexItem />
-            <Link to={PATHS.vehicles}>
-              <Typography variant="body2" sx={{ color: (theme) => theme.palette.primary.main, fontSize: 12 }}>
-                PDI-Costa Misa
-              </Typography>
-            </Link>
+            <Link to={PATHS.vehicles}>PDI-Costa Misa</Link>
             <Divider orientation="vertical" flexItem />
             <Link to={PATHS.vehicles}>
               <Stack
