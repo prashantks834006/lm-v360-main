@@ -12,6 +12,7 @@ import { ReactComponent as TeamIcon } from '../../assets/icons/team.svg';
 import { ReactComponent as DeliveryIcon } from '../../assets/icons/delivery.svg';
 import QuickGlance from './QuickGlance';
 
+
 const tabItems: TabItem[] = [
   {
     label: 'Quick glance',
