@@ -3,6 +3,7 @@ import { useRoutes } from 'react-router-dom';
 import AuthGuard from '../gaurds/AuthGuard';
 import DashboardLayout from '../layouts/Dashboard';
 import Dashboard from './Dashboard';
+import Vehicle from './Vehicle';
 import Vehicles from './Vehicles';
 
 const Routes = () => {
@@ -17,6 +18,7 @@ const Routes = () => {
       children: [
         { path: '', element: <Dashboard />, index: true },
         { path: 'vehicles', element: <Vehicles /> },
+        { path: 'vehicles/:vehicleId', element: <Vehicle /> },
       ],
     },
   ]);

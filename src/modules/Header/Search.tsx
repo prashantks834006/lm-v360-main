@@ -4,6 +4,8 @@ import { alpha, styled } from '@mui/material/styles';
 import { autocompleteClasses } from '@mui/material/Autocomplete';
 import { Icon } from '@iconify/react';
 import { Typography, Divider, Stack, Box } from '@mui/material';
+import Link from '../../components/Link/Link';
+import { PATHS } from '../../utils/constants';
 import Label from '../../components/Label/Label';
 import {
   generateRandomName,
@@ -120,17 +122,19 @@ const SearchBar = () => {
           {(groupedOptions as typeof vehicles).map((option, index) => (
             <>
               <li {...getOptionProps({ option, index })}>
-                <Stack direction="row">
-                  <Box sx={{ flexGrow: 1 }}>
-                    <Typography sx={{ fontSize: 12, fontWeight: 'bold' }}>{option.id}</Typography>
-                    <Typography sx={{ fontSize: 10 }}>
-                      {option.vehicle} ordered by {option.customer}
-                    </Typography>
-                  </Box>
-                  <div>
-                    <Label text={option.status} />
-                  </div>
-                </Stack>
+                <Link to={PATHS.vahicle(option.id)}>
+                  <Stack direction="row">
+                    <Box sx={{ flexGrow: 1 }}>
+                      <Typography sx={{ fontSize: 12, fontWeight: 'bold' }}>{option.id}</Typography>
+                      <Typography sx={{ fontSize: 10 }}>
+                        {option.vehicle} ordered by {option.customer}
+                      </Typography>
+                    </Box>
+                    <div>
+                      <Label text={option.status} />
+                    </div>
+                  </Stack>
+                </Link>
               </li>
               <Divider />
             </>
