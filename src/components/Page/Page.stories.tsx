@@ -9,4 +9,4 @@ export default {
   component: Page,
 } as ComponentMeta<typeof Page>;
 
-export const Primary: ComponentStory<typeof Page> = () => <Page title="Lucid storybook"> page content goes here </Page>;
+export const Primary: ComponentStory<typeof Page> = () => <Page> page content goes here </Page>;
