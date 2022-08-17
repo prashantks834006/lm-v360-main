@@ -3,7 +3,7 @@ import { useRoutes } from 'react-router-dom';
 import AuthGuard from '../gaurds/AuthGuard';
 import DashboardLayout from '../layouts/Dashboard';
 import Dashboard from './Dashboard';
-import Vehicle from './Vehicle';
+import Vehicle from './Vehicle/Vehicle';
 import Vehicles from './Vehicles';
 
 const Routes = () => {
