@@ -40,8 +40,6 @@ const Tabs: React.FC<TabsProps> = ({ tabItems, orientation, ...other }) => {
               padding: '5px 10px',
               textTransform: 'initial',
               color: theme.palette.primary.main,
-              fontSize: 10,
-              fontWeight: 500,
               '&.Mui-selected': {
                 backgroundColor: '#456BD91A',
                 borderRadius: theme.shape.borderRadius,
