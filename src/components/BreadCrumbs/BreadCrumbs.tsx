@@ -18,7 +18,7 @@ const Breadcrumbs: React.FC<Props> = ({ links }) => {
     () =>
       links.map((item, i) =>
         i === links.length - 1 ? (
-          <Typography variant="body2" key={item.label} color="text.primary">
+          <Typography variant="body2" key={item.label} sx={{ fontSize: 12 }} color="text.primary">
             {item.label}
           </Typography>
         ) : (
