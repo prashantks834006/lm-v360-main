@@ -71,7 +71,7 @@ const Tabs: React.FC<TabsProps> = ({ tabItems, orientation, ...other }) => {
         </MuiTabs>
       </Box>
       <Divider flexItem orientation={orientation} />
-      <Box sx={{ p: 1 }}>
+      <Box sx={{ p: 1, flexGrow: 1 }}>
         {tabItems.map(({ content, label }, index) => (
           <TabPanel value={value} index={index} key={label}>
             {content}

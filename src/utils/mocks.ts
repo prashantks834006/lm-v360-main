@@ -61,7 +61,7 @@ export const messages: string[] = [
 export const carImages: string[] = [img1, img2, img3];
 
 export const userImages: string[] = [...new Array(20)].map(
-  (_, i) => `https://source.unsplash.com/random/10${i}x10${i}/?boss,man,employer,employee,suit`
+  (_, i) => `https://source.unsplash.com/random/10${i}x10${i}/?boss,employer,employee,suit,face`
 );
 
 export const roles: string[] = [

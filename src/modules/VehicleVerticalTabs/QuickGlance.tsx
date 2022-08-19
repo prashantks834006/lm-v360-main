@@ -6,14 +6,14 @@ import img from '../../assets/images/image1.png';
 import Typography from '../../components/Typography/Typography';
 import Team from './TeamList';
 import GridLabels from './GridLabels';
-import { labels, team } from './VehicleVerticalTabs.mock';
+import { vehicleLabels, team } from './VehicleVerticalTabs.mock';
 
 const QuickGlance = () => {
   return (
     <Box sx={{ width: '100%' }}>
       <img src={img} alt="car" style={{ width: '300px', display: 'block', objectFit: 'cover' }} />
       <Grid container spacing={2}>
-        <GridLabels labels={labels} />
+        <GridLabels labels={vehicleLabels} />
         <Grid item xs={12}>
           <Divider />
         </Grid>
