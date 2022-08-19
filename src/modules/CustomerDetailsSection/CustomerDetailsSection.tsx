@@ -7,18 +7,26 @@ import Tabs from '../../components/Tabs';
 import Checkbox from '../../components/Checkbox';
 
 const CustomerDetailsSection: React.FC = () => {
-  const options = [
+
+  const tabItems = [
     {
-      label: 'Apple',
-      value: 'Apple',
+      label: 'Actions Required (2)',
+      content: (
+        <Box bgcolor="#fff" padding={1}>
+          <Box mb={1}>
+            <Typography variant="caption" color="red" fontWeight="600">
+              Due on July 25, 2022
+            </Typography>
+          </Box>
+          <Typography variant="body1" fontWeight="600">
+            Collect Information
+          </Typography>
+        </Box>
+      ),
     },
     {
-      label: 'Banana',
-      value: 'Banana',
-    },
-    {
-      label: 'Orange',
-      value: 'Orange',
+      label: 'Actions Completed (1)',
+      content: <Box> Actions completed list </Box>,
     },
   ];
 
@@ -27,7 +35,7 @@ const CustomerDetailsSection: React.FC = () => {
       <Box display="flex" alignItems="center">
         <Box display="flex" flex="1" mb={1}>
           <Box marginRight={1}>
-            <Typography variant="h6" fontWeight="bold" fontSize={32} lineHeight={1}>
+            <Typography variant="h1" fontWeight="bold" fontSize={32} lineHeight={1}>
               Stephanie
             </Typography>
           </Box>
@@ -66,21 +74,7 @@ const CustomerDetailsSection: React.FC = () => {
           </Alert>
         </Box>
       </Box>
-      <Tabs />
-      <Box bgcolor="white" padding={1}>
-        <Box mb={1}>
-          <Typography variant="caption" color="red" fontWeight="600">
-            Due on July 25, 2022
-          </Typography>
-        </Box>
-        <Typography variant="body1" fontWeight="600">
-          Collect Information
-        </Typography>
-        <Checkbox />
-        <Box>
-          <Select options={options} />
-        </Box>
-      </Box>
+      <Tabs tabItems={tabItems} />
     </Box>
   );
 };

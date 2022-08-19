@@ -1,37 +1,85 @@
-import React from 'react';
-import { Box, Tab as MUITab, Tabs as MUITabs, TabsProps, TabProps } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import React, { useMemo } from 'react';
+import MuiTabs from '@mui/material/Tabs';
+import MuiTab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
+import { Divider, Stack, styled } from '@mui/material';
+import { TabPanelProps, TabsProps } from './types';
 
-const Tabs = styled(MUITabs)<TabsProps>(() => ({
-  '& .MuiTabs': {
-    color: 'blue',
-  },
-  '& .MuiTabs-scroller .MuiTabs-indicator': {
-    backgroundColor: 'black',
-  },
-}));
+const TabPanel = (props: TabPanelProps) => {
+  const { children, value, index, ...other } = props;
 
-const Tab = styled(MUITab)<TabProps>(({ theme }) => ({
-  '&': {
-    padding: theme.spacing(1, 1),
-    fontSize: 12,
-    color: 'blue',
-  },
-  '&.Mui-selected': {
-    color: 'black',
-    fontWeight: 'bold',
-  },
-}));
-
-const ATabs: React.FC = () => {
   return (
-    <Box>
-      <Tabs value={0} disableTouchRipple disableRipple>
-        <Tab label="Actions Required (2)" />
-        <Tab label="Actions Completed (0)" />
-      </Tabs>
-    </Box>
+    <div role="tabpanel" hidden={value !== index} id={`tabpanel-${index}`} aria-labelledby={`tab-${index}`} {...other}>
+      {value === index && <Box>{children}</Box>}
+    </div>
   );
 };
 
-export default ATabs;
+function a11yProps(index: number) {
+  return {
+    id: `tab-${index}`,
+    'aria-controls': `tabpanel-${index}`,
+  };
+}
+
+const Tabs: React.FC<TabsProps> = ({ tabItems, orientation, ...other }) => {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+
+  const isVerticalTabs = useMemo(() => orientation === 'vertical', [orientation]);
+  const tabIndicatorProps = isVerticalTabs ? { style: { display: 'none' } } : {};
+
+  const Tab = useMemo(
+    () =>
+      styled(MuiTab)(({ theme }) =>
+        isVerticalTabs
+          ? {
+              padding: '0px',
+              textTransform: 'initial',
+              color: theme.palette.primary.main,
+              fontSize: 10,
+              fontWeight: 500,
+              minWidth: 80,
+              minHeight: 70,
+              '&.Mui-selected': {
+                backgroundColor: '#456BD91A',
+                borderRadius: theme.shape.borderRadius,
+                color: theme.palette.common.black,
+              },
+            }
+          : {}
+      ),
+    [isVerticalTabs]
+  );
+
+  return (
+    <Stack direction={orientation === 'vertical' ? 'row' : 'column'} sx={{ width: '100%' }} gap={1}>
+      <Box>
+        <MuiTabs
+          value={value}
+          onChange={handleChange}
+          orientation={orientation}
+          {...other}
+          TabIndicatorProps={tabIndicatorProps}
+        >
+          {tabItems.map(({ label, icon }, index) => (
+            <Tab key={label} label={label} icon={icon} {...a11yProps(index)} />
+          ))}
+        </MuiTabs>
+      </Box>
+      <Divider flexItem orientation={orientation} />
+      <Box sx={{ p: 1 }}>
+        {tabItems.map(({ content, label }, index) => (
+          <TabPanel value={value} index={index} key={label}>
+            {content}
+          </TabPanel>
+        ))}
+      </Box>
+    </Stack>
+  );
+};
+
+export default Tabs;

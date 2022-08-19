@@ -24,7 +24,8 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    'no-unused-vars': 1,
+    'react/prop-types': 'off',
+    'react/jsx-props-no-spreading': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
     'prettier/prettier': [
       'error',
@@ -63,7 +64,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.t.ts', '.t.tsx'],
       },
     },
   },
