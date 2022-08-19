@@ -86,7 +86,7 @@ const Stepper: React.FC<Props> = ({ steps, activeStep }) => {
       <MUIStepper alternativeLabel activeStep={activeStep} connector={<Connector />}>
         {steps.map((label) => (
           <Step key={label}>
-            <StepLabel StepIconComponent={StepIcon} />
+            <StepLabel StepIconComponent={StepIcon}>{label}</StepLabel>
           </Step>
         ))}
       </MUIStepper>
