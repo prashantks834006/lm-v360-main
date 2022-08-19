@@ -22,7 +22,11 @@ function a11yProps(index: number) {
   };
 }
 
-const Tabs: React.FC<TabsProps> = ({ tabItems, orientation, ...other }) => {
+interface IProps extends TabsProps {
+  sibling?: React.ReactNode;
+}
+
+const Tabs: React.FC<IProps> = ({ tabItems, orientation, sibling, ...other }) => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -57,7 +61,7 @@ const Tabs: React.FC<TabsProps> = ({ tabItems, orientation, ...other }) => {
 
   return (
     <Stack direction={orientation === 'vertical' ? 'row' : 'column'} sx={{ width: '100%' }} gap={1}>
-      <Box>
+      <Box display="flex" justifyContent="space-between">
         <MuiTabs
           value={value}
           onChange={handleChange}
@@ -69,6 +73,7 @@ const Tabs: React.FC<TabsProps> = ({ tabItems, orientation, ...other }) => {
             <Tab key={label} label={label} icon={icon} {...a11yProps(index)} />
           ))}
         </MuiTabs>
+        {sibling}
       </Box>
       <Divider flexItem orientation={orientation} />
       <Box sx={{ p: 1, flexGrow: 1 }}>
