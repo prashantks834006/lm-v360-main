@@ -1,6 +1,7 @@
 import React from 'react';
 import { colors, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
+import Progress from '../../../components/Progress/Progress';
 
 interface IProps {
   label: string;
@@ -8,14 +9,6 @@ interface IProps {
   type?: 'text' | 'progress';
   progress?: number;
 }
-
-const Progress: React.FC<{ progress: number }> = ({ progress }) => {
-  return (
-    <Box bgcolor={colors.grey[300]} borderRadius={50} width="100%" minWidth={64} height={12} overflow="hidden">
-      <Box bgcolor={colors.green[700]} height="100%" width={`${progress}%`} />
-    </Box>
-  );
-};
 
 const Label: React.FC<IProps> = ({ label, title, type = 'text', progress = 0 }) => {
   return (

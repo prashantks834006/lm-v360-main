@@ -59,3 +59,17 @@ export const messages: string[] = [
 ];
 
 export const carImages: string[] = [img1, img2, img3];
+
+export const carModels: string[] = ['GT', 'Touring'];
+export const carColors: string[] = [
+  'Stellar Silver',
+  'Infinite Black',
+  'Infinite White',
+  'Quantum Gray',
+  'Deep Red Metallic',
+  'Cosmos Silver',
+  'Deep Blue Metallic',
+  'Cosmos Black',
+];
+
+export const carStatuses: string[] = ['End of Line', 'In Production', 'En-route', 'Arrived', 'In Yard', 'Inspection'];
