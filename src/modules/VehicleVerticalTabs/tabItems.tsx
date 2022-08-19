@@ -11,6 +11,7 @@ import { ReactComponent as DocumentsIcon } from '../../assets/icons/documents.sv
 import { ReactComponent as TeamIcon } from '../../assets/icons/team.svg';
 import { ReactComponent as DeliveryIcon } from '../../assets/icons/delivery.svg';
 import QuickGlance from './QuickGlance';
+import Team from './Team';
 
 const tabItems: TabItem[] = [
   {
@@ -50,7 +51,7 @@ const tabItems: TabItem[] = [
   },
   {
     label: 'Team',
-    content: <div> Team </div>,
+    content: <Team />,
     icon: <TeamIcon />,
   },
   {
