@@ -59,3 +59,25 @@ export const messages: string[] = [
 ];
 
 export const carImages: string[] = [img1, img2, img3];
+
+export const userImages: string[] = [...new Array(20)].map(
+  (_, i) => `https://source.unsplash.com/random/10${i}x10${i}/?boss,employer,employee,suit,face`
+);
+
+export const roles: string[] = [
+  'Delivery Host',
+  'PDI Specialist',
+  'Manufacturing Associate',
+  'Sales Associate',
+  'Production Manager',
+  'Production Associate',
+  'Sales Manager',
+  'PDI Manager',
+  'Delivery Manager',
+  'Delivery Associate',
+  'PDI Associate',
+  'Manufacturing Manager',
+  'Manufacturing Associate',
+];
+
+export const hosts = ['gmail', 'lucid', 'lucidmotors', 'yahoo', 'hotmail', 'aol', 'outlook'];
