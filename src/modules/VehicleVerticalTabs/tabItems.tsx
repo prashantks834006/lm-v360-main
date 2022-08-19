@@ -10,16 +10,17 @@ import { ReactComponent as InsuranceIcon } from '../../assets/icons/insurance.sv
 import { ReactComponent as DocumentsIcon } from '../../assets/icons/documents.svg';
 import { ReactComponent as TeamIcon } from '../../assets/icons/team.svg';
 import { ReactComponent as DeliveryIcon } from '../../assets/icons/delivery.svg';
+import QuickGlance from './QuickGlance';
 
 const tabItems: TabItem[] = [
   {
     label: 'Quick glance',
-    content: <div> Quick Glance </div>,
+    content: <QuickGlance />,
     icon: <StarIcon />,
   },
   {
     label: 'Vehicle',
-    content: <div> Quick Glance </div>,
+    content: <div> Vehicle </div>,
     icon: <VehicleIcon />,
   },
   {

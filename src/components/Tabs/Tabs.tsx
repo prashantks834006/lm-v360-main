@@ -37,9 +37,13 @@ const Tabs: React.FC<TabsProps> = ({ tabItems, orientation, ...other }) => {
       styled(MuiTab)(({ theme }) =>
         isVerticalTabs
           ? {
-              padding: '5px 10px',
+              padding: '0px',
               textTransform: 'initial',
               color: theme.palette.primary.main,
+              fontSize: 10,
+              fontWeight: 500,
+              minWidth: 80,
+              minHeight: 70,
               '&.Mui-selected': {
                 backgroundColor: '#456BD91A',
                 borderRadius: theme.shape.borderRadius,

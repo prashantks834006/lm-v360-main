@@ -1,6 +1,5 @@
 import React from 'react';
-import Box from '@mui/system/Box';
-import { Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import Breadcrumbs from '../../../components/BreadCrumbs/BreadCrumbs';
 import Label from './Label';
 
@@ -11,7 +10,7 @@ const links = [
 
 const InfoHeader = () => {
   return (
-    <Box>
+    <Box sx={{ backgroundColor: (theme) => theme.palette.common.white, p: 1 }}>
       <Breadcrumbs links={links} />
       <Grid container>
         <Grid display="flex" item lg={4} xs={4} md={4} alignItems="flex-end">
