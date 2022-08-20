@@ -3,6 +3,7 @@ import React from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import { Stack } from '@mui/system';
 import Tabs from '../../components/Tabs';
+import Checkbox from '../../components/Checkbox';
 
 const CustomerDetailsSection: React.FC = () => {
   const tabItems = [
@@ -72,6 +73,7 @@ const CustomerDetailsSection: React.FC = () => {
         </Box>
       </Box>
       <Tabs tabItems={tabItems} />
+      <Checkbox />
     </Box>
   );
 };
