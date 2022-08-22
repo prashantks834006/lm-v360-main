@@ -13,6 +13,7 @@ const ChipWrapper = styled(Box)(() => ({
   fontSize: 10,
   padding: '1px 8px',
   borderRadius: '3px',
+  lineHeight: '10px',
 }));
 
 const Chip: FC<Props> = ({ text, fontSize }) => <ChipWrapper fontSize={fontSize}>{text}</ChipWrapper>;
