@@ -1,30 +1,23 @@
-import { Alert, Box, Divider, Typography } from '@mui/material';
+import { Box, Divider, Typography } from '@mui/material';
 import React from 'react';
 import CloseIcon from '@mui/icons-material/Close';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Stack } from '@mui/system';
 import Tabs from '../../components/Tabs';
-import Checkbox from '../../components/Checkbox';
+import Chip from '../../components/Chip/Chip';
+import actions from '../../mock/Actions';
+import ActionRequired from '../ActionRequired/ActionRequired';
+import ActionCompleted from '../ActionCompleted/ActionCompleted';
 
 const CustomerDetailsSection: React.FC = () => {
   const tabItems = [
     {
       label: 'Actions Required (2)',
-      content: (
-        <Box bgcolor="#fff" padding={1}>
-          <Box mb={1}>
-            <Typography variant="caption" color="red" fontWeight="600">
-              Due on July 25, 2022
-            </Typography>
-          </Box>
-          <Typography variant="body1" fontWeight="600">
-            Collect Information
-          </Typography>
-        </Box>
-      ),
+      content: actions.map((action) => !action.isComplete && <ActionRequired {...action} />),
     },
     {
       label: 'Actions Completed (1)',
-      content: <Box> Actions completed list </Box>,
+      content: actions.map((action) => action.isComplete && <ActionCompleted {...action} />),
     },
   ];
 
@@ -33,18 +26,21 @@ const CustomerDetailsSection: React.FC = () => {
       <Box display="flex" alignItems="center">
         <Box display="flex" flex="1" mb={1}>
           <Box marginRight={1}>
-            <Typography variant="h1" fontWeight="bold" fontSize={32} lineHeight={1}>
+            <Typography variant="h1" fontWeight={500} fontSize={32} lineHeight={1}>
               Stephanie
             </Typography>
           </Box>
-          <Typography color="blue" variant="caption" alignSelf="flex-end">
+          <Typography color="blue" variant="caption" fontWeight={500} alignSelf="flex-end">
             Reassign
           </Typography>
+          <Box color="blue" fontSize={14} alignSelf="flex-end">
+            <KeyboardArrowDownIcon fontSize="inherit" />
+          </Box>
         </Box>
         <Box>
           <Stack direction="row" spacing={1} divider={<Divider orientation="vertical" flexItem />}>
             <Typography variant="caption" color="blue">
-              Full Specification
+              View Details
             </Typography>
             <CloseIcon />
           </Stack>
@@ -58,22 +54,38 @@ const CustomerDetailsSection: React.FC = () => {
           415-672-0945 | stephanienelson@gmail.com
         </Typography>
       </Box>
-      <Box display="flex">
-        <Box mr={1}>
-          <Typography variant="caption">Customer Stage</Typography>
-          <Alert sx={{ padding: 0 }} icon={false}>
-            Payment Collected
-          </Alert>
+      <Stack direction="row" gap={2.5}>
+        <Box>
+          <Typography variant="caption" component="div">
+            Delivery scheduled
+          </Typography>
+          <Typography variant="subtitle2" component="div">
+            Sep. 10, 2022, 4:00PM
+          </Typography>
         </Box>
-        <Box mr={1}>
-          <Typography variant="caption">Customer Stage</Typography>
-          <Alert sx={{ padding: 0 }} severity="error" icon={false}>
-            Off track
-          </Alert>
+        <Divider orientation="vertical" />
+        <Box>
+          <Typography variant="caption" component="div">
+            Delivery Readiness
+          </Typography>
+          <Typography variant="subtitle2" component="div">
+            Sep. 10, 2022, 4:00PM
+          </Typography>
         </Box>
-      </Box>
+        <Divider orientation="vertical" />
+        <Box>
+          <Typography variant="caption" component="div">
+            Customer Status
+          </Typography>
+          <Stack direction="row" gap={1}>
+            <Typography variant="subtitle2" component="div">
+              Collect information
+            </Typography>
+            <Chip text="Off track" fontSize="12px !important" />
+          </Stack>
+        </Box>
+      </Stack>
       <Tabs tabItems={tabItems} />
-      <Checkbox />
     </Box>
   );
 };

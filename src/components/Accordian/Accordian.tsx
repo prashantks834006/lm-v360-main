@@ -31,15 +31,42 @@ const StyledAccordian = styled(MuiAccordian)(() => ({
   },
 }));
 
+const AccordianSecondary = styled(MuiAccordian)(() => ({
+  boxShadow: 'none',
+  border: '1px solid #E3E3E3',
+  '& .MuiButtonBase-root.MuiAccordionSummary-root': {
+    alignItems: 'start',
+    padding: '12px',
+  },
+  '& .MuiAccordionSummary-content': {
+    margin: '0px',
+  },
+  '& .MuiAccordionSummary-expandIconWrapper': {
+    color: 'blue',
+  },
+  '& .MuiAccordionDetails-root': {
+    padding: '11px 13px 14px',
+  },
+}));
+
 interface IProps extends AccordionProps {
-  title: string;
+  header: string | React.ReactNode;
+  styleVariant?: 'primary' | 'secondary';
 }
 
-const Accordion: React.FC<IProps> = ({ title, children, ...other }) => {
+const Accordion: React.FC<IProps> = ({ header, styleVariant = 'primary', children, ...other }) => {
+  if (styleVariant === 'secondary') {
+    return (
+      <AccordianSecondary disableGutters {...other}>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>{header}</AccordionSummary>
+        <AccordionDetails>{children}</AccordionDetails>
+      </AccordianSecondary>
+    );
+  }
   return (
     <StyledAccordian disableGutters {...other}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-        <Typography>{title}</Typography>
+        <Typography>{header}</Typography>
       </AccordionSummary>
       <AccordionDetails>{children}</AccordionDetails>
     </StyledAccordian>

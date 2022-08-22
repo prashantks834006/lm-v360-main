@@ -27,7 +27,7 @@ const Filter: React.FC<IProps> = ({ filters }) => {
 
   const filterDetails = filters.map((filterGroup) => (
     <Accordion
-      title={filterGroup.type}
+      header={filterGroup.type}
       expanded={expanded.includes(filterGroup.id)}
       onChange={handleChange(filterGroup.id)}
     >
