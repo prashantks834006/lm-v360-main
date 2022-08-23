@@ -11,8 +11,11 @@ interface IProps {
 
 const Progress: React.FC<{ progress: number }> = ({ progress }) => {
   return (
-    <Box bgcolor={colors.grey[300]} borderRadius={50} width="100%" minWidth={64} height={12} overflow="hidden">
-      <Box bgcolor={colors.green[700]} height="100%" width={`${progress}%`} />
+    <Box display="flex" alignItems="center">
+      <Box bgcolor={colors.grey[300]} borderRadius={50} width="100%" minWidth={64} height={12} overflow="hidden" mr={1}>
+        <Box bgcolor={colors.green[700]} height="100%" width={`${progress}%`} />
+      </Box>
+      <Typography variant="caption">{progress}%</Typography>
     </Box>
   );
 };
