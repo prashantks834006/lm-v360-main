@@ -1,95 +1,120 @@
 import React from 'react';
-import { styled } from '@mui/material/styles';
-import Stack from '@mui/material/Stack';
 import MUIStepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
-import { StepIconProps } from '@mui/material/StepIcon';
+import {
+  colors,
+  Step,
+  StepConnector,
+  stepConnectorClasses,
+  StepIconProps,
+  StepLabel,
+  styled,
+  Typography,
+} from '@mui/material';
+import { Check } from '@mui/icons-material';
+import _ from 'lodash';
 
-const Connector = styled(StepConnector)(({ theme }) => ({
-  [`&.${stepConnectorClasses.alternativeLabel}`]: {
-    top: 10,
-    left: 'calc(-50% + 4px)',
-    right: 'calc(50% + 4px)',
-  },
-  [`&.${stepConnectorClasses.active}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      borderColor: theme.palette.common.black,
-    },
-  },
-  [`&.${stepConnectorClasses.completed}`]: {
-    [`& .${stepConnectorClasses.line}`]: {
-      borderColor: theme.palette.common.black,
-    },
-  },
-  [`& .${stepConnectorClasses.line}`]: {
-    borderColor: theme.palette.mode === 'dark' ? theme.palette.grey[800] : '#eaeaf0',
-    borderTopWidth: 1.5,
-    borderRadius: 1,
-  },
-}));
+interface IProps {
+  steps: Array<string> | number;
+  activeStep: number;
+  orientation?: 'horizontal' | 'vertical';
+}
 
-const StepIconRoot = styled('div')<{ ownerState: { active?: boolean } }>(({ theme, ownerState }) => ({
-  color: theme.palette.mode === 'dark' ? theme.palette.grey[700] : '#eaeaf0',
+const StepIconRoot = styled('div')<{ ownerState: { active?: boolean } }>(({ ownerState }) => ({
   display: 'flex',
-  height: 22,
-  zIndex: 1,
-
   alignItems: 'center',
+  width: 16,
+  height: 16,
+  borderRadius: '50%',
   ...(ownerState.active && {
-    '& :before': {
-      content: "''",
-      position: 'absolute',
-      width: 12,
-      height: 12,
-      borderRadius: '50%',
-      backgroundColor: theme.palette.common.black,
-      top: '9%',
-      left: '45.2%',
-      zIndex: -1,
-    },
+    boxSizing: 'border-box',
+    border: '4px solid black',
+    width: 18,
+    height: 18,
   }),
-  '& .custom-completed-icon': {
-    backgroundColor: theme.palette.common.black,
-    width: 5,
-    height: 5,
+  '& .StepIcon-completedIcon': {
+    color: 'white',
+    zIndex: 1,
+    border: '1px solid black',
+    background: 'black',
     borderRadius: '50%',
+    width: 16,
+    height: 16,
   },
-  '& .custom-step-icon': {
-    width: 5,
-    height: 5,
+  '& .StepIcon-circle': {
+    backgroundColor: 'white',
+    border: '1px solid grey',
+    width: 16,
     borderRadius: '50%',
-    backgroundColor: 'currentColor',
+    height: 14,
+    ...(ownerState.active && {
+      border: 'none',
+      width: 0,
+      height: 0,
+    }),
   },
 }));
 
-const StepIcon = (props: StepIconProps) => {
-  const { active, completed, className } = props;
-
+const StepIcon: React.FC<StepIconProps> = ({ active, className, completed }) => {
   return (
     <StepIconRoot ownerState={{ active }} className={className}>
-      {completed ? <div className="custom-completed-icon" /> : <div className="custom-step-icon" />}
+      {completed ? <Check className="StepIcon-completedIcon" /> : <div className="StepIcon-circle" />}
     </StepIconRoot>
   );
 };
 
-type Props = {
-  activeStep: number;
-  steps: string[];
-};
+const Connector = styled(StepConnector)(({ theme }) => ({
+  [`&.${stepConnectorClasses.alternativeLabel}`]: {
+    top: 7,
+    left: 'calc(-50% + 16px)',
+    right: 'calc(50% + 16px)',
+  },
+  [`&.${stepConnectorClasses.active}`]: {
+    [`& .${stepConnectorClasses.line}`]: {
+      borderColor: 'black',
+    },
+  },
+  [`&.${stepConnectorClasses.completed}`]: {
+    [`& .${stepConnectorClasses.line}`]: {
+      borderColor: 'black',
+    },
+  },
+  [`& .${stepConnectorClasses.line}`]: {
+    borderColor: theme.palette.grey[300],
+    borderTopWidth: 3,
+    borderRadius: 1,
+  },
+}));
 
-const Stepper: React.FC<Props> = ({ steps, activeStep }) => {
+const Stepper: React.FC<IProps> = ({ steps, activeStep, orientation = 'horizontal' }) => {
+  const alternativeLabel = !(!_.isEmpty(orientation) && orientation === 'vertical');
+
   return (
-    <Stack sx={{ width: '100%' }} spacing={4}>
-      <MUIStepper alternativeLabel activeStep={activeStep} connector={<Connector />}>
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel StepIconComponent={StepIcon}>{label}</StepLabel>
+    <MUIStepper
+      activeStep={activeStep}
+      alternativeLabel={alternativeLabel}
+      connector={<Connector />}
+      orientation={orientation}
+    >
+      {Array.isArray(steps) &&
+        steps.map((step) => (
+          <Step key={step}>
+            <StepLabel StepIconComponent={StepIcon}>
+              <Typography variant="body1" color={colors.blue[600]} fontWeight={600}>
+                {step}
+              </Typography>
+              <Typography variant="caption" bgcolor={colors.grey[200]} px={1} py={1 / 2}>
+                21st july 2022
+              </Typography>
+            </StepLabel>
           </Step>
         ))}
-      </MUIStepper>
-    </Stack>
+      {typeof steps === 'number' &&
+        _.map(_.range(steps), (step) => (
+          <Step key={step}>
+            <StepLabel StepIconComponent={StepIcon} />
+          </Step>
+        ))}
+    </MUIStepper>
   );
 };
 

@@ -7,8 +7,23 @@ import Stepper from './Stepper';
 export default {
   title: 'Components/Stepper',
   component: Stepper,
+  argTypes: {
+    orientation: {
+      options: ['horizontal', 'vertical'],
+      control: { type: 'radio' },
+    },
+  },
 } as ComponentMeta<typeof Stepper>;
 
-export const Primary: ComponentStory<typeof Stepper> = () => (
-  <Stepper steps={['1', '2', '3', '4', '5', '6', '7', '8', '9']} activeStep={2} />
-);
+const Template: ComponentStory<typeof Stepper> = (args) => <Stepper {...args} />;
+
+Template.bind({});
+
+const steps = ['Reservation', 'Order', 'Production', 'Transit', 'Inspection', 'Delivery', 'Ownership'];
+
+export const Primary = Template.bind({});
+
+Primary.args = {
+  steps,
+  orientation: 'horizontal',
+};
