@@ -7,12 +7,17 @@ import DashboardLayout from '../layouts/Dashboard';
 import Dashboard from './Dashboard';
 import Vehicle from './Vehicle/Vehicle';
 import Vehicles from './Vehicles';
+import Logout from './Logout';
 
 const Routes = () => {
   return useRoutes([
     {
-      path: '/login/callback',
+      path: 'login/callback',
       element: <LoginCallback />,
+    },
+    {
+      path: 'logout',
+      element: <Logout />,
     },
     {
       path: '',
