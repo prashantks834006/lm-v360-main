@@ -7,6 +7,8 @@ import Stepper from '../../components/Stepper/Stepper';
 import CustomerDetailsSection from '../../modules/CustomerDetailsSection';
 
 const Vehicle = () => {
+  const steps = ['Reservation', 'Order', 'Production', 'Transit', 'Inspection', 'Delivery', 'Ownership'];
+
   return (
     <Page sx={{ backgroundColor: (theme) => theme.palette.grey[100] }}>
       <Box sx={{ p: 1 }}>
@@ -18,7 +20,7 @@ const Vehicle = () => {
             </Grid>
             <Grid item sm={12} md={6} lg={8}>
               <Paper sx={{ p: 2, height: '100%' }}>
-                <Stepper activeStep={2} steps={['apple', 'banana', 'orange']} />
+                <Stepper activeStep={2} steps={steps} orientation="horizontal" />
                 <Box>
                   <CustomerDetailsSection />
                 </Box>
