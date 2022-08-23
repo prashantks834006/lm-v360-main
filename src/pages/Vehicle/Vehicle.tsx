@@ -1,13 +1,14 @@
 import React from 'react';
 import { Box, Grid, Paper } from '@mui/material';
-import { stages } from '../../utils/mocks';
-import ActionsTabs from '../../modules/CustomerDetailsSection/ActionsTabs';
 import VehicleVerticalTabs from '../../modules/VehicleVerticalTabs';
 import Page from '../../components/Page/Page';
 import InfoHeader from './InfoHeader';
 import Stepper from '../../components/Stepper/Stepper';
+import CustomerDetailsSection from '../../modules/CustomerDetailsSection';
 
 const Vehicle = () => {
+  const steps = ['Reservation', 'Order', 'Production', 'Transit', 'Inspection', 'Delivery', 'Ownership'];
+
   return (
     <Page sx={{ backgroundColor: (theme) => theme.palette.grey[100] }}>
       <Box sx={{ p: 1 }}>
@@ -19,12 +20,10 @@ const Vehicle = () => {
             </Grid>
             <Grid item sm={12} md={6} lg={8}>
               <Paper sx={{ p: 2, height: '100%' }}>
-                <Stepper activeStep={2} steps={stages} />
-                <Grid container>
-                  <Grid item sm={12} md={6}>
-                    <ActionsTabs />
-                  </Grid>
-                </Grid>
+                <Stepper activeStep={2} steps={steps} orientation="horizontal" />
+                <Box>
+                  <CustomerDetailsSection />
+                </Box>
               </Paper>
             </Grid>
           </Grid>

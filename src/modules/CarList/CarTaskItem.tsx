@@ -1,9 +1,9 @@
 import { Box, Card, Grid, Stack, styled } from '@mui/material';
-import React, { FC, useMemo } from 'react';
+import React, { FC } from 'react';
 import moment from 'moment';
 import { Icon } from '@iconify/react';
-import { stages } from '../../utils/mocks';
-import Stepper from '../../components/Stepper/Stepper';
+// import { stages } from '../../utils/mocks';
+import Stepper from '../../components/Stepper';
 import Typography from '../../components/Typography/Typography';
 import ICar from '../../types/cars';
 import Chip from '../../components/Chip/Chip';
@@ -20,7 +20,7 @@ const CarTaskItem: FC<Props> = ({ car, isActive }) => {
     objectFit: 'contain',
   });
 
-  const activeStep = useMemo(() => stages.indexOf(car.stage), [car.stage]);
+  // const activeStep = useMemo(() => stages.indexOf(car.stage), [car.stage]);
 
   return (
     <Card sx={{ ...(isActive && { border: '2px solid blue' }), p: 1, my: 1 }}>
@@ -44,7 +44,10 @@ const CarTaskItem: FC<Props> = ({ car, isActive }) => {
               <Typography weight={500} size={14}>
                 {car.stage}
               </Typography>
-              <Stepper activeStep={activeStep} steps={stages} />
+              <Stepper.StepperInline
+                activeStep={1}
+                steps={['Reservation', 'Order', 'Production', 'Transit', 'Inspection', 'Delivery', 'Ownership']}
+              />
             </Stack>
             <Stack direction="row" gap={1}>
               <Typography weight={400} size={12}>
