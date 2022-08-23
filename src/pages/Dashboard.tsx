@@ -5,7 +5,7 @@ import Page from '../components/Page/Page';
 
 const Dashboard = () => {
   return (
-    <Page sx={{ p: 1 }}>
+    <Page sx={{ pt: 3 }}>
       <SummaryDashboard />
       <TasksList />
     </Page>

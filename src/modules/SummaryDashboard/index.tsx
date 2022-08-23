@@ -6,7 +6,7 @@ import { PATHS } from '../../utils/constants';
 import DwellTime from './DwellTime';
 import Deliveries from './Deliveries';
 import Greetings from './Greetings';
-import OffTrack from './OffTrack';
+import DeliveryPipeline from './DeliveryPipeline';
 import Switch from '../../components/Switch/Switch';
 import Link from '../../components/Link/Link';
 
@@ -25,7 +25,7 @@ const SummaryDashboard = () => {
           </Grid>
           <Divider orientation="vertical" flexItem sx={{ marginRight: '-1px' }} />
           <Grid item xs={12} sm={6} md={3} sx={{ px: 3, py: 1 }}>
-            <OffTrack />
+            <DeliveryPipeline />
           </Grid>
           <Divider orientation="vertical" flexItem sx={{ marginRight: '-1px' }} />
           <Grid item xs={12} sm={6} md={3} sx={{ px: 3, py: 1 }}>

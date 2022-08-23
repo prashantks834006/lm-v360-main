@@ -17,7 +17,7 @@ const Label: React.FC<IProps> = ({ label, title, type = 'text', progress = 0 }) 
         {label}
       </Typography>
       {type === 'text' && (
-        <Typography variant="body2" fontWeight={600}>
+        <Typography variant="body2" fontWeight={500}>
           {title}
         </Typography>
       )}

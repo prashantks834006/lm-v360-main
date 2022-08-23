@@ -27,7 +27,7 @@ const LocalizationMenu: FC<Props> = ({ id, anchorEl, handleMenuClose }) => {
         horizontal: 'center',
       }}
     >
-      <MenuItem onClick={handleMenuClose}>Engligh</MenuItem>
+      <MenuItem onClick={handleMenuClose}>English</MenuItem>
       <MenuItem onClick={handleMenuClose}>Deutsch</MenuItem>
       <MenuItem onClick={handleMenuClose}>اللغة العربية</MenuItem>
     </Menu>

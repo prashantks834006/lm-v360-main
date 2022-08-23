@@ -6,7 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
 import { Icon } from '@iconify/react';
-import { Avatar, Divider, Stack } from '@mui/material';
+import { Avatar, Divider, Stack, Typography } from '@mui/material';
 import Logo from '../../assets/images/logo.png';
 import NavSlidein from './NavSlideIn';
 import NotificationMenu from './NotificationMenu';
@@ -105,11 +105,11 @@ const Header = () => {
               alignItems="center"
               justifyContent="centr"
               gap={0.25}
-              sx={{ cursor: 'pointer' }}
+              sx={{ cursor: 'pointer', fontSize: 12 }}
               onClick={handleLocalizationMenuOpen}
             >
               <GlobeIcon />
-              <Box>EN</Box>
+              <Typography fontSize={12}>EN</Typography>
               <Icon icon="bi:caret-down-fill" />
             </Stack>
             <Avatar
