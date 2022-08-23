@@ -1,13 +1,22 @@
 import React from 'react';
-import TasksList from '../modules/TasksList';
-import SummaryDashboard from '../modules/SummaryDashboard';
+import { Grid } from '@mui/material';
+import CarList from '../modules/CarList';
+import CustomerDetailsSection from '../modules/CustomerDetailsSection';
 import Page from '../components/Page/Page';
+import SummaryDashboard from '../modules/SummaryDashboard';
 
 const Dashboard = () => {
   return (
     <Page sx={{ pt: 3 }}>
       <SummaryDashboard />
-      <TasksList />
+      <Grid container sx={{ mt: 2 }} spacing={4}>
+        <Grid item sm={12} md={7}>
+          <CarList />
+        </Grid>
+        <Grid item sm={12} md={5}>
+          <CustomerDetailsSection />
+        </Grid>
+      </Grid>
     </Page>
   );
 };
