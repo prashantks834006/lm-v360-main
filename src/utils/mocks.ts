@@ -81,3 +81,17 @@ export const roles: string[] = [
 ];
 
 export const hosts = ['gmail', 'lucid', 'lucidmotors', 'yahoo', 'hotmail', 'aol', 'outlook'];
+
+export const carModels: string[] = ['GT', 'Touring'];
+export const carColors: string[] = [
+  'Stellar Silver',
+  'Infinite Black',
+  'Infinite White',
+  'Quantum Gray',
+  'Deep Red Metallic',
+  'Cosmos Silver',
+  'Deep Blue Metallic',
+  'Cosmos Black',
+];
+
+export const carStatuses: string[] = ['End of Line', 'In Production', 'En-route', 'Arrived', 'In Yard', 'Inspection'];

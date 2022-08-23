@@ -27,12 +27,13 @@ const Filter: React.FC<IProps> = ({ filters }) => {
 
   const filterDetails = filters.map((filterGroup) => (
     <Accordion
-      title={filterGroup.type}
+      key={filterGroup.id}
+      header={filterGroup.type}
       expanded={expanded.includes(filterGroup.id)}
       onChange={handleChange(filterGroup.id)}
     >
       {filterGroup.filters.map((filter) => (
-        <Stack direction="row" alignItems="center" paddingX={1.375} paddingY={1}>
+        <Stack direction="row" alignItems="center" key={filter} paddingX={1.375} paddingY={1}>
           <Checkbox />
           <Typography variant="body2">{filter}</Typography>
         </Stack>
