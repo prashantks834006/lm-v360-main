@@ -17,7 +17,7 @@ const ActionRequired: React.FC<IAction> = ({ id, name, dueDate, tasks }) => {
     </Box>
   );
   const taskList = tasks.map((task) => (
-    <Box key={id} display="flex" justifyContent="space-between">
+    <Box key={task.id} display="flex" justifyContent="space-between">
       <FormControlLabel
         control={<Checkbox sx={{ padding: '0px' }} />}
         label={
