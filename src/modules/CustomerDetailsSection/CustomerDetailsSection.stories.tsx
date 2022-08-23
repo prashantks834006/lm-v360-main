@@ -1,5 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { BrowserRouter } from 'react-router-dom';
 import CustomerDetailsSection from './CustomerDetails';
 
 export default {
@@ -7,9 +8,11 @@ export default {
   component: CustomerDetailsSection,
   decorators: [
     (Story) => (
-      <div style={{ width: '678px', height: 'auto' }}>
-        <Story />
-      </div>
+      <BrowserRouter>
+        <div style={{ width: '678px', height: 'auto' }}>
+          <Story />
+        </div>
+      </BrowserRouter>
     ),
   ],
 } as ComponentMeta<typeof CustomerDetailsSection>;
