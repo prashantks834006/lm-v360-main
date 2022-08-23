@@ -14,6 +14,7 @@ const AuthGuard = ({ children }: Props) => {
 
   if (!authState.isAuthenticated) {
     oktaAuth.signInWithRedirect();
+    return <div> Loading.... </div>;
   }
 
   return <div>{children}</div>;
