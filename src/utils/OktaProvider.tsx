@@ -19,7 +19,7 @@ const oktaAuth = new OktaAuth({
 });
 
 const restoreOriginalUri = async (_oktaAuth: OktaAuth, originalUri: string) => {
-  window.location.href = toRelativeUrl(originalUri || '/', window.location.origin);
+  window.location.href = toRelativeUrl(originalUri || '/v360-app', window.location.origin);
 };
 
 const OktaProvider: FC<Props> = ({ children }) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Grid, Typography } from '@mui/material';
-import Breadcrumbs from '../../../components/BreadCrumbs/BreadCrumbs';
-import Label from './Label';
+import Breadcrumbs from '../../components/BreadCrumbs/BreadCrumbs';
+import Label from '../../components/Label/Label';
 
 const links = [
   { label: 'Dashboard', link: '/' },

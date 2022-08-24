@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Grid } from '@mui/material';
-import Label from '../../pages/Vehicle/InfoHeader/Label';
+import Label from '../../components/Label/Label';
 
 export interface GridLabel {
   label: string;

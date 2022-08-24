@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { colors, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
-import Progress from '../../../components/Progress/Progress';
+import Progress from '../Progress/Progress';
 
 interface IProps {
   label: string;
