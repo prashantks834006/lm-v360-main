@@ -37,6 +37,10 @@ const Routes = () => {
         },
       ],
     },
+    {
+      path: '*',
+      element: <div>404 not found</div>,
+    },
   ]);
 };
 
