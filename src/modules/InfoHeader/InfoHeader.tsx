@@ -15,7 +15,13 @@ const InfoHeader = () => {
   return (
     <Box sx={{ backgroundColor: (theme) => theme.palette.common.white, p: 1 }}>
       <Breadcrumbs links={links} />
-      <Stack direction="row" gap={8} alignItems="center" justifyContent="center">
+      <Stack
+        direction="row"
+        gap={{ xs: 2, sm: 2, md: 3, lg: 8 }}
+        alignItems="center"
+        justifyContent="center"
+        flexWrap="wrap"
+      >
         <Typography variant="h5">Elsie Harper</Typography>
         <Box flexGrow={1} />
         <Label label="Vin" title={vin} />
