@@ -35,14 +35,14 @@ const lastContactCell = ({ value }: any) => value && moment(value).format('MMM D
 const deliveryReadinessCell = ({ value }: any) => <Progress progress={value} />;
 
 const columnDefs = [
-  { field: 'customer', cellRenderer: customerCell, width: 130 },
-  { field: 'customerStage', filter: 'agSetColumnFilter' },
-  { field: 'customerStatus', cellRenderer: customerStatusCell, width: 170, filter: 'agSetColumnFilter' },
-  { field: 'VIN', cellRenderer: VINCell, width: 160 },
-  { field: 'model', width: 120, filter: 'agSetColumnFilter' },
-  { field: 'color', width: 160, filter: 'agSetColumnFilter' },
+  { field: 'customer', cellRenderer: customerCell, width: 130, filter: 'agTextColumnFilter' },
+  { field: 'customerStage' },
+  { field: 'customerStatus', cellRenderer: customerStatusCell, width: 170 },
+  { field: 'VIN', cellRenderer: VINCell, width: 160, filter: 'agTextColumnFilter' },
+  { field: 'model', width: 120 },
+  { field: 'color', width: 160 },
   { field: 'stage', cellRenderer: stageCell, width: 100 },
-  { field: 'status', width: 120, filter: 'agSetColumnFilter' },
+  { field: 'status', width: 120 },
   {
     field: 'statusEntryDate',
     cellRenderer: statusEntryDateCell,
