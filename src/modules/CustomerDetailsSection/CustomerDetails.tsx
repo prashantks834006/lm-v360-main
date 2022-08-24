@@ -2,7 +2,7 @@ import { Icon } from '@iconify/react';
 import { Box, Divider, Stack, Typography } from '@mui/material';
 import React from 'react';
 import Chip from '../../components/Chip/Chip';
-import Label from '../../pages/Vehicle/InfoHeader/Label';
+import Label from '../../components/Label/Label';
 import Link from '../../components/Link/Link';
 import { PATHS } from '../../utils/constants';
 import ActionsTabs from './ActionsTabs';
@@ -40,7 +40,7 @@ const CustomerDetails = () => {
           label="Customer stage"
           title={
             <Stack direction="row" gap={1} alignItems="center">
-              <Typography variant="body2" fontWeight={500}>
+              <Typography variant="body2" fontWeight={500} noWrap>
                 Collect information
               </Typography>
               <Chip text="Off track" />

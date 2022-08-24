@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { AgGridReact } from 'ag-grid-react';
-import { Box, Stack } from '@mui/material';
+import { Box } from '@mui/material';
 import moment from 'moment';
 
 import Link from '../../components/Link/Link';
@@ -28,11 +28,7 @@ const stageCell = ({ value }: any) =>
   );
 const statusEntryDateCell = ({ value }: any) => value && moment(value).format('MMM DD, YYYY');
 const lastContactCell = ({ value }: any) => value && moment(value).format('MMM DD, YYYY');
-const deliveryReadinessCell = ({ value }: any) => (
-  <Stack direction="row" sx={{ mt: 0.5 }} alignItems="center" gap={1}>
-    <Progress progress={value} /> {value}%
-  </Stack>
-);
+const deliveryReadinessCell = ({ value }: any) => <Progress progress={value} />;
 
 const VehiclesGrid = () => {
   const columnDefs = [

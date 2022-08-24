@@ -1,4 +1,5 @@
 import { Box, Menu, MenuItem, Stack, Typography } from '@mui/material';
+import { useOktaAuth } from '@okta/okta-react';
 import React, { FC } from 'react';
 import Link from '../../components/Link/Link';
 
@@ -9,6 +10,8 @@ type Props = {
 };
 
 const ProfileMenu: FC<Props> = ({ anchorEl, id, handleMenuClose }) => {
+  const { oktaAuth } = useOktaAuth();
+
   return (
     <Menu anchorEl={anchorEl} id={id} keepMounted open={Boolean(anchorEl)} onClose={handleMenuClose}>
       <Box maxWidth={300} width="90vw">
@@ -23,7 +26,9 @@ const ProfileMenu: FC<Props> = ({ anchorEl, id, handleMenuClose }) => {
           UTC-08:00 Pacific Time (US & Canada)
         </Typography>
         <MenuItem sx={{ fontSize: 14 }}>Feedback</MenuItem>
-        <MenuItem sx={{ fontSize: 14 }}>Sign out</MenuItem>
+        <MenuItem sx={{ fontSize: 14 }} onClick={() => oktaAuth.signOut()}>
+          Sign out
+        </MenuItem>
       </Box>
     </Menu>
   );

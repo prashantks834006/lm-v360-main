@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { colors, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
-import Progress from '../../../components/Progress/Progress';
+import Progress from '../Progress/Progress';
 
 interface IProps {
   label: string;
@@ -13,12 +13,12 @@ interface IProps {
 const Label: React.FC<IProps> = ({ label, title, type = 'text', progress = 0 }) => {
   return (
     <Box>
-      <Typography variant="caption" color={colors.grey[500]}>
+      <Typography variant="caption" color={colors.grey[500]} noWrap>
         {label}
       </Typography>
       {type === 'text' &&
         (typeof title === 'string' ? (
-          <Typography variant="body2" fontWeight={500}>
+          <Typography variant="body2" fontWeight={500} minWidth={100}>
             {title}
           </Typography>
         ) : (
