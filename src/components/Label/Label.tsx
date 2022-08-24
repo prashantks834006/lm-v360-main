@@ -13,7 +13,7 @@ interface IProps {
 const Label: React.FC<IProps> = ({ label, title, type = 'text', progress = 0 }) => {
   return (
     <Box>
-      <Typography variant="caption" color={colors.grey[500]}>
+      <Typography variant="caption" color={colors.grey[500]} noWrap>
         {label}
       </Typography>
       {type === 'text' &&

@@ -22,7 +22,7 @@ const Vehicle = () => {
               <Paper sx={{ p: 2, height: '100%' }}>
                 <Stepper activeStep={2} steps={steps} orientation="horizontal" />
                 <Grid container>
-                  <Grid item sm={12} md={6}>
+                  <Grid item sm={12} md={7}>
                     <CustomerDetailsSection />
                   </Grid>
                 </Grid>
