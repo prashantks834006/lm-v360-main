@@ -16,7 +16,7 @@ const ListItem: FC<ListItemProps> = ({ field, value }) => (
     >
       {field}
     </Typography>
-    <Typography weight={500} size={14}>
+    <Typography weight={500} size={14} maxWidth="50%">
       {value}
     </Typography>
   </Stack>
