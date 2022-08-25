@@ -1,24 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Select as MUISelect, FormControl, MenuItem, styled } from '@mui/material';
 import TextField from '../TextField/TextField';
 
 const StyledSelect = styled(MUISelect)(() => ({
-  // '& .MuiFormControlLabel-label': {
-  //   fontSize: 14,
-  // },
+  fontSize: '12px',
+  padding: '6px 10px',
+  color: '#787878',
+  ' .MuiSelect-select.MuiSelect-standard.MuiInputBase-input': {
+    padding: '0px',
+  },
+  ' svg': {
+    position: 'static',
+  },
 }));
 
 interface IProps {
-  placeHolder: string;
+  title: string;
+  selectedOption?: string;
+  setSelectedOption?: (selectedOption: string) => void;
   options: { value: string; label: string }[];
+  width?: string;
 }
 
-const Select: React.FC<IProps> = ({ placeHolder, options }) => {
+const Select: React.FC<IProps> = ({ title, selectedOption, setSelectedOption, options, width }) => {
+  const [selectedValue, setSelectedValue] = useState('none');
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-      <StyledSelect labelId="demo-select-small" id="demo-select-small" input={<TextField placeHolder={placeHolder} />}>
-        <MenuItem value="">
-          <em>None</em>
+    <FormControl sx={{ width: width ?? '100%' }} variant="standard">
+      <StyledSelect
+        input={<TextField />}
+        defaultValue="none"
+        value={setSelectedOption ? selectedOption ?? 'none' : selectedValue}
+        onChange={(event) =>
+          setSelectedOption
+            ? setSelectedOption(String(event.target.value))
+            : setSelectedValue(String(event.target.value))
+        }
+      >
+        <MenuItem value="none" sx={{ display: 'none' }}>
+          {title}
         </MenuItem>
         {options.map(({ value, label }) => (
           <MenuItem value={value}>{label}</MenuItem>

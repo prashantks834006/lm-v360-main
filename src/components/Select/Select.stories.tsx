@@ -24,4 +24,4 @@ const options = [
   },
 ];
 
-export const Primary: ComponentStory<typeof Select> = () => <Select options={options} placeHolder="Task outcome" />;
+export const Primary: ComponentStory<typeof Select> = () => <Select options={options} title="Fruits" />;

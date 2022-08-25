@@ -1,10 +1,12 @@
 import React from 'react';
-import { Box, Button, Checkbox, FormControlLabel, FormGroup, Stack, Typography } from '@mui/material';
+import { Box, Button, Checkbox, FormControlLabel, FormGroup, Grid, Stack, Typography } from '@mui/material';
 import LaunchIcon from '@mui/icons-material/Launch';
 import Accordian from '../../components/Accordian/Accordian';
 import IAction from '../../types/action';
 import Chip from '../../components/Chip/Chip';
 import TextField from '../../components/TextField/TextField';
+import Select from '../../components/Select';
+import { taskOutcomes } from '../../mock/Actions';
 
 const ActionRequired: React.FC<IAction> = ({ id, name, dueDate, tasks }) => {
   const header = (
@@ -37,13 +39,40 @@ const ActionRequired: React.FC<IAction> = ({ id, name, dueDate, tasks }) => {
       <FormGroup>
         <Box gap={1.375} display="flex" flexDirection="column">
           {taskList}
-          <Box gap={1.375} display="flex">
-            <TextField />
-            <TextField />
-            <Button variant="outlined" sx={{ textTransform: 'none', color: '#CFCFCF', border: '1px solid #E7E7E4' }}>
+          {/* <Box gap={1.375} display="flex" alignItems="center">
+            <Select title="Task outcome" options={taskOutcomes} />
+            <TextField placeholder="Enter comment" />
+            <Button
+              variant="outlined"
+              sx={{ textTransform: 'none', width: '100%', height: 'fit-content', fontSize: '12px' }}
+              disabled
+            >
               Mark as Complete
             </Button>
-          </Box>
+          </Box> */}
+          <Grid container gap={1.375} alignItems="center">
+            <Grid item>
+              <Select title="Task outcome" options={taskOutcomes} />
+            </Grid>
+            <Grid item xs>
+              <TextField placeholder="Enter comment" sx={{ fontSize: 12, height: 36 }} />
+            </Grid>
+            <Grid item>
+              <Button
+                variant="outlined"
+                sx={{
+                  textTransform: 'none',
+                  height: 'fit-content',
+                  fontSize: '12px',
+                  padding: '10px',
+                  lineHeight: 'inherit',
+                }}
+                disabled
+              >
+                Mark as Complete
+              </Button>
+            </Grid>
+          </Grid>
         </Box>
       </FormGroup>
     </Accordian>
