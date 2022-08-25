@@ -46,7 +46,7 @@ export default function useChartsDefaultOptions(): ApexOptions {
       hover: {
         filter: {
           type: 'lighten',
-          value: 0.04,
+          value: 0.01,
         },
       },
       active: {
@@ -74,7 +74,8 @@ export default function useChartsDefaultOptions(): ApexOptions {
 
     // Stroke
     stroke: {
-      width: 3,
+      colors: ['transperant'],
+      width: 0,
       curve: 'smooth',
       lineCap: 'round',
     },
@@ -111,10 +112,10 @@ export default function useChartsDefaultOptions(): ApexOptions {
       position: 'bottom',
       horizontalAlign: 'center',
       markers: {
-        radius: 12,
+        radius: 10,
       },
-      fontWeight: 500,
-      itemMargin: { horizontal: 12 },
+      fontWeight: 200,
+      itemMargin: { horizontal: 10 },
       labels: {
         colors: theme.palette.text.primary,
       },

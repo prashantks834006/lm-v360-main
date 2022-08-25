@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 import { Box, Typography } from '@mui/material';
-import BaseOptionChart from '../../hooks/useChartsDefaultOptions';
+import useChartsDefaultOptions from '../../hooks/useChartsDefaultOptions';
 
 // ----------------------------------------------------------------------
 
@@ -19,12 +19,13 @@ interface Props {
 
 const OffTrackChart: FC<Props> = ({ chartData, title }) => {
   const chartLabels = chartData.map((i) => i.label);
+  const defaultOptions = useChartsDefaultOptions();
 
   const chartOnTrackSeries = chartData.map((i) => i.onTrack);
   const chartOffTrackSeries = chartData.map((i) => i.offTrack);
 
   const chartOptions: ApexOptions = {
-    ...BaseOptionChart(),
+    ...defaultOptions,
     tooltip: {
       y: {
         formatter: (seriesName: number) => `${seriesName}`,
@@ -32,9 +33,16 @@ const OffTrackChart: FC<Props> = ({ chartData, title }) => {
           formatter: () => '',
         },
       },
+      items: {
+        display: 'flex',
+      },
+      marker: {
+        show: true,
+      },
+      theme: 'dark',
     },
     plotOptions: {
-      bar: { horizontal: true, barHeight: '38%', borderRadius: 1 },
+      bar: { horizontal: true, barHeight: '50%', borderRadius: 5 },
     },
     xaxis: {
       categories: chartLabels,
