@@ -54,7 +54,9 @@ const Tabs: React.FC<IProps> = ({ tabItems, orientation, sibling, ...other }) =>
                 color: theme.palette.common.black,
               },
             }
-          : {}
+          : {
+              textTransform: 'none',
+            }
       ),
     [isVerticalTabs]
   );

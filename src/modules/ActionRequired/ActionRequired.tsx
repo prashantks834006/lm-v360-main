@@ -1,9 +1,10 @@
 import React from 'react';
-import { Box, Checkbox, FormControlLabel, FormGroup, Stack, Typography } from '@mui/material';
+import { Box, Button, Checkbox, FormControlLabel, FormGroup, Stack, Typography } from '@mui/material';
 import LaunchIcon from '@mui/icons-material/Launch';
 import Accordian from '../../components/Accordian/Accordian';
 import IAction from '../../types/action';
 import Chip from '../../components/Chip/Chip';
+import TextField from '../../components/TextField/TextField';
 
 const ActionRequired: React.FC<IAction> = ({ id, name, dueDate, tasks }) => {
   const header = (
@@ -36,6 +37,13 @@ const ActionRequired: React.FC<IAction> = ({ id, name, dueDate, tasks }) => {
       <FormGroup>
         <Box gap={1.375} display="flex" flexDirection="column">
           {taskList}
+          <Box gap={1.375} display="flex">
+            <TextField />
+            <TextField />
+            <Button variant="outlined" sx={{ textTransform: 'none', color: '#CFCFCF', border: '1px solid #E7E7E4' }}>
+              Mark as Complete
+            </Button>
+          </Box>
         </Box>
       </FormGroup>
     </Accordian>

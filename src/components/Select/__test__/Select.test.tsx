@@ -19,7 +19,7 @@ describe('Select', () => {
       },
     ];
 
-    const tree = renderer.create(<Select options={options} />).toJSON();
+    const tree = renderer.create(<Select options={options} placeHolder="Test" />).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
