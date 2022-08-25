@@ -6,9 +6,10 @@ type Props = {
   anchorEl: null | HTMLElement;
   id: string;
   handleMenuClose: () => void;
+  handleSelectLanguage: (code: string) => void;
 };
 
-const LocalizationMenu: FC<Props> = ({ id, anchorEl, handleMenuClose }) => {
+const LocalizationMenu: FC<Props> = ({ id, anchorEl, handleMenuClose, handleSelectLanguage }) => {
   return (
     <Menu
       id={id}
@@ -27,9 +28,9 @@ const LocalizationMenu: FC<Props> = ({ id, anchorEl, handleMenuClose }) => {
         horizontal: 'center',
       }}
     >
-      <MenuItem onClick={handleMenuClose}>English</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Deutsch</MenuItem>
-      <MenuItem onClick={handleMenuClose}>اللغة العربية</MenuItem>
+      <MenuItem onClick={() => handleSelectLanguage('en')}>English</MenuItem>
+      <MenuItem onClick={() => handleSelectLanguage('de')}>Deutsch</MenuItem>
+      <MenuItem onClick={() => handleSelectLanguage('ar')}>اللغة العربية</MenuItem>
     </Menu>
   );
 };

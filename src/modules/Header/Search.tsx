@@ -107,7 +107,7 @@ const SearchBar = () => {
     <div>
       <div {...getRootProps()}>
         <Search>
-          <StyledInputBase placeholder={`${t('search')}...`} {...getInputProps()} />
+          <StyledInputBase placeholder={`${t('header_search')}`} {...getInputProps()} />
           <SearchIconWrapper>
             {focused ? (
               <Box sx={{ cursor: 'pointer' }}>
