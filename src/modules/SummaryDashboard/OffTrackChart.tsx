@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 import { Box, Typography } from '@mui/material';
-import BaseOptionChart from '../../utils/BaseOptionChart';
+import BaseOptionChart from '../../hooks/useChartsDefaultOptions';
 
 // ----------------------------------------------------------------------
 

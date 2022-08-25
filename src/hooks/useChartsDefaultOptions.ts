@@ -4,7 +4,7 @@ import { useTheme } from '@mui/material/styles';
 
 // ----------------------------------------------------------------------
 
-export default function BaseOptionChart(): ApexOptions {
+export default function useChartsDefaultOptions(): ApexOptions {
   const theme = useTheme();
 
   const LABEL_TOTAL = {
@@ -109,7 +109,7 @@ export default function BaseOptionChart(): ApexOptions {
       show: true,
       fontSize: String(13),
       position: 'bottom',
-      horizontalAlign: 'right',
+      horizontalAlign: 'center',
       markers: {
         radius: 12,
       },

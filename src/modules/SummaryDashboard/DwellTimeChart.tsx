@@ -5,7 +5,7 @@ import { ApexOptions } from 'apexcharts';
 // @mui
 import { Box } from '@mui/material';
 
-import BaseOptionChart from '../../utils/BaseOptionChart';
+import BaseOptionChart from '../../hooks/useChartsDefaultOptions';
 
 // ----------------------------------------------------------------------
 
