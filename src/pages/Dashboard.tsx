@@ -7,7 +7,7 @@ import SummaryDashboard from '../modules/SummaryDashboard';
 
 const Dashboard = () => {
   return (
-    <Page sx={{ pt: 3 }}>
+    <Page sx={{ pt: 3, px: 2 }}>
       <SummaryDashboard />
       <Grid container sx={{ mt: 2 }} spacing={4}>
         <Grid item sm={12} md={7}>
