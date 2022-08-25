@@ -8,6 +8,7 @@ type Props = {
 
 const Input = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
+  width: '100%',
 
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 2),

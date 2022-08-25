@@ -1,4 +1,5 @@
 import React from 'react';
+import { Box } from '@mui/material';
 import ActionRequired from '../ActionRequired/ActionRequired';
 import actions from '../../mock/Actions';
 import Tabs from '../../components/Tabs';
@@ -8,11 +9,19 @@ const ActionsTabs = () => {
   const tabItems = [
     {
       label: 'Actions Required (2)',
-      content: actions.map((action) => !action.isComplete && <ActionRequired key={action.id} {...action} />),
+      content: (
+        <Box gap={1.25} display="flex" flexDirection="column">
+          {actions.map((action) => !action.isComplete && <ActionRequired key={action.id} {...action} />)}
+        </Box>
+      ),
     },
     {
       label: 'Actions Completed (1)',
-      content: actions.map((action) => action.isComplete && <ActionCompleted key={action.id} {...action} />),
+      content: (
+        <Box gap={1.25} display="flex" flexDirection="column">
+          {actions.map((action) => action.isComplete && <ActionCompleted key={action.id} {...action} />)}
+        </Box>
+      ),
     },
   ];
   return <Tabs tabItems={tabItems} />;
