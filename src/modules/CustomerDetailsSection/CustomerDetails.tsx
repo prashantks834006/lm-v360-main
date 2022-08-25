@@ -14,7 +14,6 @@ const CustomerDetails = () => {
       borderRadius={2}
       bgcolor={(theme) => theme.palette.grey[50]}
       border={(theme) => `2px solid ${theme.palette.grey[100]}`}
-      mt={2}
     >
       <Stack direction="row" alignItems="flex-end" gap={1}>
         <Typography variant="h4" fontWeight={500}>

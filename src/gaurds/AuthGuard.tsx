@@ -12,9 +12,11 @@ const AuthGuard = ({ children }: Props) => {
     return <div> Loading.... </div>;
   }
 
-  if (!authState.isAuthenticated) {
-    oktaAuth.signInWithRedirect();
-    return <div> Loading.... </div>;
+  if (process.env.NODE_ENV === 'production') {
+    if (!authState.isAuthenticated) {
+      oktaAuth.signInWithRedirect();
+      return <div> Loading.... </div>;
+    }
   }
 
   return <div>{children}</div>;
