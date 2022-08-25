@@ -61,7 +61,7 @@ const Tabs: React.FC<IProps> = ({ tabItems, orientation, sibling, ...other }) =>
 
   return (
     <Stack direction={orientation === 'vertical' ? 'row' : 'column'} sx={{ width: '100%' }} gap={1}>
-      <Box display="flex" justifyContent="space-between">
+      <Box display="flex" justifyContent="space-between" alignItems="center">
         <MuiTabs
           value={value}
           onChange={handleChange}

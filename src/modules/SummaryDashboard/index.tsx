@@ -16,7 +16,7 @@ const SummaryDashboard = () => {
   const handleSummaryToggle = (checked: boolean) => setIsSummaryHidden(checked);
 
   return (
-    <Box>
+    <Box px={2}>
       <Collapse in={!isSummaryHidden}>
         <Divider />
         <Grid container>

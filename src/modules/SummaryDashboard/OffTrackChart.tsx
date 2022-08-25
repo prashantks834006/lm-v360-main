@@ -40,6 +40,7 @@ const OffTrackChart: FC<Props> = ({ chartData, title }) => {
         show: true,
       },
       theme: 'dark',
+      followCursor: true,
     },
     plotOptions: {
       bar: { horizontal: true, barHeight: '50%', borderRadius: 5 },

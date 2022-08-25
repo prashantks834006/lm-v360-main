@@ -80,7 +80,11 @@ const CarList = () => {
     },
   ];
 
-  return <Tabs tabItems={navItems} sibling={<Filter filters={FILTERS} />} />;
+  return (
+    <Box pl={2}>
+      <Tabs tabItems={navItems} sibling={<Filter filters={FILTERS} />} />
+    </Box>
+  );
 };
 
 export default CarList;

@@ -9,7 +9,7 @@ const Dashboard = () => {
   return (
     <Page sx={{ pt: 3 }}>
       <SummaryDashboard />
-      <Grid container sx={{ mt: 2 }} spacing={4}>
+      <Grid container sx={{ mt: 1 }} spacing={4}>
         <Grid item sm={12} md={7}>
           <CarList />
         </Grid>
