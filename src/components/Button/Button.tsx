@@ -7,7 +7,7 @@ interface Props extends ButtonProps {
 
 const Button: React.FC<Props> = ({ children, ...other }) => {
   return (
-    <MuiButton type="button" {...other}>
+    <MuiButton type="button" sx={{ textTransform: 'capitalize', ...other.sx }} {...other}>
       {children}
     </MuiButton>
   );

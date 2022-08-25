@@ -18,9 +18,9 @@ const Vehicles = () => {
   ];
 
   return (
-    <Page sx={{ p: 1 }}>
+    <Page sx={{ p: 0.5 }}>
       <Breadcrumbs links={links} />
-      <Divider sx={{ mt: 1 }} />
+      <Divider sx={{ mt: 0.5 }} />
       <VehiclesGrid />
     </Page>
   );
