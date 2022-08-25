@@ -4,6 +4,7 @@ import { alpha, styled } from '@mui/material/styles';
 import { autocompleteClasses } from '@mui/material/Autocomplete';
 import { Icon } from '@iconify/react';
 import { Typography, Divider, Stack, Box } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import Link from '../../components/Link/Link';
 import { PATHS } from '../../utils/constants';
 import Chip from '../../components/Chip/Chip';
@@ -44,7 +45,6 @@ const Listbox = styled('ul')(({ theme }) => ({
   },
 }));
 
-// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
 const vehicles = [
   ...[...new Array(20)].map(() => ({
     id: generateRandomString(15),
@@ -101,11 +101,13 @@ const SearchBar = () => {
     getOptionLabel: (option) => option.id,
   });
 
+  const { t } = useTranslation();
+
   return (
     <div>
       <div {...getRootProps()}>
         <Search>
-          <StyledInputBase placeholder="Search by VIN no, vehicle name, customer name..." {...getInputProps()} />
+          <StyledInputBase placeholder={`${t('search')}...`} {...getInputProps()} />
           <SearchIconWrapper>
             {focused ? (
               <Box sx={{ cursor: 'pointer' }}>
@@ -121,7 +123,7 @@ const SearchBar = () => {
         <Listbox {...getListboxProps()}>
           {(groupedOptions as typeof vehicles).map((option, index) => (
             <>
-              <li {...getOptionProps({ option, index })}>
+              <li {...getOptionProps({ option, index })} key={option.id}>
                 <Link to={PATHS.vahicle(option.id)} sx={{ color: (theme) => theme.palette.common.black }}>
                   <Stack direction="row">
                     <Box sx={{ flexGrow: 1 }}>
