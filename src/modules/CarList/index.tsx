@@ -7,6 +7,8 @@ import { mockCars } from './CarListSection.mock';
 import ICar from '../../types/cars';
 import CarTaskItem from './CarTaskItem';
 import Typography from '../../components/Typography/Typography';
+import Filter from '../Filter/Filter';
+import FILTERS from '../Filter/Filter.mock';
 
 function sortUpcomingTasks(items: ICar[]) {
   const cars = items
@@ -78,7 +80,7 @@ const CarList = () => {
     },
   ];
 
-  return <Tabs tabItems={navItems} />;
+  return <Tabs tabItems={navItems} sibling={<Filter filters={FILTERS} />} />;
 };
 
 export default CarList;

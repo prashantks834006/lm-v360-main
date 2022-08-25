@@ -5,6 +5,7 @@ const Link = styled(RouterLink)(({ theme }) => ({
   textDecoration: 'none',
   color: theme.palette.primary.main,
   fontSize: 12,
+  fontFamily: theme.typography.fontFamily,
 }));
 
 export default Link;

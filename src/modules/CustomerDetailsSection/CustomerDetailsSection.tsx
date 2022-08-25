@@ -75,6 +75,7 @@ const CustomerDetailsSection: React.FC = () => {
         </Box>
       </Box>
       <Tabs tabItems={tabItems} />
+      <Checkbox />
     </Box>
   );
 };

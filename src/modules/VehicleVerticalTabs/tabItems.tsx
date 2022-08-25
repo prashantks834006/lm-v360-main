@@ -11,6 +11,14 @@ import { ReactComponent as DocumentsIcon } from '../../assets/icons/documents.sv
 import { ReactComponent as TeamIcon } from '../../assets/icons/team.svg';
 import { ReactComponent as DeliveryIcon } from '../../assets/icons/delivery.svg';
 import QuickGlance from './QuickGlance';
+import Team from './Team';
+import Vehicle from './Vehicle';
+import Customer from './Customer';
+import Payment from './Payment';
+import Registration from './Registration';
+import Insurance from './Insurance';
+import Documents from './Documents';
+import Delivery from './Delivery';
 
 const tabItems: TabItem[] = [
   {
@@ -20,42 +28,42 @@ const tabItems: TabItem[] = [
   },
   {
     label: 'Vehicle',
-    content: <div> Vehicle </div>,
+    content: <Vehicle />,
     icon: <VehicleIcon />,
   },
   {
     label: 'Customer',
-    content: <div> Customer </div>,
+    content: <Customer />,
     icon: <CustomerIcon />,
   },
   {
-    label: 'Payment',
-    content: <div> Payment </div>,
-    icon: <PaymentIcon />,
-  },
-  {
     label: 'Registration',
-    content: <div> Registration </div>,
+    content: <Registration />,
     icon: <RegistrationIcon />,
   },
   {
     label: 'Insurance',
-    content: <div> Insurance </div>,
+    content: <Insurance />,
     icon: <InsuranceIcon />,
   },
   {
+    label: 'Payment',
+    content: <Payment />,
+    icon: <PaymentIcon />,
+  },
+  {
     label: 'Documents',
-    content: <div> Documents </div>,
+    content: <Documents />,
     icon: <DocumentsIcon />,
   },
   {
     label: 'Team',
-    content: <div> Team </div>,
+    content: <Team />,
     icon: <TeamIcon />,
   },
   {
     label: 'Delivery',
-    content: <div> Delivery </div>,
+    content: <Delivery />,
     icon: <DeliveryIcon />,
   },
 ];

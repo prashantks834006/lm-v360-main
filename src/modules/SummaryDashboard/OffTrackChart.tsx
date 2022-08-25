@@ -66,8 +66,8 @@ const OffTrackChart: FC<Props> = ({ chartData, title }) => {
       <ReactApexChart
         type="bar"
         series={[
-          { data: chartOnTrackSeries, name: 'On Track', color: '#E04732' },
-          { data: chartOffTrackSeries, name: 'Off Track', color: '#E3E3E3' },
+          { data: chartOffTrackSeries, name: 'Off Track', color: '#E04732' },
+          { data: chartOnTrackSeries, name: 'On Track', color: '#588CFC' },
         ]}
         options={chartOptions}
         height={180}

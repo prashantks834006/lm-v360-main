@@ -1,5 +1,19 @@
 import { Stage } from '../types/stages';
-import { names, vehicles, statuses, notifications, stages, messages, carImages } from './mocks';
+import {
+  names,
+  vehicles,
+  statuses,
+  notifications,
+  stages,
+  messages,
+  carImages,
+  carModels,
+  carColors,
+  carStatuses,
+  userImages,
+  roles,
+  hosts,
+} from './mocks';
 
 export const getRandomElementFromArray = <T>(arr: T[]): T => arr[Math.floor(Math.random() * arr.length)];
 
@@ -23,3 +37,12 @@ export const generateRandomNumber = (from: number, to: number): number => {
   return Math.floor(Math.random() * (to - from + 1)) + from;
 };
 export const generateRandomCarImage = () => getRandomElementFromArray(carImages);
+export const generateRandomCarModel = () => getRandomElementFromArray(carModels);
+export const generateRandomCarColor = () => getRandomElementFromArray(carColors);
+export const generateRandomCarStatus = () => getRandomElementFromArray(carStatuses);
+export const generateRandomUserImage = () => getRandomElementFromArray(userImages);
+export const generateRandomRole = () => getRandomElementFromArray(roles);
+export const generateRandomHost = () => getRandomElementFromArray(hosts);
+export const generateEmail = (name: string) =>
+  `${name.split(' ').join('').toLocaleLowerCase()}@${generateRandomHost()}.com`;
+export const generateRandomBoolean = () => !!generateRandomNumber(0, 1);
