@@ -39,17 +39,6 @@ const ActionRequired: React.FC<IAction> = ({ id, name, dueDate, tasks }) => {
       <FormGroup>
         <Box gap={1.375} display="flex" flexDirection="column">
           {taskList}
-          {/* <Box gap={1.375} display="flex" alignItems="center">
-            <Select title="Task outcome" options={taskOutcomes} />
-            <TextField placeholder="Enter comment" />
-            <Button
-              variant="outlined"
-              sx={{ textTransform: 'none', width: '100%', height: 'fit-content', fontSize: '12px' }}
-              disabled
-            >
-              Mark as Complete
-            </Button>
-          </Box> */}
           <Grid container gap={1.375} alignItems="center">
             <Grid item>
               <Select title="Task outcome" options={taskOutcomes} />
