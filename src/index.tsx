@@ -5,7 +5,7 @@ import { ThemeProvider } from '@mui/material';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import theme from './utils/theme';
-import OktaProvider from './utils/OktaProvider';
+import OktaProvider from './providers/OktaProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 

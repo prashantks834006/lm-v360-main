@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
 import { Icon } from '@iconify/react';
 import { Avatar, Divider, Stack, Typography } from '@mui/material';
+import i18next from 'i18next';
 import Logo from '../../assets/images/logo.png';
 import NavSlidein from './NavSlideIn';
 import NotificationMenu from './NotificationMenu';
@@ -55,6 +56,23 @@ const Header = () => {
     setLocalizationMenuAnchorEl(null);
   }, []);
 
+  const handleSelectLanguage = useCallback((code: string) => {
+    i18next.changeLanguage(code);
+    const htmlElement = document.querySelector('html');
+    const bodyElement = document.querySelector('body');
+    if (htmlElement) {
+      htmlElement.lang = code;
+    }
+    if (bodyElement) {
+      if (code === 'ar') {
+        bodyElement.dir = 'rtl';
+      } else {
+        bodyElement.dir = 'ltr';
+      }
+    }
+    setLocalizationMenuAnchorEl(null);
+  }, []);
+
   return (
     <>
       <NotificationMenu id={notificationMenuId} anchorEl={notificationMenuAnchorEl} handleMenuClose={handleMenuClose} />
@@ -63,6 +81,7 @@ const Header = () => {
         id={localizationMenuId}
         anchorEl={localizationMenuAnchorEl}
         handleMenuClose={handleLocalizationMenuClose}
+        handleSelectLanguage={handleSelectLanguage}
       />
       <NavSlidein isOpen={isSideNavOpen} setIsOpen={setIsSideNavOpen} />
       <AppBar position="static" sx={{ backgroundColor: (theme) => theme.palette.grey[800] }}>
@@ -109,7 +128,9 @@ const Header = () => {
               onClick={handleLocalizationMenuOpen}
             >
               <GlobeIcon />
-              <Typography fontSize={12}>EN</Typography>
+              <Typography fontSize={12} textTransform="uppercase">
+                {i18next.language}
+              </Typography>
               <Icon icon="bi:caret-down-fill" />
             </Stack>
             <Avatar
