@@ -21,9 +21,9 @@ Template.bind({});
 
 const steps = ['Reservation', 'Order', 'Production', 'Transit', 'Inspection', 'Delivery', 'Ownership'];
 
-export const Primary = Template.bind({});
+export const Horizontal = Template.bind({});
 
-Primary.args = {
+Horizontal.args = {
   steps,
   orientation: 'horizontal',
 };
