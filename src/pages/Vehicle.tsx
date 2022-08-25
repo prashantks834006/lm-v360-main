@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Grid, Paper } from '@mui/material';
+import { Box, colors, Grid, Paper, Typography } from '@mui/material';
+import StepperVertical from '../components/Stepper/StepperVertical';
 import VehicleVerticalTabs from '../modules/VehicleVerticalTabs';
 import Page from '../components/Page/Page';
 import InfoHeader from '../modules/InfoHeader';
@@ -8,6 +9,8 @@ import CustomerDetailsSection from '../modules/CustomerDetailsSection';
 
 const Vehicle = () => {
   const steps = ['Reservation', 'Order', 'Production', 'Transit', 'Inspection', 'Delivery', 'Ownership'];
+
+  const stepsVertical = ['En-route', 'In yard'];
 
   return (
     <Page sx={{ backgroundColor: (theme) => theme.palette.grey[100] }}>
@@ -21,9 +24,15 @@ const Vehicle = () => {
             <Grid item sm={12} md={6} lg={8}>
               <Paper sx={{ p: 2, height: '100%' }}>
                 <Stepper activeStep={2} steps={steps} orientation="horizontal" />
-                <Grid container>
-                  <Grid item sm={12} md={7}>
+                <Grid container mt={2}>
+                  <Grid item sm={12} md={7} m={0}>
                     <CustomerDetailsSection />
+                  </Grid>
+                  <Grid item md={5} px={4}>
+                    <Typography variant="body2" fontWeight={700} fontSize={12} color={colors.grey[600]}>
+                      ORDERED
+                    </Typography>
+                    <StepperVertical steps={stepsVertical} activeStep={1} />
                   </Grid>
                 </Grid>
               </Paper>
