@@ -9,4 +9,11 @@ export default {
   component: TextField,
 } as ComponentMeta<typeof TextField>;
 
-export const Primary: ComponentStory<typeof TextField> = () => <TextField />;
+export const Primary: ComponentStory<typeof TextField> = () => (
+  <TextField
+    placeholder="Comment"
+    sx={{ width: 1000, maxWidth: '100%' }}
+    fullWidth
+    // onChange={(e) => onSearch(e.target.value)}
+  />
+);
