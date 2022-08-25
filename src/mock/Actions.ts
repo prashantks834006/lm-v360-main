@@ -1,5 +1,15 @@
 import IAction from '../types/action';
 
+export const taskOutcomes: { value: string; label: string }[] = [
+  { label: 'Made contact', value: '1' },
+  { label: 'Email sent', value: '2' },
+  { label: 'Left voicemail', value: '3' },
+  { label: 'Did not contact', value: '4' },
+  // { label: 'Wrong number', value: '5' },
+  // { label: 'Email bounced', value: '6' },
+  // { label: 'Did not answer', value: '7' },
+];
+
 const actions: IAction[] = [
   {
     id: 1,
