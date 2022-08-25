@@ -5,7 +5,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Select from './Select';
 
 export default {
-  title: 'Components/Checkbox',
+  title: 'Components/Select',
   component: Select,
 } as ComponentMeta<typeof Select>;
 
@@ -24,4 +24,4 @@ const options = [
   },
 ];
 
-export const Primary: ComponentStory<typeof Select> = () => <Select options={options} />;
+export const Primary: ComponentStory<typeof Select> = () => <Select options={options} placeHolder="Task outcome" />;
