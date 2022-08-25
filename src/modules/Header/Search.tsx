@@ -56,10 +56,11 @@ const vehicles = [
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
+  height: 38,
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.black, 0.35),
+  backgroundColor: alpha(theme.palette.common.black, 0.55),
   '&:hover': {
-    backgroundColor: alpha(theme.palette.common.black, 0.45),
+    backgroundColor: alpha(theme.palette.common.black, 0.65),
   },
   marginRight: theme.spacing(2),
   marginLeft: theme.spacing(2),
@@ -70,7 +71,7 @@ const Search = styled('div')(({ theme }) => ({
 }));
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
+  padding: theme.spacing(0, 1.5),
   height: '100%',
   position: 'absolute',
   pointerEvents: 'none',
@@ -85,7 +86,7 @@ const StyledInputBase = styled('input')(({ theme }) => ({
   backgroundColor: 'transparent',
   outline: 'none',
   border: 'none',
-  padding: '10px',
+  padding: '12px',
   paddingRight: theme.spacing(5),
   color: theme.palette.common.white,
   width: '50px',
@@ -110,11 +111,9 @@ const SearchBar = () => {
           <StyledInputBase placeholder={`${t('header_search')}`} {...getInputProps()} />
           <SearchIconWrapper>
             {focused ? (
-              <Box sx={{ cursor: 'pointer' }}>
-                <Icon icon="clarity:window-close-line" fontSize={26} />
-              </Box>
+              <Icon icon="clarity:window-close-line" fontSize={26} color="gray" />
             ) : (
-              <Icon icon="ant-design:search-outlined" />
+              <Icon icon="bytesize:search" color="gray" />
             )}
           </SearchIconWrapper>
         </Search>

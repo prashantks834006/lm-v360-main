@@ -6,7 +6,7 @@ const OffTrack = () => {
   return (
     <>
       <Typography fontSize={10} fontWeight={600} textTransform="uppercase">
-        Off Track
+        Delivery pipeline
       </Typography>
       <DeliveryPipelineChart
         title="54 customers"

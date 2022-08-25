@@ -63,6 +63,9 @@ const OffTrackChart: FC<Props> = ({ chartData, title }) => {
     grid: {
       show: false,
     },
+    title: {
+      margin: 0,
+    },
   };
 
   if (chartOptions.chart) {

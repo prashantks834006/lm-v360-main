@@ -20,19 +20,19 @@ const SummaryDashboard = () => {
       <Collapse in={!isSummaryHidden}>
         <Divider />
         <Grid container>
-          <Grid item xs={12} sm={6} md={3} sx={{ px: 3, py: 1 }}>
+          <Grid item xs={12} sm={6} md={3} sx={{ px: 2, py: 1.5 }}>
             <Greetings />
           </Grid>
           <Divider orientation="vertical" flexItem sx={{ marginRight: '-1px' }} />
-          <Grid item xs={12} sm={6} md={3} sx={{ px: 3, py: 1 }}>
+          <Grid item xs={12} sm={6} md={3} sx={{ px: 2, py: 1.5 }}>
             <DeliveryPipeline />
           </Grid>
           <Divider orientation="vertical" flexItem sx={{ marginRight: '-1px' }} />
-          <Grid item xs={12} sm={6} md={3} sx={{ px: 3, py: 1 }}>
+          <Grid item xs={12} sm={6} md={3} sx={{ px: 2, py: 1.5 }}>
             <Deliveries />
           </Grid>
           <Divider orientation="vertical" flexItem sx={{ marginRight: '-1px' }} />
-          <Grid item xs={12} sm={6} md={3} sx={{ px: 3, py: 1 }}>
+          <Grid item xs={12} sm={6} md={3} sx={{ px: 2, py: 1.5 }}>
             <DwellTime />
           </Grid>
         </Grid>
