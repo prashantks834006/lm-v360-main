@@ -74,7 +74,7 @@ const Tabs: React.FC<IProps> = ({ tabItems, orientation, sibling, ...other }) =>
 
   return (
     <Stack direction={isVerticalTabs ? 'row' : 'column'} sx={{ width: '100%' }} gap={isVerticalTabs ? 1 : 0}>
-      <Box display="flex" justifyContent="space-between" alignItems="flex-end">
+      <Box display="flex" justifyContent="space-between" alignItems={isVerticalTabs ? 'flex-start' : 'flex-end'}>
         <CustomTabs
           value={value}
           onChange={handleChange}
