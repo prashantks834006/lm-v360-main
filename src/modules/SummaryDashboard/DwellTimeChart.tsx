@@ -5,7 +5,7 @@ import { ApexOptions } from 'apexcharts';
 // @mui
 import { Box } from '@mui/material';
 
-import BaseOptionChart from '../../hooks/useChartsDefaultOptions';
+import useChartsDefaultOptions from '../../hooks/useChartsDefaultOptions';
 
 // ----------------------------------------------------------------------
 
@@ -19,11 +19,12 @@ interface Props {
 
 const OffTrackChart: FC<Props> = ({ chartData, title }) => {
   const chartLabels = chartData.map((i) => i.label);
+  const defaultOptions = useChartsDefaultOptions();
 
   const chartWeeksSeries = chartData.map((i) => i.weeks);
 
   const chartOptions: ApexOptions = {
-    ...BaseOptionChart(),
+    ...defaultOptions,
     tooltip: {
       y: {
         formatter: (seriesName: number) => `${seriesName}`,

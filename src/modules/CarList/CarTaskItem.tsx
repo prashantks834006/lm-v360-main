@@ -67,7 +67,7 @@ const CarTaskItem: FC<Props> = ({ car, isActive }) => {
           )}
         </Grid>
         <Grid item xs={12} md={6} lg={1}>
-          <Stack direction="row" alignItems="center" justifyContent="center" gap={1} sx={{ height: '100%' }}>
+          <Stack direction="row" alignItems="center" justifyContent="center" gap={0.5} sx={{ height: '100%' }}>
             <Typography weight={500} size={12} noWrap>
               {car.tasks} {car.tasks > 1 ? 'Tasks' : 'Task'}
             </Typography>

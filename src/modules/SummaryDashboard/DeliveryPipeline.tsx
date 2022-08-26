@@ -11,12 +11,12 @@ const OffTrack = () => {
       <DeliveryPipelineChart
         title="54 customers"
         chartData={[
-          { label: 'Reservation', offTrack: 1, onTrack: 40 },
-          { label: 'Ordering', offTrack: 17, onTrack: 9 },
-          { label: 'Production', offTrack: 22, onTrack: 4 },
-          { label: 'Transit', offTrack: 5, onTrack: 27 },
-          { label: 'Inspection', offTrack: 37, onTrack: 41 },
-          { label: 'Delivery', offTrack: 3, onTrack: 52 },
+          { label: 'Reservation', offTrack: 8, onTrack: 50 },
+          { label: 'Ordering', offTrack: 20, onTrack: 49 },
+          { label: 'Production', offTrack: 18, onTrack: 60 },
+          { label: 'Transit', offTrack: 4, onTrack: 50 },
+          { label: 'Inspection', offTrack: 2, onTrack: 30 },
+          { label: 'Delivery', offTrack: 3, onTrack: 49 },
         ]}
       />
     </>
