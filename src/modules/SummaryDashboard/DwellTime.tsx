@@ -20,7 +20,7 @@ const DwellTime = () => {
 
   return (
     <>
-      <Typography sx={{ textTransform: 'uppercase', fontWeight: 600, fontSize: 10 }}>
+      <Typography sx={{ textTransform: 'uppercase', fontWeight: 600, fontSize: 10, py: 1.5, px: 2 }}>
         Current Dwell time for scheduling delivery
       </Typography>
       <DwellTimeChart

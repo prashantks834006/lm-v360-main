@@ -108,14 +108,19 @@ export default function useChartsDefaultOptions(): ApexOptions {
     // Legend
     legend: {
       show: true,
-      fontSize: String(13),
+      showForSingleSeries: true,
+
+      fontSize: String(11),
       position: 'bottom',
       horizontalAlign: 'center',
       markers: {
         radius: 10,
+        height: 8,
+        width: 8,
+        offsetX: -8,
       },
       fontWeight: 200,
-      itemMargin: { horizontal: 10 },
+      itemMargin: { horizontal: 15 },
       labels: {
         colors: theme.palette.text.primary,
       },

@@ -27,15 +27,10 @@ const NextWeekDeliveriesChart: FC<Props> = ({ chartData, title }) => {
   const chartOptions: ApexOptions = {
     ...BaseOptionChart(),
     tooltip: {
-      y: {
-        formatter: (seriesName: number) => `${seriesName}`,
-        title: {
-          formatter: () => '',
-        },
-      },
+      enabled: false,
     },
     plotOptions: {
-      bar: { horizontal: false, borderRadius: 5, columnWidth: '30%' },
+      bar: { horizontal: false, borderRadius: 8, columnWidth: '30%' },
     },
     xaxis: {
       categories: chartLabels,
@@ -63,7 +58,7 @@ const NextWeekDeliveriesChart: FC<Props> = ({ chartData, title }) => {
 
   return (
     <Box dir="ltr">
-      {title && <Typography sx={{ fontWeight: 500, fontSize: '32px' }}> {title} </Typography>}
+      {title && <Typography sx={{ fontWeight: 400, fontSize: '32px', px: 2 }}> {title} </Typography>}
       <ReactApexChart
         type="bar"
         series={[
@@ -71,7 +66,7 @@ const NextWeekDeliveriesChart: FC<Props> = ({ chartData, title }) => {
           { data: chartPickupSeries, name: 'Pickup', color: '#2649AD' },
         ]}
         options={chartOptions}
-        height={180}
+        height={150}
       />
     </Box>
   );

@@ -28,11 +28,11 @@ const SummaryDashboard = () => {
             <DeliveryPipeline />
           </Grid>
           <Divider orientation="vertical" flexItem sx={{ marginRight: '-1px' }} />
-          <Grid item xs={12} sm={6} md={3} sx={{ px: 2, py: 1.5 }}>
+          <Grid item xs={12} sm={6} md={3}>
             <Deliveries />
           </Grid>
           <Divider orientation="vertical" flexItem sx={{ marginRight: '-1px' }} />
-          <Grid item xs={12} sm={6} md={3} sx={{ px: 2, py: 1.5 }}>
+          <Grid item xs={12} sm={6} md={3}>
             <DwellTime />
           </Grid>
         </Grid>
