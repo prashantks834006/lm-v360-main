@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from '@mui/material';
+import { Stack } from '@mui/material';
 import CarList from '../modules/CarList';
 import CustomerDetailsSection from '../modules/CustomerDetailsSection';
 import Page from '../components/Page/Page';
@@ -9,14 +9,10 @@ const Dashboard = () => {
   return (
     <Page sx={{ pt: 3 }}>
       <SummaryDashboard />
-      <Grid container sx={{ mt: 1 }} spacing={4}>
-        <Grid item sm={12} md={7}>
-          <CarList />
-        </Grid>
-        <Grid item sm={12} md={5}>
-          <CustomerDetailsSection />
-        </Grid>
-      </Grid>
+      <Stack direction="row" pt={2} alignItems="flex-start">
+        <CarList />
+        <CustomerDetailsSection />
+      </Stack>
     </Page>
   );
 };

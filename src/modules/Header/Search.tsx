@@ -23,14 +23,15 @@ const Listbox = styled('ul')(({ theme }) => ({
   listStyle: 'none',
   backgroundColor: theme.palette.background.paper,
   overflow: 'auto',
-  maxHeight: 300,
+  maxHeight: 800,
   color: theme.palette.common.black,
   marginLeft: 30,
   width: '80vw',
+  height: '80vh',
   borderRadius: theme.shape.borderRadius,
   boxShadow: theme.shadows[4],
   [theme.breakpoints.up('md')]: {
-    width: '400px',
+    width: '420px',
   },
   [`& li`]: {
     padding: '10px',
@@ -126,7 +127,7 @@ const SearchBar = () => {
                 <Link to={PATHS.vahicle(option.id)} sx={{ color: (theme) => theme.palette.common.black }}>
                   <Stack direction="row">
                     <Box sx={{ flexGrow: 1 }}>
-                      <Typography sx={{ fontSize: 12, fontWeight: 'bold' }}>{option.id}</Typography>
+                      <Typography sx={{ fontSize: 12, fontWeight: 400 }}>{option.id}</Typography>
                       <Typography sx={{ fontSize: 10 }}>
                         {option.vehicle} ordered by {option.customer}
                       </Typography>

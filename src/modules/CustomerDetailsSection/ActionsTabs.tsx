@@ -10,7 +10,15 @@ const ActionsTabs = () => {
     {
       label: 'Actions Required (2)',
       content: (
-        <Box gap={1.25} display="flex" flexDirection="column">
+        <Box gap={1.25} display="flex" flexDirection="column" mt={2}>
+          {actions.map((action) => !action.isComplete && <ActionRequired key={action.id} {...action} />)}
+        </Box>
+      ),
+    },
+    {
+      label: 'Upcoming Tasks (0)',
+      content: (
+        <Box gap={1.25} display="flex" flexDirection="column" mt={2}>
           {actions.map((action) => !action.isComplete && <ActionRequired key={action.id} {...action} />)}
         </Box>
       ),
@@ -18,7 +26,7 @@ const ActionsTabs = () => {
     {
       label: 'Actions Completed (1)',
       content: (
-        <Box gap={1.25} display="flex" flexDirection="column">
+        <Box gap={1.25} display="flex" flexDirection="column" mt={2}>
           {actions.map((action) => action.isComplete && <ActionCompleted key={action.id} {...action} />)}
         </Box>
       ),

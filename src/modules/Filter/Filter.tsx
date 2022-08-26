@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, Typography, Box, Button, IconButton, Popover, Checkbox } from '@mui/material';
+import { Stack, Typography, Box, Button, IconButton, Checkbox, Menu } from '@mui/material';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import Close from '@mui/icons-material/Close';
 import Accordion from '../../components/Accordian/Accordian';
@@ -43,17 +43,17 @@ const Filter: React.FC<IProps> = ({ filters }) => {
 
   return (
     <>
-      <Box display="flex" alignItems="flex-end" flexDirection="column">
-        <Button disableRipple variant="text" onClick={handleClick} sx={{ textTransform: 'none' }}>
-          <Stack direction="row" alignItems="center" gap={1.5}>
-            <FilterListIcon />
-            <Typography variant="subtitle1" fontWeight={500}>
-              Filter
-            </Typography>
-          </Stack>
-        </Button>
-      </Box>
-      <Popover
+      <Button
+        disableRipple
+        variant="text"
+        size="small"
+        startIcon={<FilterListIcon />}
+        onClick={handleClick}
+        sx={{ textTransform: 'none' }}
+      >
+        Filter
+      </Button>
+      <Menu
         id={id}
         open={open}
         anchorEl={anchorEl}
@@ -61,9 +61,6 @@ const Filter: React.FC<IProps> = ({ filters }) => {
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
-        }}
-        PaperProps={{
-          style: { border: '1px solid #C5C5C5', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.25)', borderRadius: '6px' },
         }}
       >
         <>
@@ -94,7 +91,7 @@ const Filter: React.FC<IProps> = ({ filters }) => {
             </Button>
           </Box>
         </>
-      </Popover>
+      </Menu>
     </>
   );
 };

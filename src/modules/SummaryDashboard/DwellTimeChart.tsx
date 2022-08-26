@@ -59,7 +59,7 @@ const DwellTimeChart: FC<Props> = ({ chartData, title }) => {
     annotations: {
       yaxis: [
         {
-          y: 13,
+          y: 10,
           borderColor: '#aaa',
           borderWidth: 0.5,
           strokeDashArray: 0,
@@ -84,7 +84,7 @@ const DwellTimeChart: FC<Props> = ({ chartData, title }) => {
           },
         },
         {
-          y: 8,
+          y: 7,
           borderColor: '#aaa',
           borderWidth: 0.5,
           strokeDashArray: 3,

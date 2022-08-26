@@ -15,6 +15,8 @@ const ChipWrapper = styled(Box)(({ theme }) => ({
   borderRadius: '3px',
   lineHeight: '10px',
   fontFamily: theme.typography.fontFamily,
+  overflow: 'hidden',
+  whiteSpace: 'nowrap',
 }));
 
 const Chip: FC<Props> = ({ text, fontSize }) => <ChipWrapper fontSize={fontSize}>{text}</ChipWrapper>;

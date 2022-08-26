@@ -39,7 +39,7 @@ const SummaryDashboard = () => {
         <Divider />
       </Collapse>
       <Stack justifyContent="space-between" direction="row" alignItems="center">
-        <Stack sx={{ p: isSummaryHidden ? 0 : 1 }} direction="row" gap={2}>
+        <Stack sx={{ py: isSummaryHidden ? 0 : 1 }} direction="row" gap={2}>
           {isSummaryHidden && (
             <Typography variant="h5" sx={{ fontWeight: 600 }}>
               Good Morning, John!
@@ -53,10 +53,10 @@ const SummaryDashboard = () => {
         </Stack>
         <Box>
           <Stack direction="row" alignItems="center" justifyContent="center" gap={1}>
-            <Link to={PATHS.vehicles}>All Vehicles</Link>
+            <Link to={PATHS.vehicles}>All vehicles</Link>
             <Divider orientation="vertical" flexItem />
             <Typography sx={{ fontSize: 12 }}>Search with saved filters:</Typography>
-            <Link to={PATHS.vehicles}>Upcoming Deliveries</Link>
+            <Link to={PATHS.vehicles}>Upcoming deliveries</Link>
             <Divider orientation="vertical" flexItem />
             <Link to={PATHS.vehicles}>PDI-Costa Misa</Link>
             <Divider orientation="vertical" flexItem />

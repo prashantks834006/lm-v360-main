@@ -26,11 +26,11 @@ const DwellTime = () => {
       <DwellTimeChart
         title={title}
         chartData={[
-          { label: 'April', weeks: 8 },
+          { label: 'April', weeks: 5 },
           { label: 'May', weeks: 7 },
-          { label: 'June', weeks: 12 },
-          { label: 'July', weeks: 15 },
-          { label: 'Aug', weeks: 14 },
+          { label: 'June', weeks: 5 },
+          { label: 'July', weeks: 12 },
+          { label: 'Aug', weeks: 11 },
         ]}
       />
     </>
