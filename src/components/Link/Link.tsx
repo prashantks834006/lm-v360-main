@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 const Link = styled(RouterLink)(({ theme }) => ({
   textDecoration: 'none',
   color: theme.palette.primary.main,
-  fontSize: 12,
+  fontSize: 11,
   fontFamily: theme.typography.fontFamily,
 }));
 

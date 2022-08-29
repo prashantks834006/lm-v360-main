@@ -3,9 +3,9 @@ import { styled } from '@mui/material/styles';
 import MUISwitch, { SwitchProps } from '@mui/material/Switch';
 import { FormControlLabel } from '@mui/material';
 
-const AntSwitch = styled(MUISwitch)(({ theme }) => ({
-  width: 35,
-  height: 20,
+const CustomSwitch = styled(MUISwitch)(({ theme }) => ({
+  width: 32,
+  height: 16,
   padding: 0,
   margin: '0px 10px',
   display: 'flex',
@@ -13,10 +13,7 @@ const AntSwitch = styled(MUISwitch)(({ theme }) => ({
   backgroundColor: theme.palette.grey[50],
   '&:active': {
     '& .MuiSwitch-thumb': {
-      width: 35,
-    },
-    '& .MuiSwitch-switchBase.Mui-checked': {
-      transform: 'translateX(20px)',
+      width: 32,
     },
   },
   '& .MuiSwitch-switchBase': {
@@ -32,15 +29,15 @@ const AntSwitch = styled(MUISwitch)(({ theme }) => ({
   },
   '& .MuiSwitch-thumb': {
     boxShadow: '0 2px 4px 0 rgb(0 35 11 / 20%)',
-    width: 16,
-    height: 16,
+    width: 12,
+    height: 12,
     borderRadius: '50%',
     transition: theme.transitions.create(['width'], {
       duration: 200,
     }),
   },
   '& .MuiSwitch-track': {
-    borderRadius: 16 / 2,
+    borderRadius: 8,
     opacity: 1,
     backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,.35)' : 'rgba(0,0,0,.25)',
     boxSizing: 'border-box',
@@ -48,9 +45,12 @@ const AntSwitch = styled(MUISwitch)(({ theme }) => ({
 }));
 
 const CustomFormControlLabel = styled(FormControlLabel)(() => ({
+  marginLeft: 0,
+
   '& .MuiFormControlLabel-label': {
     fontSize: 12,
     fontWeight: 500,
+    marginLeft: 0,
   },
 }));
 
@@ -65,7 +65,7 @@ const Switch: React.FC<CustomSwitchProps> = ({ label, labelPlacement, value, onC
     <CustomFormControlLabel
       value={value}
       onChange={(e, c) => onChange(c)}
-      control={<AntSwitch {...other} sx={{ fontSize: 10 }} />}
+      control={<CustomSwitch {...other} />}
       label={label}
       labelPlacement={labelPlacement}
     />

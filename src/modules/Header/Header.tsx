@@ -2,12 +2,11 @@ import React, { useId, useState, useCallback, MouseEvent } from 'react';
 import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
 import { Icon } from '@iconify/react';
 import { Avatar, Divider, Stack, Typography } from '@mui/material';
 import i18next from 'i18next';
+import Badge from '../../components/Badge/Badge';
 import Logo from '../../assets/images/logo.png';
 import NavSlidein from './NavSlideIn';
 import NotificationMenu from './NotificationMenu';
@@ -17,8 +16,9 @@ import { ReactComponent as GlobeIcon } from '../../assets/icons/globe.svg';
 import LocalizationMenu from './LocalizationMenu';
 
 const Image = styled('img')(({ theme }) => ({
+  width: '144px',
   [theme.breakpoints.down('md')]: {
-    width: '80px',
+    width: '50px',
   },
 }));
 
@@ -84,25 +84,27 @@ const Header = () => {
         handleSelectLanguage={handleSelectLanguage}
       />
       <NavSlidein isOpen={isSideNavOpen} setIsOpen={setIsSideNavOpen} />
-      <AppBar position="static" sx={{ backgroundColor: (theme) => theme.palette.grey[800] }}>
-        <Toolbar>
+      <AppBar position="fixed" sx={{ backgroundColor: (theme) => theme.palette.grey[800], height: 55 }}>
+        <Stack direction="row" height={55} alignItems="center" justifyContent="center" px={2}>
           <IconButton
             size="small"
             edge="start"
             color="inherit"
             aria-label="open drawer"
-            sx={{ mr: 2 }}
+            sx={{ mr: 3 }}
             onClick={() => setIsSideNavOpen((prev) => !prev)}
           >
-            <Icon icon="ci:hamburger" />
+            <Icon icon="cil:hamburger-menu" />
           </IconButton>
-          <Image src={Logo} alt="LUCID" />
+          <Box>
+            <Image src={Logo} alt="LUCID" />
+          </Box>
           <Box sx={{ flexGrow: 1 }} />
           <SearchBar />
           <Box sx={{ flexGrow: 1 }} />
           <Stack
             direction="row"
-            gap={2}
+            gap={1}
             divider={<Divider orientation="vertical" flexItem />}
             color={(theme) => theme.palette.grey[500]}
           >
@@ -116,7 +118,7 @@ const Header = () => {
               onClick={handleNotificationMenuOpen}
             >
               <Badge badgeContent={4} color="primary">
-                <Icon icon="clarity:notification-line" />
+                <Icon icon="cil:bell" />
               </Badge>
             </IconButton>
             <Stack
@@ -128,7 +130,7 @@ const Header = () => {
               onClick={handleLocalizationMenuOpen}
             >
               <GlobeIcon />
-              <Typography fontSize={12} textTransform="uppercase">
+              <Typography fontSize={10} textTransform="uppercase">
                 {i18next.language}
               </Typography>
               <Icon icon="bi:caret-down-fill" />
@@ -143,8 +145,9 @@ const Header = () => {
               JE
             </Avatar>
           </Stack>
-        </Toolbar>
+        </Stack>
       </AppBar>
+      <Box sx={{ height: 60 }} />
     </>
   );
 };

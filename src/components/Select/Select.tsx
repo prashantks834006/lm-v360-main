@@ -4,6 +4,8 @@ import TextField from '../TextField/TextField';
 
 const StyledSelect = styled(MUISelect)(() => ({
   fontSize: '12px',
+  cursor: 'pointer',
+  userSelect: 'none',
   padding: '6px 10px',
   color: '#787878',
   ' .MuiSelect-select.MuiSelect-standard.MuiInputBase-input': {

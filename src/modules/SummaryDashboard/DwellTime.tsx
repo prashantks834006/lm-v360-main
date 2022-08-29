@@ -20,17 +20,17 @@ const DwellTime = () => {
 
   return (
     <>
-      <Typography sx={{ textTransform: 'uppercase', fontWeight: 600, fontSize: 10 }}>
+      <Typography sx={{ textTransform: 'uppercase', fontWeight: 600, fontSize: 10, py: 1.5, px: 2 }}>
         Current Dwell time for scheduling delivery
       </Typography>
       <DwellTimeChart
         title={title}
         chartData={[
-          { label: 'April', weeks: 8 },
+          { label: 'April', weeks: 5 },
           { label: 'May', weeks: 7 },
-          { label: 'June', weeks: 12 },
-          { label: 'July', weeks: 15 },
-          { label: 'Aug', weeks: 14 },
+          { label: 'June', weeks: 5 },
+          { label: 'July', weeks: 12 },
+          { label: 'Aug', weeks: 11 },
         ]}
       />
     </>

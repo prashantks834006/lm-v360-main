@@ -6,7 +6,7 @@ type Props = {
   fontSize?: string;
 };
 
-const ChipWrapper = styled(Box)(() => ({
+const ChipWrapper = styled(Box)(({ theme }) => ({
   border: '0.8px solid black',
   height: 'max-content',
   width: 'max-content',
@@ -14,6 +14,9 @@ const ChipWrapper = styled(Box)(() => ({
   padding: '1px 8px',
   borderRadius: '3px',
   lineHeight: '10px',
+  fontFamily: theme.typography.fontFamily,
+  overflow: 'hidden',
+  whiteSpace: 'nowrap',
 }));
 
 const Chip: FC<Props> = ({ text, fontSize }) => <ChipWrapper fontSize={fontSize}>{text}</ChipWrapper>;
