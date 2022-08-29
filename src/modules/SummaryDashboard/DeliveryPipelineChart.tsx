@@ -32,7 +32,7 @@ const DeliveryPipelineBar: FC<BarProps> = ({ offTrack, onTrack }) => {
           borderRadius="5px"
         />
         <Box
-          width={`${offTrack + 1.2}%`}
+          width={`calc(${offTrack}% + 3px)`}
           bgcolor="white"
           height="100%"
           position="absolute"
@@ -78,12 +78,12 @@ const DeliveryPipelineChart = () => {
     },
     {
       name: 'Inspection',
-      offTrack: 3.33,
+      offTrack: 4,
       onTrack: 50,
     },
     {
       name: 'Delivery',
-      offTrack: 3.33,
+      offTrack: 4,
       onTrack: 82,
     },
   ];
