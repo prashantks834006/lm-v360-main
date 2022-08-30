@@ -2,7 +2,7 @@ import React from 'react';
 
 import { LoginCallback } from '@okta/okta-react';
 import { useRoutes } from 'react-router-dom';
-import AuthGuard from '../gaurds/AuthGuard';
+// import AuthGuard from '../gaurds/AuthGuard';
 import DashboardLayout from '../layouts/Dashboard';
 import Dashboard from './Dashboard';
 import Vehicle from './Vehicle';
@@ -25,9 +25,9 @@ const Routes = () => {
         {
           path: '',
           element: (
-            <AuthGuard>
-              <DashboardLayout />
-            </AuthGuard>
+            // <AuthGuard>
+            <DashboardLayout />
+            // </AuthGuard>
           ),
           children: [
             { path: '', element: <Dashboard />, index: true },
