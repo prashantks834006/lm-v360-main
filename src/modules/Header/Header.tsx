@@ -1,4 +1,4 @@
-import React, { useId, useState, useCallback, MouseEvent } from 'react';
+import React, { useId, useState, useCallback, MouseEvent, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -27,6 +27,7 @@ const Header = () => {
   const [profileMenuAnchorEl, setProfileMenuAnchorEl] = useState<null | HTMLElement>(null);
   const [localizationMenuAnchorEl, setLocalizationMenuAnchorEl] = useState<null | HTMLElement>(null);
   const [isSideNavOpen, setIsSideNavOpen] = useState<boolean>(false);
+  const [language, setLanguage] = useState('en');
 
   const handleNotificationMenuOpen = useCallback((event: MouseEvent<HTMLElement>) => {
     setNotificationMenuAnchorEl(event.currentTarget);
@@ -58,6 +59,7 @@ const Header = () => {
 
   const handleSelectLanguage = useCallback((code: string) => {
     i18next.changeLanguage(code);
+    setLanguage(code);
     const htmlElement = document.querySelector('html');
     const bodyElement = document.querySelector('body');
     if (htmlElement) {
@@ -71,6 +73,10 @@ const Header = () => {
       }
     }
     setLocalizationMenuAnchorEl(null);
+  }, []);
+
+  useEffect(() => {
+    setLanguage(i18next.language);
   }, []);
 
   return (
@@ -131,7 +137,7 @@ const Header = () => {
             >
               <GlobeIcon />
               <Typography fontSize={10} textTransform="uppercase">
-                {i18next.language}
+                {language}
               </Typography>
               <Icon icon="bi:caret-down-fill" />
             </Stack>
