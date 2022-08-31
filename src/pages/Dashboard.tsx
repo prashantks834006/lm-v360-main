@@ -7,7 +7,7 @@ import SummaryDashboard from '../modules/SummaryDashboard';
 
 const Dashboard = () => {
   return (
-    <Page sx={{ pt: 3 }}>
+    <Page sx={{ pt: 3, px: 2 }}>
       <SummaryDashboard />
       <Stack direction="row" pt={2} alignItems="flex-start">
         <CarList />

@@ -11,12 +11,9 @@ const CustomerDetails = () => {
   return (
     <Box
       p={2}
-      ml={4}
-      mt={6}
       borderRadius={2}
       bgcolor={(theme) => theme.palette.grey[50]}
       border={(theme) => `2px solid ${theme.palette.grey[100]}`}
-      width="44%"
     >
       <Stack direction="row" alignItems="flex-end" gap={1}>
         <Typography variant="h4" fontWeight={400} fontSize={28}>
