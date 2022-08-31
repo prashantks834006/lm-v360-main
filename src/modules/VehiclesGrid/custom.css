@@ -1,11 +1,101 @@
-.ag-theme-material .ag-paging-panel{
-    height: 35px;
+.ag-theme-material .ag-paging-panel {
+  height: 35px;
 }
 
-.ag-theme-material .ag-side-buttons{
-    display: none;
+.ag-theme-material .ag-side-buttons {
+  display: none;
 }
 
-.ag-theme-material .ag-tool-panel-wrapper{
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+.ag-theme-material .ag-tool-panel-wrapper {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.ag-side-bar > .ag-tool-panel-wrapper {
+  width: 300px;
+  padding: 20px;
+  background: #fff;
+}
+
+.ag-filter-toolpanel-search {
+  display: none;
+}
+
+.ag-group-title-bar.ag-filter-toolpanel-group-title-bar.ag-filter-toolpanel-header {
+  flex-direction: row-reverse;
+  height: inherit;
+  padding: 10px 5px 10px 10px;
+  background-color: #fff;
+}
+
+.ag-group-title-bar.ag-filter-toolpanel-group-title-bar.ag-filter-toolpanel-header .ag-group-title {
+  cursor: pointer;
+}
+
+.ag-group-title-bar.ag-filter-toolpanel-group-title-bar.ag-filter-toolpanel-header[aria-expanded='true'] {
+  background-color: #f7f7f7;
+}
+
+.ag-group-title.ag-filter-toolpanel-group-title {
+  /* font-family: 'GT America';
+  font-style: normal; */
+  font-size: 14px;
+  font-weight: 400;
+  color: #1b1b1b;
+}
+
+.ag-group-container.ag-group-container-vertical.ag-filter-toolpanel-group-container {
+  background-color: #f7f7f7;
+}
+
+.ag-tool-panel-wrapper
+  .ag-wrapper.ag-input-wrapper.ag-text-field-input-wrapper
+  .ag-input-field-input.ag-text-field-input {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  font-size: 14px;
+  background-image: url(../../assets/icons/search.svg);
+  background-repeat: no-repeat;
+  background-position: 200px 10px;
+}
+
+.ag-tool-panel-wrapper .ag-checkbox-input-wrapper.ag-checked::after {
+  color: black;
+}
+
+.ag-tool-panel-wrapper .ag-input-field-label.ag-label.ag-checkbox-label {
+  font-size: 14px;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #c5c5c5;
+  border-radius: 20px;
+}
+
+.ag-theme-material .ag-icon-tree-closed::before {
+  color: transparent;
+}
+
+.ag-theme-material .ag-icon-tree-closed {
+  font-size: 20px;
+  background-position-y: -5px;
+  background-image: url(../../assets/icons/acute_down.svg);
+}
+
+.ag-theme-material .ag-icon-tree-open::before {
+  color: transparent;
+}
+
+.ag-theme-material .ag-icon-tree-open {
+  font-size: 20px;
+  background-position-y: -5px;
+  background-image: url(../../assets/icons/acute_up.svg);
 }
