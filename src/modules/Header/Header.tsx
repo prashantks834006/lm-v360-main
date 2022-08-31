@@ -109,7 +109,7 @@ const Header = () => {
             color={(theme) => theme.palette.grey[500]}
           >
             <IconButton
-              size="small"
+              size="medium"
               edge="end"
               aria-label="Notifications of current user"
               aria-controls={notificationMenuId}

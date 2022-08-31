@@ -54,7 +54,7 @@ const NavigationDrawer: React.FC<Props> = ({ isOpen, setIsOpen }) => {
               <ListItem key={text} disablePadding>
                 <ListItemButton sx={{ borderRadius: 2 }}>
                   <ListItemIcon sx={{ minWidth: 30 }}>
-                    <Icon icon={icon} />
+                    <Icon icon={icon} fontSize={20} />
                   </ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItemButton>
