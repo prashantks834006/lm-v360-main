@@ -1,4 +1,3 @@
-import { Icon } from '@iconify/react';
 import { Box, Divider, Stack, Typography } from '@mui/material';
 import React from 'react';
 import Chip from '../../components/Chip/Chip';
@@ -19,12 +18,6 @@ const CustomerDetails = () => {
         <Typography variant="h4" fontWeight={400} fontSize={28}>
           Stephanie Nelson
         </Typography>
-        <Link
-          to={PATHS.vehicles}
-          sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0.5, mb: 0.5 }}
-        >
-          Reassign <Icon icon="akar-icons:chevron-down" />
-        </Link>
         <Box flexGrow={1} />
         <Link to={PATHS.vahicle('123')} sx={{ mb: 0.5 }}>
           View details
