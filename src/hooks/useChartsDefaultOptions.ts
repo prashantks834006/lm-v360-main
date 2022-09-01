@@ -4,7 +4,7 @@ import { useTheme } from '@mui/material/styles';
 
 // ----------------------------------------------------------------------
 
-export default function BaseOptionChart(): ApexOptions {
+export default function useChartsDefaultOptions(): ApexOptions {
   const theme = useTheme();
 
   const LABEL_TOTAL = {
@@ -46,7 +46,7 @@ export default function BaseOptionChart(): ApexOptions {
       hover: {
         filter: {
           type: 'lighten',
-          value: 0.04,
+          value: 0.01,
         },
       },
       active: {
@@ -74,7 +74,8 @@ export default function BaseOptionChart(): ApexOptions {
 
     // Stroke
     stroke: {
-      width: 3,
+      colors: ['transperant'],
+      width: 0,
       curve: 'smooth',
       lineCap: 'round',
     },
@@ -107,14 +108,19 @@ export default function BaseOptionChart(): ApexOptions {
     // Legend
     legend: {
       show: true,
-      fontSize: String(13),
+      showForSingleSeries: true,
+
+      fontSize: String(11),
       position: 'bottom',
-      horizontalAlign: 'right',
+      horizontalAlign: 'center',
       markers: {
-        radius: 12,
+        radius: 10,
+        height: 8,
+        width: 8,
+        offsetX: -8,
       },
-      fontWeight: 500,
-      itemMargin: { horizontal: 12 },
+      fontWeight: 200,
+      itemMargin: { horizontal: 15 },
       labels: {
         colors: theme.palette.text.primary,
       },

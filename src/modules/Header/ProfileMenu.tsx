@@ -25,7 +25,6 @@ const ProfileMenu: FC<Props> = ({ anchorEl, id, handleMenuClose }) => {
         <Typography px={2} sx={{ color: (theme) => theme.palette.grey[500], fontSize: 10 }} mb={2}>
           UTC-08:00 Pacific Time (US & Canada)
         </Typography>
-        <MenuItem sx={{ fontSize: 14 }}>Feedback</MenuItem>
         <MenuItem sx={{ fontSize: 14 }} onClick={() => oktaAuth.signOut()}>
           Sign out
         </MenuItem>

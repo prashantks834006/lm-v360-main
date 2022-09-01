@@ -4,6 +4,7 @@ import { alpha, styled } from '@mui/material/styles';
 import { autocompleteClasses } from '@mui/material/Autocomplete';
 import { Icon } from '@iconify/react';
 import { Typography, Divider, Stack, Box } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import Link from '../../components/Link/Link';
 import { PATHS } from '../../utils/constants';
 import Chip from '../../components/Chip/Chip';
@@ -22,14 +23,15 @@ const Listbox = styled('ul')(({ theme }) => ({
   listStyle: 'none',
   backgroundColor: theme.palette.background.paper,
   overflow: 'auto',
-  maxHeight: 300,
+  maxHeight: 800,
   color: theme.palette.common.black,
   marginLeft: 30,
   width: '80vw',
+  height: '80vh',
   borderRadius: theme.shape.borderRadius,
   boxShadow: theme.shadows[4],
   [theme.breakpoints.up('md')]: {
-    width: '400px',
+    width: '420px',
   },
   [`& li`]: {
     padding: '10px',
@@ -44,7 +46,6 @@ const Listbox = styled('ul')(({ theme }) => ({
   },
 }));
 
-// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
 const vehicles = [
   ...[...new Array(20)].map(() => ({
     id: generateRandomString(15),
@@ -56,10 +57,11 @@ const vehicles = [
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
+  height: 38,
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.black, 0.35),
+  backgroundColor: alpha(theme.palette.common.black, 0.55),
   '&:hover': {
-    backgroundColor: alpha(theme.palette.common.black, 0.45),
+    backgroundColor: alpha(theme.palette.common.black, 0.65),
   },
   marginRight: theme.spacing(2),
   marginLeft: theme.spacing(2),
@@ -70,7 +72,7 @@ const Search = styled('div')(({ theme }) => ({
 }));
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
+  padding: theme.spacing(0, 1.5),
   height: '100%',
   position: 'absolute',
   pointerEvents: 'none',
@@ -85,7 +87,7 @@ const StyledInputBase = styled('input')(({ theme }) => ({
   backgroundColor: 'transparent',
   outline: 'none',
   border: 'none',
-  padding: '10px',
+  padding: '12px',
   paddingRight: theme.spacing(5),
   color: theme.palette.common.white,
   width: '50px',
@@ -101,18 +103,18 @@ const SearchBar = () => {
     getOptionLabel: (option) => option.id,
   });
 
+  const { t } = useTranslation();
+
   return (
     <div>
       <div {...getRootProps()}>
         <Search>
-          <StyledInputBase placeholder="Search by VIN no, vehicle name, customer name..." {...getInputProps()} />
+          <StyledInputBase placeholder={`${t('header_search')}`} {...getInputProps()} />
           <SearchIconWrapper>
             {focused ? (
-              <Box sx={{ cursor: 'pointer' }}>
-                <Icon icon="clarity:window-close-line" fontSize={26} />
-              </Box>
+              <Icon icon="clarity:window-close-line" fontSize={26} color="gray" />
             ) : (
-              <Icon icon="ant-design:search-outlined" />
+              <Icon icon="bytesize:search" color="gray" />
             )}
           </SearchIconWrapper>
         </Search>
@@ -121,11 +123,11 @@ const SearchBar = () => {
         <Listbox {...getListboxProps()}>
           {(groupedOptions as typeof vehicles).map((option, index) => (
             <>
-              <li {...getOptionProps({ option, index })}>
+              <li {...getOptionProps({ option, index })} key={option.id}>
                 <Link to={PATHS.vahicle(option.id)} sx={{ color: (theme) => theme.palette.common.black }}>
                   <Stack direction="row">
                     <Box sx={{ flexGrow: 1 }}>
-                      <Typography sx={{ fontSize: 12, fontWeight: 'bold' }}>{option.id}</Typography>
+                      <Typography sx={{ fontSize: 12, fontWeight: 400 }}>{option.id}</Typography>
                       <Typography sx={{ fontSize: 10 }}>
                         {option.vehicle} ordered by {option.customer}
                       </Typography>
