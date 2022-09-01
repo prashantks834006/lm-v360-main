@@ -21,11 +21,14 @@ const LocalizationMenu: FC<Props> = ({ id, anchorEl, handleMenuClose, handleSele
         'aria-labelledby': 'Localisation',
       }}
     >
-      {languages.map((language: ILanguage) => (
-        <MenuItem key={language.langCode} onClick={() => handleSelectLanguage(language.langCode)}>
-          {language.LangDescription}
-        </MenuItem>
-      ))}
+      {languages.map((language: ILanguage) => {
+        const value = language.langCode.split('-')[0].trim();
+        return (
+          <MenuItem key={language.langCode} onClick={() => handleSelectLanguage(value)} value={value}>
+            {language.LangDescription}
+          </MenuItem>
+        );
+      })}
     </Menu>
   );
 };

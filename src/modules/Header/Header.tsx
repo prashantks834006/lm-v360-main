@@ -102,9 +102,7 @@ const Header = () => {
           >
             <Icon icon="cil:hamburger-menu" />
           </IconButton>
-          <Box>
-            <Logo />
-          </Box>
+          <Logo />
           <Box sx={{ flexGrow: 1 }} />
           <SearchBar />
           <Box sx={{ flexGrow: 1 }} />
