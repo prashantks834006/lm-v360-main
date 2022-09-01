@@ -12,6 +12,9 @@ import NotificationMenu from './NotificationMenu';
 import SearchBar from './Search';
 import ProfileMenu from './ProfileMenu';
 import LocalizationMenu from './LocalizationMenu';
+import { ReactComponent as GlobeIcon } from '../../assets/icons/globe.svg';
+import { ILanguage } from '../../types/language';
+import getLanguages from '../../services/LanguageDataService';
 
 const Header = () => {
   const [notificationMenuAnchorEl, setNotificationMenuAnchorEl] = useState<null | HTMLElement>(null);
@@ -19,6 +22,7 @@ const Header = () => {
   const [localizationMenuAnchorEl, setLocalizationMenuAnchorEl] = useState<null | HTMLElement>(null);
   const [isSideNavOpen, setIsSideNavOpen] = useState<boolean>(false);
   const [language, setLanguage] = useState('en');
+  const [languages, setLanguages] = useState<ILanguage[]>([]);
 
   const handleNotificationMenuOpen = useCallback((event: MouseEvent<HTMLElement>) => {
     setNotificationMenuAnchorEl(event.currentTarget);
@@ -70,6 +74,10 @@ const Header = () => {
     setLanguage(i18next.language);
   }, []);
 
+  useEffect(() => {
+    getLanguages().then((response) => setLanguages(response.languages));
+  }, []);
+
   return (
     <>
       <NotificationMenu id={notificationMenuId} anchorEl={notificationMenuAnchorEl} handleMenuClose={handleMenuClose} />
@@ -79,6 +87,7 @@ const Header = () => {
         anchorEl={localizationMenuAnchorEl}
         handleMenuClose={handleLocalizationMenuClose}
         handleSelectLanguage={handleSelectLanguage}
+        languages={languages}
       />
       <NavSlidein isOpen={isSideNavOpen} setIsOpen={setIsSideNavOpen} />
       <AppBar position="fixed" sx={{ backgroundColor: (theme) => theme.palette.grey[800], height: 55 }}>
@@ -104,9 +113,9 @@ const Header = () => {
             gap={1}
             divider={<Divider orientation="vertical" flexItem />}
             color={(theme) => theme.palette.grey[500]}
+            alignItems="center"
           >
             <IconButton
-              size="medium"
               edge="end"
               aria-label="Notifications of current user"
               aria-controls={notificationMenuId}
@@ -133,13 +142,19 @@ const Header = () => {
               <Icon icon="bi:caret-down-fill" />
             </Stack>
             <Avatar
-              sx={{ width: 30, height: 30, fontSize: 12, color: (theme) => theme.palette.grey[700], cursor: 'pointer' }}
+              sx={{
+                width: 30,
+                height: 30,
+                fontSize: 12,
+                color: (theme) => theme.palette.grey[700],
+                cursor: 'pointer',
+              }}
               aria-label="Notifications of current user"
               aria-controls={profileMenuId}
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
             >
-              JE
+              JL
             </Avatar>
           </Stack>
         </Stack>
