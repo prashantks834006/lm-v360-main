@@ -17,19 +17,20 @@ const StyledSelect = styled(MUISelect)(() => ({
 }));
 
 interface IProps {
-  title: string;
+  title?: string;
   selectedOption?: string;
   setSelectedOption?: (selectedOption: string) => void;
   options: { value: string; label: string }[];
   width?: string;
+  height?: string;
 }
 
-const Select: React.FC<IProps> = ({ title, selectedOption, setSelectedOption, options, width }) => {
+const TitledSelect: React.FC<IProps> = ({ title, selectedOption, setSelectedOption, options, width, height }) => {
   const [selectedValue, setSelectedValue] = useState('none');
   return (
     <FormControl sx={{ width: width ?? '100%' }} variant="standard">
       <StyledSelect
-        input={<TextField />}
+        input={<TextField height={height} />}
         defaultValue="none"
         value={setSelectedOption ? selectedOption ?? 'none' : selectedValue}
         onChange={(event) =>
@@ -41,6 +42,20 @@ const Select: React.FC<IProps> = ({ title, selectedOption, setSelectedOption, op
         <MenuItem value="none" sx={{ display: 'none' }}>
           {title}
         </MenuItem>
+        {options.map(({ value, label }) => (
+          <MenuItem value={value}>{label}</MenuItem>
+        ))}
+      </StyledSelect>
+    </FormControl>
+  );
+};
+
+const Select: React.FC<IProps> = (props) => {
+  const { title, options, width, height } = props;
+  if (title) return <TitledSelect {...props} />;
+  return (
+    <FormControl sx={{ width: width ?? '100%' }} variant="standard">
+      <StyledSelect input={<TextField height={height} />} defaultValue={options[0]?.value}>
         {options.map(({ value, label }) => (
           <MenuItem value={value}>{label}</MenuItem>
         ))}

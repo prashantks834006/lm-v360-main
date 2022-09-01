@@ -1,10 +1,16 @@
+interface IColor {
+  label: string;
+  color1: string;
+  color2: string;
+}
+
 export interface IVehiclesData {
   customer: string;
   customerStage: string;
   customerStatus: string;
   VIN: string;
   model: string;
-  color: string;
+  color: IColor;
   stage: string;
   status: string;
   statusEntryDate: string;
