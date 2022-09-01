@@ -6,9 +6,14 @@ import { Divider, Stack, styled } from '@mui/material';
 import { TabPanelProps, TabsProps } from './types';
 
 const CustomTabs = styled(MuiTabs)(() => ({
+  minHeight: 35,
+  padding: '0px 10px',
   '& .MuiTabs-indicator': {
     backgroundColor: 'black',
-    height: '5px',
+    height: 3,
+    right: 0,
+    left: 0,
+    minWidth: 50,
   },
 }));
 
@@ -60,6 +65,8 @@ const Tabs: React.FC<IProps> = ({ tabItems, orientation, sibling, ...other }) =>
               },
             }
           : {
+              minWidth: 10,
+              minHeight: 35,
               padding: '0px 5px',
               fontSize: 12,
               '&.Mui-selected': {

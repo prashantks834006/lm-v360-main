@@ -1,5 +1,4 @@
 import React, { useId, useState, useCallback, MouseEvent, useEffect } from 'react';
-import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -7,20 +6,13 @@ import { Icon } from '@iconify/react';
 import { Avatar, Divider, Stack, Typography } from '@mui/material';
 import i18next from 'i18next';
 import Badge from '../../components/Badge/Badge';
-import Logo from '../../assets/images/logo.png';
+import { ReactComponent as Logo } from '../../assets/images/logo.svg';
 import NavSlidein from './NavSlideIn';
 import NotificationMenu from './NotificationMenu';
 import SearchBar from './Search';
 import ProfileMenu from './ProfileMenu';
 import { ReactComponent as GlobeIcon } from '../../assets/icons/globe.svg';
 import LocalizationMenu from './LocalizationMenu';
-
-const Image = styled('img')(({ theme }) => ({
-  width: '144px',
-  [theme.breakpoints.down('md')]: {
-    width: '50px',
-  },
-}));
 
 const Header = () => {
   const [notificationMenuAnchorEl, setNotificationMenuAnchorEl] = useState<null | HTMLElement>(null);
@@ -103,7 +95,7 @@ const Header = () => {
             <Icon icon="cil:hamburger-menu" />
           </IconButton>
           <Box>
-            <Image src={Logo} alt="LUCID" />
+            <Logo />
           </Box>
           <Box sx={{ flexGrow: 1 }} />
           <SearchBar />

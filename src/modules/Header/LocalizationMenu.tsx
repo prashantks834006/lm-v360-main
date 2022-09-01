@@ -17,15 +17,7 @@ const LocalizationMenu: FC<Props> = ({ id, anchorEl, handleMenuClose, handleSele
       open={Boolean(anchorEl)}
       onClose={handleMenuClose}
       MenuListProps={{
-        'aria-labelledby': 'basic-button',
-      }}
-      anchorOrigin={{
-        vertical: 'bottom',
-        horizontal: 'center',
-      }}
-      transformOrigin={{
-        vertical: 'bottom',
-        horizontal: 'center',
+        'aria-labelledby': 'Localisation',
       }}
     >
       <MenuItem onClick={() => handleSelectLanguage('en')}>English</MenuItem>
