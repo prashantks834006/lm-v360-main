@@ -24,11 +24,11 @@ const Vehicle = () => {
             <Grid item sm={12} md={6} lg={8}>
               <Paper sx={{ p: 2, height: '100%' }}>
                 <Stepper activeStep={2} steps={steps} orientation="horizontal" />
-                <Grid container mt={2}>
+                <Grid container mt={2} spacing={4}>
                   <Grid item sm={12} md={7} m={0}>
                     <ActionsTabs />
                   </Grid>
-                  <Grid item md={5} px={4}>
+                  <Grid item md={5}>
                     <Typography variant="body2" fontWeight={700} fontSize={12} color={colors.grey[600]}>
                       ORDERED
                     </Typography>

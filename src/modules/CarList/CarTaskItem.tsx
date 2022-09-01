@@ -24,6 +24,8 @@ const CarTaskItem: FC<Props> = ({ car, isActive }) => {
 
   return (
     <Card
+      elevation={0}
+      variant="outlined"
       sx={{ ...(isActive && { border: (theme) => `2px solid ${theme.palette.primary.main}` }), px: 1, py: 0.5, my: 1 }}
     >
       <Grid container>

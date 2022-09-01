@@ -8,7 +8,7 @@ import ActionCompleted from '../ActionCompleted/ActionCompleted';
 const ActionsTabs = () => {
   const tabItems = [
     {
-      label: 'Actions Required (2)',
+      label: 'Due today (0)',
       content: (
         <Box gap={1.25} display="flex" flexDirection="column" mt={2}>
           {actions.map((action) => !action.isComplete && <ActionRequired key={action.id} {...action} />)}
@@ -16,7 +16,7 @@ const ActionsTabs = () => {
       ),
     },
     {
-      label: 'Upcoming Tasks (0)',
+      label: 'Upcoming tasks (0)',
       content: (
         <Box gap={1.25} display="flex" flexDirection="column" mt={2}>
           {actions.map((action) => !action.isComplete && <ActionRequired key={action.id} {...action} />)}
@@ -24,7 +24,7 @@ const ActionsTabs = () => {
       ),
     },
     {
-      label: 'Actions Completed (1)',
+      label: 'Completed tasks (0)',
       content: (
         <Box gap={1.25} display="flex" flexDirection="column" mt={2}>
           {actions.map((action) => action.isComplete && <ActionCompleted key={action.id} {...action} />)}

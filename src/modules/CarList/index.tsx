@@ -39,7 +39,7 @@ function sortUpcomingTasks(items: ICar[]) {
 const CarList = () => {
   const todayTasks = useMemo(() => mockCars.filter((car) => isToday(car.date)), []);
   const upcomingTasks = useMemo(() => sortUpcomingTasks(mockCars), []);
-  const activeTaskId = useMemo(() => todayTasks[0].id, [todayTasks]);
+  const activeTaskId = useMemo(() => todayTasks[1].id, [todayTasks]);
 
   const dueTodayContent = useMemo(
     () => (
@@ -55,7 +55,7 @@ const CarList = () => {
     () => (
       <>
         {Object.keys(upcomingTasks).map((key) => (
-          <Box key={key}>
+          <Box key={key} mb={1}>
             <Typography weight={600} size={16} sx={{ textTransform: 'uppercase', my: 2 }}>
               {key}
             </Typography>
@@ -81,8 +81,12 @@ const CarList = () => {
   ];
 
   return (
-    <Box pl={2} width="56%">
-      <Tabs tabItems={navItems} sibling={<Filter filters={FILTERS} />} />
+    <Box pl={2}>
+      (
+      <Box pl={2} width="56%">
+        <Tabs tabItems={navItems} sibling={<Filter filters={FILTERS} />} />
+      </Box>
+      )
     </Box>
   );
 };

@@ -14,6 +14,12 @@ import ProfileMenu from './ProfileMenu';
 import { ReactComponent as GlobeIcon } from '../../assets/icons/globe.svg';
 import LocalizationMenu from './LocalizationMenu';
 
+const Image = styled('img')(({ theme }) => ({
+  [theme.breakpoints.down('md')]: {
+    width: '80px',
+  },
+}));
+
 const Header = () => {
   const [notificationMenuAnchorEl, setNotificationMenuAnchorEl] = useState<null | HTMLElement>(null);
   const [profileMenuAnchorEl, setProfileMenuAnchorEl] = useState<null | HTMLElement>(null);
@@ -107,7 +113,7 @@ const Header = () => {
             color={(theme) => theme.palette.grey[500]}
           >
             <IconButton
-              size="small"
+              size="medium"
               edge="end"
               aria-label="Notifications of current user"
               aria-controls={notificationMenuId}
