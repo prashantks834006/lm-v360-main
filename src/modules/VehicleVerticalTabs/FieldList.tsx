@@ -34,10 +34,10 @@ type Props = {
 const FieldList: FC<Props> = ({ fields }) => (
   <Box my={2}>
     {fields.map((field) => (
-      <>
+      <React.Fragment key={field.field}>
         <ListItem key={field.field} {...field} />
         <Divider sx={{ borderStyle: 'dashed' }} />
-      </>
+      </React.Fragment>
     ))}
   </Box>
 );

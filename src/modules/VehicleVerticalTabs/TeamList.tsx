@@ -19,7 +19,7 @@ const TeamList: FC<Props> = ({ team }) => {
   return (
     <List sx={{ width: '100%', bgcolor: 'background.paper' }} dense disablePadding>
       {team.map(({ avatar, name, secondaryText }) => (
-        <ListItem sx={{ px: 0 }}>
+        <ListItem sx={{ px: 0 }} key={name}>
           <ListItemAvatar>
             <Avatar src={avatar} />
           </ListItemAvatar>

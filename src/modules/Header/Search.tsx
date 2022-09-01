@@ -7,6 +7,8 @@ import { Typography, Divider, Stack, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
+// import useThrottle from '../../hooks/useThrottle';
+// import { getVehicleSearch } from '../../services/vehicles.service';
 import Link from '../../components/Link/Link';
 import { PATHS } from '../../utils/constants';
 import Chip from '../../components/Chip/Chip';
@@ -104,15 +106,26 @@ const StyledInputBase = styled('input')(({ theme }) => ({
 }));
 
 const SearchBar = () => {
+  const id = React.useId();
+
   const { getRootProps, getInputProps, getListboxProps, getOptionProps, groupedOptions, focused, inputValue } =
     useAutocomplete({
-      id: 'vehicles-search',
+      id,
       options: vehicles,
       getOptionLabel: (option) => option.id,
       filterOptions,
     });
 
   const { t } = useTranslation();
+  // const throttledInputValue = useThrottle(inputValue, 1000);
+
+  // React.useEffect(() => {
+  //   if (throttledInputValue) {
+  //     getVehicleSearch(throttledInputValue).then((data) => {
+  //       console.log(data);
+  //     });
+  //   }
+  // }, [throttledInputValue]);
 
   return (
     <div>

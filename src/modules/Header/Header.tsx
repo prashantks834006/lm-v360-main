@@ -5,6 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import { Icon } from '@iconify/react';
 import { Avatar, Divider, Stack, Typography } from '@mui/material';
 import i18next from 'i18next';
+import { ReactComponent as GlobeIcon } from '../../assets/icons/globe.svg';
 import Badge from '../../components/Badge/Badge';
 import { ReactComponent as Logo } from '../../assets/images/logo.svg';
 import NavSlidein from './NavSlideIn';
@@ -12,9 +13,8 @@ import NotificationMenu from './NotificationMenu';
 import SearchBar from './Search';
 import ProfileMenu from './ProfileMenu';
 import LocalizationMenu from './LocalizationMenu';
-import { ReactComponent as GlobeIcon } from '../../assets/icons/globe.svg';
 import { ILanguage } from '../../types/language';
-import getLanguages from '../../services/LanguageDataService';
+import { getLanguages } from '../../services/language';
 
 const Header = () => {
   const [notificationMenuAnchorEl, setNotificationMenuAnchorEl] = useState<null | HTMLElement>(null);
@@ -75,7 +75,9 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    getLanguages().then((response) => setLanguages(response.languages));
+    getLanguages().then((response) => {
+      setLanguages(response);
+    });
   }, []);
 
   return (
@@ -113,18 +115,12 @@ const Header = () => {
             color={(theme) => theme.palette.grey[500]}
             alignItems="center"
           >
-            <IconButton
-              edge="end"
-              aria-label="Notifications of current user"
-              aria-controls={notificationMenuId}
-              aria-haspopup="true"
-              color="inherit"
-              onClick={handleNotificationMenuOpen}
-            >
+            <Box onClick={handleNotificationMenuOpen} sx={{ cursor: 'pointer' }}>
               <Badge badgeContent={4} color="primary">
                 <Icon icon="cil:bell" />
               </Badge>
-            </IconButton>
+            </Box>
+
             <Stack
               direction="row"
               alignItems="center"

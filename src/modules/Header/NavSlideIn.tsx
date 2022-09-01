@@ -16,7 +16,7 @@ type Props = {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const NavigationDrawer: React.FC<Props> = ({ isOpen, setIsOpen }) => {
+const NavSlidein: React.FC<Props> = ({ isOpen, setIsOpen }) => {
   const toggleDrawer = (event: React.KeyboardEvent | React.MouseEvent) => {
     if (
       event.type === 'keydown' &&
@@ -76,7 +76,7 @@ const NavigationDrawer: React.FC<Props> = ({ isOpen, setIsOpen }) => {
               );
             }
             return (
-              <ExternalLink href={path} target="_blank" rel="noreferrer">
+              <ExternalLink href={path} target="_blank" rel="noreferrer" key={text}>
                 {listItem}
               </ExternalLink>
             );
@@ -87,4 +87,4 @@ const NavigationDrawer: React.FC<Props> = ({ isOpen, setIsOpen }) => {
   );
 };
 
-export default NavigationDrawer;
+export default NavSlidein;

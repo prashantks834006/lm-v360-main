@@ -4,6 +4,7 @@ import { Box, Stack } from '@mui/material';
 import moment from 'moment';
 import { FilterChangedEvent } from 'ag-grid-community';
 
+import { LicenseManager } from 'ag-grid-enterprise';
 import { IVehiclesData } from '../../types/vehicle';
 import { PATHS } from '../../utils/constants';
 import Link from '../../components/Link/Link';
@@ -14,9 +15,10 @@ import vehicles from './vehicles.mock';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import './custom.css';
-import 'ag-grid-enterprise';
 import GridTopActions from './GridTopActions';
 import AppliedFilters from './AppliedFilters';
+
+LicenseManager.setLicenseKey(process.env.REACT_APP_AG_GRID_LICENSE_KEY as string);
 
 const customerCell = ({ value }: any) => <Link to={PATHS.dashboard}> {value} </Link>;
 const customerStatusCell = ({ value }: any) => {

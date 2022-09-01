@@ -43,7 +43,9 @@ const TitledSelect: React.FC<IProps> = ({ title, selectedOption, setSelectedOpti
           {title}
         </MenuItem>
         {options.map(({ value, label }) => (
-          <MenuItem value={value}>{label}</MenuItem>
+          <MenuItem value={value} key={value}>
+            {label}
+          </MenuItem>
         ))}
       </StyledSelect>
     </FormControl>
@@ -57,7 +59,9 @@ const Select: React.FC<IProps> = (props) => {
     <FormControl sx={{ width: width ?? '100%' }} variant="standard">
       <StyledSelect input={<TextField height={height} />} defaultValue={options[0]?.value}>
         {options.map(({ value, label }) => (
-          <MenuItem value={value}>{label}</MenuItem>
+          <MenuItem value={value} key={value}>
+            {label}
+          </MenuItem>
         ))}
       </StyledSelect>
     </FormControl>

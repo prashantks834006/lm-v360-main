@@ -53,12 +53,12 @@ const NotificationMenu: FC<Props> = ({ id, anchorEl, handleMenuClose }) => {
       open={Boolean(anchorEl)}
       onClose={handleMenuClose}
       transformOrigin={{
-        vertical: 'bottom',
+        vertical: 'top',
         horizontal: 'right',
       }}
       anchorOrigin={{
-        vertical: 'top',
-        horizontal: 'right',
+        vertical: 'bottom',
+        horizontal: 'left',
       }}
     >
       <Box sx={{ p: 1, maxWidth: 500, width: '80vw' }}>
