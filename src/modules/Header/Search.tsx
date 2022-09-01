@@ -1,10 +1,12 @@
 import * as React from 'react';
 import useAutocomplete from '@mui/material/useAutocomplete';
 import { alpha, styled } from '@mui/material/styles';
-import { autocompleteClasses } from '@mui/material/Autocomplete';
+import { autocompleteClasses, createFilterOptions } from '@mui/material/Autocomplete';
 import { Icon } from '@iconify/react';
 import { Typography, Divider, Stack, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import parse from 'autosuggest-highlight/parse';
+import match from 'autosuggest-highlight/match';
 import Link from '../../components/Link/Link';
 import { PATHS } from '../../utils/constants';
 import Chip from '../../components/Chip/Chip';
@@ -14,6 +16,11 @@ import {
   generateRandomVehicle,
   generateRandomStatus,
 } from '../../utils/string';
+
+const filterOptions = createFilterOptions({
+  matchFrom: 'any',
+  stringify: (option: any) => option.id,
+});
 
 const Listbox = styled('ul')(({ theme }) => ({
   margin: 0,
@@ -97,11 +104,13 @@ const StyledInputBase = styled('input')(({ theme }) => ({
 }));
 
 const SearchBar = () => {
-  const { getRootProps, getInputProps, getListboxProps, getOptionProps, groupedOptions, focused } = useAutocomplete({
-    id: 'vehicles-search',
-    options: vehicles,
-    getOptionLabel: (option) => option.id,
-  });
+  const { getRootProps, getInputProps, getListboxProps, getOptionProps, groupedOptions, focused, inputValue } =
+    useAutocomplete({
+      id: 'vehicles-search',
+      options: vehicles,
+      getOptionLabel: (option) => option.id,
+      filterOptions,
+    });
 
   const { t } = useTranslation();
 
@@ -121,26 +130,46 @@ const SearchBar = () => {
       </div>
       {groupedOptions.length > 0 ? (
         <Listbox {...getListboxProps()}>
-          {(groupedOptions as typeof vehicles).map((option, index) => (
-            <>
-              <li {...getOptionProps({ option, index })} key={option.id}>
-                <Link to={PATHS.vahicle(option.id)} sx={{ color: (theme) => theme.palette.common.black }}>
-                  <Stack direction="row">
-                    <Box sx={{ flexGrow: 1 }}>
-                      <Typography sx={{ fontSize: 12, fontWeight: 400 }}>{option.id}</Typography>
-                      <Typography sx={{ fontSize: 10 }}>
-                        {option.vehicle} ordered by {option.customer}
-                      </Typography>
-                    </Box>
-                    <div>
-                      <Chip text={option.status} />
-                    </div>
-                  </Stack>
-                </Link>
-              </li>
-              <Divider />
-            </>
-          ))}
+          {(groupedOptions as typeof vehicles).map((option, index) => {
+            const matches = match(option.id, inputValue, {
+              insideWords: true,
+              findAllOccurrences: true,
+              requireMatchAll: true,
+            });
+            const parts = parse(option.id, matches);
+
+            return (
+              <>
+                <li {...getOptionProps({ option, index })} key={option.id}>
+                  <Link to={PATHS.vahicle(option.id)} sx={{ color: (theme) => theme.palette.common.black }}>
+                    <Stack direction="row">
+                      <Box sx={{ flexGrow: 1 }}>
+                        <Typography sx={{ fontSize: 12, fontWeight: 400 }}>
+                          {parts.map((part) => (
+                            <span
+                              key={part.text}
+                              style={{
+                                fontWeight: part.highlight ? 700 : 400,
+                              }}
+                            >
+                              {part.text}
+                            </span>
+                          ))}
+                        </Typography>
+                        <Typography sx={{ fontSize: 10 }}>
+                          {option.vehicle} ordered by {option.customer}
+                        </Typography>
+                      </Box>
+                      <div>
+                        <Chip text={option.status} />
+                      </div>
+                    </Stack>
+                  </Link>
+                </li>
+                <Divider />
+              </>
+            );
+          })}
         </Listbox>
       ) : null}
     </div>

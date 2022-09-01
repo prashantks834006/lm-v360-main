@@ -1,15 +1,16 @@
 import React, { FC } from 'react';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+import { Menu, MenuItem } from '@mui/material';
+import { ILanguage } from '../../types/language';
 
 type Props = {
   anchorEl: null | HTMLElement;
   id: string;
   handleMenuClose: () => void;
   handleSelectLanguage: (code: string) => void;
+  languages: ILanguage[];
 };
 
-const LocalizationMenu: FC<Props> = ({ id, anchorEl, handleMenuClose, handleSelectLanguage }) => {
+const LocalizationMenu: FC<Props> = ({ id, anchorEl, handleMenuClose, handleSelectLanguage, languages }) => {
   return (
     <Menu
       id={id}
@@ -20,9 +21,14 @@ const LocalizationMenu: FC<Props> = ({ id, anchorEl, handleMenuClose, handleSele
         'aria-labelledby': 'Localisation',
       }}
     >
-      <MenuItem onClick={() => handleSelectLanguage('en')}>English</MenuItem>
-      <MenuItem onClick={() => handleSelectLanguage('de')}>Deutsch</MenuItem>
-      <MenuItem onClick={() => handleSelectLanguage('ar')}>اللغة العربية</MenuItem>
+      {languages.map((language: ILanguage) => {
+        const value = language.langCode.split('-')[0].trim();
+        return (
+          <MenuItem key={language.langCode} onClick={() => handleSelectLanguage(value)} value={value}>
+            {language.LangDescription}
+          </MenuItem>
+        );
+      })}
     </Menu>
   );
 };
