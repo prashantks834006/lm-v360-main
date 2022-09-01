@@ -81,12 +81,8 @@ const CarList = () => {
   ];
 
   return (
-    <Box pl={2}>
-      (
-      <Box pl={2} width="56%">
-        <Tabs tabItems={navItems} sibling={<Filter filters={FILTERS} />} />
-      </Box>
-      )
+    <Box pl={2} width="56%">
+      <Tabs tabItems={navItems} sibling={<Filter filters={FILTERS} />} />
     </Box>
   );
 };

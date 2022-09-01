@@ -14,12 +14,6 @@ import ProfileMenu from './ProfileMenu';
 import { ReactComponent as GlobeIcon } from '../../assets/icons/globe.svg';
 import LocalizationMenu from './LocalizationMenu';
 
-const Image = styled('img')(({ theme }) => ({
-  [theme.breakpoints.down('md')]: {
-    width: '80px',
-  },
-}));
-
 const Header = () => {
   const [notificationMenuAnchorEl, setNotificationMenuAnchorEl] = useState<null | HTMLElement>(null);
   const [profileMenuAnchorEl, setProfileMenuAnchorEl] = useState<null | HTMLElement>(null);

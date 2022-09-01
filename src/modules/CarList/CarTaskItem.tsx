@@ -20,8 +20,6 @@ const CarTaskItem: FC<Props> = ({ car, isActive }) => {
     objectFit: 'contain',
   });
 
-  // const activeStep = useMemo(() => stages.indexOf(car.stage), [car.stage]);
-
   return (
     <Card
       elevation={0}
