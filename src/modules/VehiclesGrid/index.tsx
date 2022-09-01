@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
-import { Box } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import moment from 'moment';
 import { FilterChangedEvent } from 'ag-grid-community';
 
@@ -19,18 +19,39 @@ import GridTopActions from './GridTopActions';
 import AppliedFilters from './AppliedFilters';
 
 const customerCell = ({ value }: any) => <Link to={PATHS.dashboard}> {value} </Link>;
-const customerStatusCell = ({ value }: any) =>
-  value && (
-    <Box py={1}>
-      <Chip text={value} />
-    </Box>
+const customerStatusCell = ({ value }: any) => {
+  const color = value === 'Off Track' ? '#E04732 !important' : undefined;
+  return (
+    value && (
+      <Box py={1}>
+        <Chip text={value} color={color} borderColor={color} />
+      </Box>
+    )
   );
+};
 const VINCell = ({ value }: any) => <Link to={PATHS.dashboard}> {value} </Link>;
 const stageCell = ({ value }: any) =>
   value && (
     <Box py={1}>
       <Chip text={value} />
     </Box>
+  );
+const colorCell = ({ value }: any) =>
+  value && (
+    <Stack direction="row" gap={1.25} alignItems="center">
+      <Box
+        sx={{
+          background: `linear-gradient(140.32deg, ${value.color1} 45.43%, ${value.color2} 47.37%)`,
+          boxShadow: 'inset 0px 1px 1px 1px rgba(0, 0, 0, 0.16)',
+          borderRadius: '50%',
+          width: '14px',
+          height: '14px',
+        }}
+      >
+        {' '}
+      </Box>
+      {value.label}
+    </Stack>
   );
 const statusEntryDateCell = ({ value }: any) => value && moment(value).format('MMM DD, YYYY');
 const lastContactCell = ({ value }: any) => value && moment(value).format('MMM DD, YYYY');
@@ -42,7 +63,7 @@ const columnDefs = [
   { field: 'customerStatus', cellRenderer: customerStatusCell, width: 170 },
   { field: 'VIN', cellRenderer: VINCell, width: 160, filter: 'agTextColumnFilter' },
   { field: 'model', width: 120 },
-  { field: 'color', width: 160 },
+  { field: 'color', cellRenderer: colorCell, width: 190 },
   { field: 'stage', cellRenderer: stageCell, width: 100 },
   { field: 'status', width: 120 },
   {
@@ -133,13 +154,14 @@ const VehiclesGrid = () => {
     setFilterModel(event.api.getFilterModel());
   };
 
+  const filtersApplied = filterModel && !!Object.keys(filterModel).length;
+  const varHeight = filtersApplied ? '200px' : '150px';
+
   return (
     <>
       <GridTopActions onSearch={onSearch} onToggleToolPanelClick={onToggleToolPanelClick} />
-      {filterModel && !!Object.keys(filterModel).length && (
-        <AppliedFilters filterModel={filterModel} gridRef={gridRef} />
-      )}
-      <Box width="100%" height="calc(100vh - 150px)" className="ag-theme-material">
+      {filtersApplied && <AppliedFilters filterModel={filterModel} gridRef={gridRef} />}
+      <Box width="100%" height={`calc(100vh - ${varHeight})`} className="ag-theme-material">
         <AgGridReact {...gridOptions} ref={gridRef} onFilterChanged={onFilterChanged} />
       </Box>
     </>

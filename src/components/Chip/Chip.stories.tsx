@@ -10,3 +10,7 @@ export default {
 } as ComponentMeta<typeof Chip>;
 
 export const Primary: ComponentStory<typeof Chip> = () => <Chip text="Chip" />;
+
+export const Color: ComponentStory<typeof Chip> = () => (
+  <Chip text="Chip" color="#E04732" borderColor="#E04732 !important" />
+);

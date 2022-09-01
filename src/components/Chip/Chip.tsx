@@ -4,6 +4,8 @@ import React, { FC } from 'react';
 type Props = {
   text: string;
   fontSize?: string;
+  color?: string;
+  borderColor?: string;
 };
 
 const ChipWrapper = styled(Box)(({ theme }) => ({
@@ -19,6 +21,10 @@ const ChipWrapper = styled(Box)(({ theme }) => ({
   whiteSpace: 'nowrap',
 }));
 
-const Chip: FC<Props> = ({ text, fontSize }) => <ChipWrapper fontSize={fontSize}>{text}</ChipWrapper>;
+const Chip: FC<Props> = ({ text, fontSize, color, borderColor }) => (
+  <ChipWrapper fontSize={fontSize} color={color} borderColor={borderColor}>
+    {text}
+  </ChipWrapper>
+);
 
 export default Chip;

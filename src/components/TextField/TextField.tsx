@@ -4,6 +4,7 @@ import React, { FC, ReactNode } from 'react';
 type Props = {
   startIcon?: ReactNode;
   endIcon?: ReactNode;
+  height?: string;
 } & InputBaseProps;
 
 const Input = styled(InputBase)(({ theme }) => ({
@@ -21,9 +22,9 @@ const InputWrapper = styled(Stack)(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
 }));
 
-const TextField: FC<Props> = ({ startIcon, endIcon, ...other }) => {
+const TextField: FC<Props> = ({ startIcon, endIcon, height, ...other }) => {
   return (
-    <InputWrapper direction="row" alignItems="center" justifyContent="center">
+    <InputWrapper direction="row" alignItems="center" justifyContent="center" height={height}>
       {startIcon && (
         <Stack alignItems="center" justifyContent="center" p={1}>
           {startIcon}

@@ -83,15 +83,15 @@ export const roles: string[] = [
 export const hosts = ['gmail', 'lucid', 'lucidmotors', 'yahoo', 'hotmail', 'aol', 'outlook'];
 
 export const carModels: string[] = ['GT', 'Touring'];
-export const carColors: string[] = [
-  'Stellar Silver',
-  'Infinite Black',
-  'Infinite White',
-  'Quantum Gray',
-  'Deep Red Metallic',
-  'Cosmos Silver',
-  'Deep Blue Metallic',
-  'Cosmos Black',
+export const carColors = [
+  { label: 'Stellar Silver', color1: '#F0F0F0', color2: '#E0E0E0' },
+  { label: 'Infinite Black', color1: '#4B4B4B', color2: '#0E0E0E' },
+  { label: 'Infinite White', color1: '#F0F0F0', color2: '#F3F3F3' },
+  { label: 'Quantum Gray', color1: '#F0F0F0', color2: '#D5D5D5' },
+  { label: 'Deep Red Metallic', color1: '#85787A', color2: '#510F16' },
+  { label: 'Cosmos Silver', color1: '#9E9E9F', color2: '#6E6E70' },
+  { label: 'Deep Blue Metallic', color1: '#F0F0F0', color2: '#E0E0E0' },
+  { label: 'Cosmos Black', color1: '#F0F0F0', color2: '#E0E0E0' },
 ];
 
 export const carStatuses: string[] = ['End of Line', 'In Production', 'En-route', 'Arrived', 'In Yard', 'Inspection'];
