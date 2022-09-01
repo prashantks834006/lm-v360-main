@@ -5,7 +5,7 @@ import VehicleVerticalTabs from '../modules/VehicleVerticalTabs';
 import Page from '../components/Page/Page';
 import InfoHeader from '../modules/InfoHeader';
 import Stepper from '../components/Stepper/Stepper';
-import CustomerDetailsSection from '../modules/CustomerDetailsSection';
+import ActionsTabs from '../modules/CustomerDetailsSection/ActionsTabs';
 
 const Vehicle = () => {
   const steps = ['Reservation', 'Order', 'Production', 'Transit', 'Inspection', 'Delivery', 'Ownership'];
@@ -26,7 +26,7 @@ const Vehicle = () => {
                 <Stepper activeStep={2} steps={steps} orientation="horizontal" />
                 <Grid container mt={2} spacing={4}>
                   <Grid item sm={12} md={7} m={0}>
-                    <CustomerDetailsSection />
+                    <ActionsTabs />
                   </Grid>
                   <Grid item md={5}>
                     <Typography variant="body2" fontWeight={700} fontSize={12} color={colors.grey[600]}>

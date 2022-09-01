@@ -1,3 +1,4 @@
+import { Icon } from '@iconify/react';
 import { Box, Divider, Stack, Typography } from '@mui/material';
 import React from 'react';
 import Chip from '../../components/Chip/Chip';
@@ -10,14 +11,23 @@ const CustomerDetails = () => {
   return (
     <Box
       p={2}
+      ml={4}
+      mt={6}
       borderRadius={2}
       bgcolor={(theme) => theme.palette.grey[50]}
       border={(theme) => `2px solid ${theme.palette.grey[100]}`}
+      width="44%"
     >
       <Stack direction="row" alignItems="flex-end" gap={1}>
         <Typography variant="h4" fontWeight={400} fontSize={28}>
           Stephanie Nelson
         </Typography>
+        <Link
+          to={PATHS.vehicles}
+          sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0.5, mb: 0.5 }}
+        >
+          Reassign <Icon icon="akar-icons:chevron-down" />
+        </Link>
         <Box flexGrow={1} />
         <Link to={PATHS.vahicle('123')} sx={{ mb: 0.5 }}>
           View details

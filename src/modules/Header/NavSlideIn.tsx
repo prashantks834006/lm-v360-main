@@ -7,8 +7,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Icon } from '@iconify/react';
-import { PATHS } from '../../utils/constants';
+import { PATHS, FEEDBACK_URL } from '../../utils/constants';
 import Link from '../../components/Link/Link';
+import ExternalLink from '../../components/ExternalLink/ExternalLink';
 
 type Props = {
   isOpen: boolean;
@@ -39,6 +40,12 @@ const NavigationDrawer: React.FC<Props> = ({ isOpen, setIsOpen }) => {
       text: 'Vehicles Search',
     },
     {
+      path: FEEDBACK_URL,
+      icon: 'ant-design:search-outlined',
+      text: 'Report and Feedback',
+      external: true,
+    },
+    {
       path: PATHS.help,
       icon: 'ic:baseline-help-outline',
       text: 'Help',
@@ -49,18 +56,31 @@ const NavigationDrawer: React.FC<Props> = ({ isOpen, setIsOpen }) => {
     <Drawer anchor="left" open={isOpen} onClose={toggleDrawer}>
       <Box sx={{ width: 200, p: 3 }} role="presentation" onClick={toggleDrawer} onKeyDown={toggleDrawer}>
         <List>
-          {navItems.map(({ text, icon, path }) => (
-            <Link to={path} key={path}>
-              <ListItem key={text} disablePadding>
+          {navItems.map(({ text, icon, path, external }) => {
+            const listItem = (
+              <ListItem disablePadding>
                 <ListItemButton sx={{ borderRadius: 2 }}>
                   <ListItemIcon sx={{ minWidth: 30 }}>
-                    <Icon icon={icon} fontSize={20} />
+                    <Icon icon={icon} fontSize={16} />
                   </ListItemIcon>
-                  <ListItemText primary={text} />
+                  <ListItemText primary={text} primaryTypographyProps={{ fontSize: 12 }} />
                 </ListItemButton>
               </ListItem>
-            </Link>
-          ))}
+            );
+
+            if (!external) {
+              return (
+                <Link to={path} key={text}>
+                  {listItem}
+                </Link>
+              );
+            }
+            return (
+              <ExternalLink href={path} target="_blank" rel="noreferrer">
+                {listItem}
+              </ExternalLink>
+            );
+          })}
         </List>
       </Box>
     </Drawer>

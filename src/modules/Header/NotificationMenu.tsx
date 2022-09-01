@@ -32,7 +32,7 @@ const NotificationMenu: FC<Props> = ({ id, anchorEl, handleMenuClose }) => {
       ),
     },
     {
-      label: 'read',
+      label: 'Read',
       content: (
         <Box sx={{ maxHeight: 300, overflow: 'auto' }}>
           {[...new Array(2)]
@@ -48,23 +48,23 @@ const NotificationMenu: FC<Props> = ({ id, anchorEl, handleMenuClose }) => {
   return (
     <Menu
       anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: 'bottom',
-        horizontal: 'right',
-      }}
       id={id}
       keepMounted
+      open={Boolean(anchorEl)}
+      onClose={handleMenuClose}
       transformOrigin={{
         vertical: 'bottom',
         horizontal: 'right',
       }}
-      open={Boolean(anchorEl)}
-      onClose={handleMenuClose}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
     >
       <Box sx={{ p: 1, maxWidth: 500, width: '80vw' }}>
         <Stack direction="row" alignItems="center" justifyContent="space-between">
           <Stack direction="row" gap={1} alignItems="center">
-            <Typography>Notifications</Typography>
+            <Typography fontSize={12}>Notifications</Typography>
             <Select
               size="small"
               variant="outlined"

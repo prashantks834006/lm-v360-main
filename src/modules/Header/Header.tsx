@@ -1,5 +1,4 @@
-import React, { useId, useState, useCallback, MouseEvent } from 'react';
-import { styled } from '@mui/material/styles';
+import React, { useId, useState, useCallback, MouseEvent, useEffect } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -7,7 +6,7 @@ import { Icon } from '@iconify/react';
 import { Avatar, Divider, Stack, Typography } from '@mui/material';
 import i18next from 'i18next';
 import Badge from '../../components/Badge/Badge';
-import Logo from '../../assets/images/logo.png';
+import { ReactComponent as Logo } from '../../assets/images/logo.svg';
 import NavSlidein from './NavSlideIn';
 import NotificationMenu from './NotificationMenu';
 import SearchBar from './Search';
@@ -15,18 +14,12 @@ import ProfileMenu from './ProfileMenu';
 import { ReactComponent as GlobeIcon } from '../../assets/icons/globe.svg';
 import LocalizationMenu from './LocalizationMenu';
 
-const Image = styled('img')(({ theme }) => ({
-  width: '144px',
-  [theme.breakpoints.down('md')]: {
-    width: '50px',
-  },
-}));
-
 const Header = () => {
   const [notificationMenuAnchorEl, setNotificationMenuAnchorEl] = useState<null | HTMLElement>(null);
   const [profileMenuAnchorEl, setProfileMenuAnchorEl] = useState<null | HTMLElement>(null);
   const [localizationMenuAnchorEl, setLocalizationMenuAnchorEl] = useState<null | HTMLElement>(null);
   const [isSideNavOpen, setIsSideNavOpen] = useState<boolean>(false);
+  const [language, setLanguage] = useState('en');
 
   const handleNotificationMenuOpen = useCallback((event: MouseEvent<HTMLElement>) => {
     setNotificationMenuAnchorEl(event.currentTarget);
@@ -58,6 +51,7 @@ const Header = () => {
 
   const handleSelectLanguage = useCallback((code: string) => {
     i18next.changeLanguage(code);
+    setLanguage(code);
     const htmlElement = document.querySelector('html');
     const bodyElement = document.querySelector('body');
     if (htmlElement) {
@@ -71,6 +65,10 @@ const Header = () => {
       }
     }
     setLocalizationMenuAnchorEl(null);
+  }, []);
+
+  useEffect(() => {
+    setLanguage(i18next.language);
   }, []);
 
   return (
@@ -97,7 +95,7 @@ const Header = () => {
             <Icon icon="cil:hamburger-menu" />
           </IconButton>
           <Box>
-            <Image src={Logo} alt="LUCID" />
+            <Logo />
           </Box>
           <Box sx={{ flexGrow: 1 }} />
           <SearchBar />
@@ -131,7 +129,7 @@ const Header = () => {
             >
               <GlobeIcon />
               <Typography fontSize={10} textTransform="uppercase">
-                {i18next.language}
+                {language}
               </Typography>
               <Icon icon="bi:caret-down-fill" />
             </Stack>
