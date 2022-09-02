@@ -16,13 +16,13 @@ type Props = {
 const Breadcrumbs: React.FC<Props> = ({ links }) => {
   const breadcrumbs = React.useMemo(
     () =>
-      links.map((item, i) =>
+      links.map(({ label, link }, i) =>
         i === links.length - 1 ? (
-          <Typography variant="body2" key={item.label} sx={{ fontSize: 12 }} color="text.primary">
-            {item.label}
+          <Typography key={label} sx={{ fontSize: 11 }} color="text.primary">
+            {label}
           </Typography>
         ) : (
-          <Link to={item.link}>{item.label}</Link>
+          <Link to={link}>{label}</Link>
         )
       ),
     [links]
