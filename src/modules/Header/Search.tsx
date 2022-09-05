@@ -1,27 +1,21 @@
-import * as React from 'react';
-import useAutocomplete from '@mui/material/useAutocomplete';
+import React, { useEffect, Fragment, useState } from 'react';
+import { useAutocomplete, Typography, Divider, Stack, Box } from '@mui/material';
 import { alpha, styled } from '@mui/material/styles';
 import { autocompleteClasses, createFilterOptions } from '@mui/material/Autocomplete';
 import { Icon } from '@iconify/react';
-import { Typography, Divider, Stack, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
-// import useThrottle from '../../hooks/useThrottle';
-// import { getVehicleSearch } from '../../services/vehicles.service';
+import useThrottle from '../../hooks/useThrottle';
+import { getVehicleSearch } from '../../services/vehicles';
 import Link from '../../components/Link/Link';
 import { PATHS } from '../../utils/constants';
 import Chip from '../../components/Chip/Chip';
-import {
-  generateRandomName,
-  generateRandomString,
-  generateRandomVehicle,
-  generateRandomStatus,
-} from '../../utils/string';
+import { Vehicle } from '../../types';
 
-const filterOptions = createFilterOptions({
+const filterOptions = createFilterOptions<Vehicle>({
   matchFrom: 'any',
-  stringify: (option: any) => option.id,
+  stringify: (option) => option.VIN,
 });
 
 const Listbox = styled('ul')(({ theme }) => ({
@@ -54,15 +48,6 @@ const Listbox = styled('ul')(({ theme }) => ({
     backgroundColor: theme.palette.grey[300],
   },
 }));
-
-const vehicles = [
-  ...[...new Array(20)].map(() => ({
-    id: generateRandomString(15),
-    vehicle: generateRandomVehicle(),
-    customer: generateRandomName(),
-    status: generateRandomStatus(),
-  })),
-];
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -107,25 +92,22 @@ const StyledInputBase = styled('input')(({ theme }) => ({
 
 const SearchBar = () => {
   const id = React.useId();
+  const [options, setOptions] = useState<Vehicle[]>([]);
 
   const { getRootProps, getInputProps, getListboxProps, getOptionProps, groupedOptions, focused, inputValue } =
-    useAutocomplete({
+    useAutocomplete<Vehicle>({
       id,
-      options: vehicles,
-      getOptionLabel: (option) => option.id,
+      options,
+      getOptionLabel: (option) => option?.VIN,
       filterOptions,
     });
 
   const { t } = useTranslation();
-  // const throttledInputValue = useThrottle(inputValue, 1000);
+  const throttledInputValue = useThrottle(inputValue, 1000);
 
-  // React.useEffect(() => {
-  //   if (throttledInputValue) {
-  //     getVehicleSearch(throttledInputValue).then((data) => {
-  //       console.log(data);
-  //     });
-  //   }
-  // }, [throttledInputValue]);
+  useEffect(() => {
+    getVehicleSearch(throttledInputValue).then((data) => setOptions(data.data));
+  }, [throttledInputValue]);
 
   return (
     <div>
@@ -143,18 +125,18 @@ const SearchBar = () => {
       </div>
       {groupedOptions.length > 0 ? (
         <Listbox {...getListboxProps()}>
-          {(groupedOptions as typeof vehicles).map((option, index) => {
-            const matches = match(option.id, inputValue, {
+          {(groupedOptions as Vehicle[]).map((option, index) => {
+            const matches = match(option.VIN, inputValue, {
               insideWords: true,
               findAllOccurrences: true,
               requireMatchAll: true,
             });
-            const parts = parse(option.id, matches);
+            const parts = parse(option.VIN, matches);
 
             return (
-              <>
-                <li {...getOptionProps({ option, index })} key={option.id}>
-                  <Link to={PATHS.vahicle(option.id)} sx={{ color: (theme) => theme.palette.common.black }}>
+              <Fragment key={option._id}>
+                <li {...getOptionProps({ option, index })}>
+                  <Link to={PATHS.vahicle(option._id)} sx={{ color: (theme) => theme.palette.common.black }}>
                     <Stack direction="row">
                       <Box sx={{ flexGrow: 1 }}>
                         <Typography sx={{ fontSize: 12, fontWeight: 400 }}>
@@ -169,18 +151,16 @@ const SearchBar = () => {
                             </span>
                           ))}
                         </Typography>
-                        <Typography sx={{ fontSize: 10 }}>
-                          {option.vehicle} ordered by {option.customer}
-                        </Typography>
+                        <Typography sx={{ fontSize: 10 }}>{option.trim} ordered by stephene nelson</Typography>
                       </Box>
                       <div>
-                        <Chip text={option.status} />
+                        <Chip text={option.currentStatus} />
                       </div>
                     </Stack>
                   </Link>
                 </li>
                 <Divider />
-              </>
+              </Fragment>
             );
           })}
         </Listbox>

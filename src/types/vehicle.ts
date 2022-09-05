@@ -20,3 +20,10 @@ export interface IVehiclesData {
   lastContact: string;
   ownership: string;
 }
+
+export interface Vehicle {
+  _id: string;
+  VIN: string;
+  trim: string;
+  currentStatus: string;
+}
