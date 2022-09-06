@@ -15,7 +15,7 @@ import { Vehicle } from '../../types';
 
 const filterOptions = createFilterOptions<Vehicle>({
   matchFrom: 'any',
-  stringify: (option) => option.VIN,
+  stringify: (option) => option.VIN + option.reservationId + option.trim,
 });
 
 const Listbox = styled('ul')(({ theme }) => ({
@@ -29,11 +29,11 @@ const Listbox = styled('ul')(({ theme }) => ({
   maxHeight: 800,
   color: theme.palette.common.black,
   marginLeft: 30,
-  width: '80vw',
+  width: '50vw',
   height: '80vh',
   borderRadius: theme.shape.borderRadius,
   boxShadow: theme.shadows[4],
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.up('sm')]: {
     width: '420px',
   },
   [`& li`]: {
@@ -85,10 +85,16 @@ const StyledInputBase = styled('input')(({ theme }) => ({
   paddingRight: theme.spacing(5),
   color: theme.palette.common.white,
   width: '50px',
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.up('sm')]: {
     width: '400px',
   },
 }));
+
+const matchOptions = {
+  insideWords: true,
+  findAllOccurrences: true,
+  requireMatchAll: true,
+};
 
 const SearchBar = () => {
   const id = React.useId();
@@ -98,12 +104,12 @@ const SearchBar = () => {
     useAutocomplete<Vehicle>({
       id,
       options,
-      getOptionLabel: (option) => option?.VIN,
+      getOptionLabel: (option) => option?.VIN || option.reservationId,
       filterOptions,
     });
 
   const { t } = useTranslation();
-  const throttledInputValue = useThrottle(inputValue, 1000);
+  const throttledInputValue = useThrottle(inputValue, 2000);
 
   useEffect(() => {
     getVehicleSearch(throttledInputValue).then((data) => setOptions(data.data));
@@ -126,12 +132,13 @@ const SearchBar = () => {
       {groupedOptions.length > 0 ? (
         <Listbox {...getListboxProps()}>
           {(groupedOptions as Vehicle[]).map((option, index) => {
-            const matches = match(option.VIN, inputValue, {
-              insideWords: true,
-              findAllOccurrences: true,
-              requireMatchAll: true,
-            });
-            const parts = parse(option.VIN, matches);
+            const VIN = option.VIN || option.reservationId;
+            const matches = match(VIN, inputValue, matchOptions);
+            const parts = parse(VIN, matches);
+
+            const secondaryText = `${option.trim} ordered by stephene nelson`;
+            const secondaryMatches = match(secondaryText, inputValue, matchOptions);
+            const secondaryParts = parse(secondaryText, secondaryMatches);
 
             return (
               <Fragment key={option._id}>
@@ -140,18 +147,35 @@ const SearchBar = () => {
                     <Stack direction="row">
                       <Box sx={{ flexGrow: 1 }}>
                         <Typography sx={{ fontSize: 12, fontWeight: 400 }}>
-                          {parts.map((part) => (
-                            <span
-                              key={part.text}
-                              style={{
-                                fontWeight: part.highlight ? 700 : 400,
-                              }}
-                            >
-                              {part.text}
-                            </span>
-                          ))}
+                          {parts.map((part, i) => {
+                            const key = `${i}-${part}`;
+                            return (
+                              <span
+                                key={key}
+                                style={{
+                                  fontWeight: part.highlight ? 700 : 400,
+                                }}
+                              >
+                                {part.text}
+                              </span>
+                            );
+                          })}
                         </Typography>
-                        <Typography sx={{ fontSize: 10 }}>{option.trim} ordered by stephene nelson</Typography>
+                        <Typography sx={{ fontSize: 10 }}>
+                          {secondaryParts.map((part, i) => {
+                            const key = `${i}-${part}`;
+                            return (
+                              <span
+                                key={key}
+                                style={{
+                                  fontWeight: part.highlight ? 700 : 400,
+                                }}
+                              >
+                                {part.text}
+                              </span>
+                            );
+                          })}
+                        </Typography>
                       </Box>
                       <div>
                         <Chip text={option.currentStatus} />

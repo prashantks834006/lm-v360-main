@@ -26,4 +26,6 @@ export interface Vehicle {
   VIN: string;
   trim: string;
   currentStatus: string;
+  reservationId: string;
+  lucidId: string;
 }
