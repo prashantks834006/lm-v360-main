@@ -1,26 +1,3 @@
-interface IColor {
-  label: string;
-  color1: string;
-  color2: string;
-}
-
-export interface IVehiclesData {
-  customer: string;
-  customerStage: string;
-  customerStatus: string;
-  VIN: string;
-  model: string;
-  color: IColor;
-  stage: string;
-  status: string;
-  statusEntryDate: string;
-  duration: number;
-  deliveryReadiness: number;
-  software: number;
-  lastContact: string;
-  ownership: string;
-}
-
 export interface Vehicle {
   _id: string;
   VIN: string;
@@ -28,4 +5,30 @@ export interface Vehicle {
   currentStatus: string;
   reservationId: string;
   lucidId: string;
+}
+
+export interface IColumnMetaData {
+  columnSeqNo: string;
+  propertyName: string;
+  property: string;
+  toolTip: string;
+  toolTipProperty: string;
+  sortingEnabled: string;
+  width: number;
+  filterType: string;
+  type: 'Plain' | 'Tag' | 'ProgressBar' | 'Link' | 'Color' | 'Date';
+}
+
+export interface ILinkColumnMetaData extends IColumnMetaData {
+  link: string;
+  toolTipLink: string;
+}
+
+export interface IColorColumnMetaData extends IColumnMetaData {
+  color1Property: string;
+  color2Property: string;
+}
+
+export interface IDateColumnMetaData extends IColumnMetaData {
+  dateFormat: string;
 }
