@@ -2,11 +2,10 @@ import React from 'react';
 import { Button, Stack, Typography, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { AgGridReact } from 'ag-grid-react';
-import { IVehiclesData } from '../../types/vehicle';
 
 interface IProps {
   filterModel: { [key: string]: any };
-  gridRef?: React.RefObject<AgGridReact<IVehiclesData>>;
+  gridRef?: React.RefObject<AgGridReact>;
 }
 
 const AppliedFilters: React.FC<IProps> = ({ filterModel, gridRef }) => {
