@@ -63,34 +63,32 @@ const Filter: React.FC<IProps> = ({ filters }) => {
           horizontal: 'left',
         }}
       >
-        <>
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            paddingX={2.5}
-            paddingTop={2.5}
-            paddingBottom={1.25}
-            position="sticky"
-            top={0}
-            width={300}
-          >
-            <Stack direction="row" alignItems="center" gap={1.5}>
-              <FilterListIcon />
-              <Typography variant="subtitle1" fontWeight={500}>
-                Apply Filters
-              </Typography>
-            </Stack>
-            <IconButton onClick={handleClose} sx={{ padding: 0 }}>
-              <Close />
-            </IconButton>
-          </Box>
-          {filterDetails}
-          <Box display="flex" alignItems="flex-end" flexDirection="column" paddingRight={2} paddingBottom={2.5}>
-            <Button variant="outlined" sx={{ textTransform: 'none', fontWeight: 400, paddingX: 2.5, paddingY: 1.25 }}>
-              Clear all
-            </Button>
-          </Box>
-        </>
+        <Box
+          display="flex"
+          justifyContent="space-between"
+          paddingX={2.5}
+          paddingTop={2.5}
+          paddingBottom={1.25}
+          position="sticky"
+          top={0}
+          width={300}
+        >
+          <Stack direction="row" alignItems="center" gap={1.5}>
+            <FilterListIcon />
+            <Typography variant="subtitle1" fontWeight={500}>
+              Apply Filters
+            </Typography>
+          </Stack>
+          <IconButton onClick={handleClose} sx={{ padding: 0 }}>
+            <Close />
+          </IconButton>
+        </Box>
+        {filterDetails}
+        <Box display="flex" alignItems="flex-end" flexDirection="column" paddingRight={2} paddingBottom={2.5}>
+          <Button variant="outlined" sx={{ textTransform: 'none', fontWeight: 400, paddingX: 2.5, paddingY: 1.25 }}>
+            Clear all
+          </Button>
+        </Box>
       </Menu>
     </>
   );

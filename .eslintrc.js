@@ -60,6 +60,7 @@ module.exports = {
       },
     ],
     '@typescript-eslint/no-explicit-any': 'off',
+    'no-underscore-dangle': ['error', { allow: ['_id'] }],
   },
   settings: {
     'import/resolver': {

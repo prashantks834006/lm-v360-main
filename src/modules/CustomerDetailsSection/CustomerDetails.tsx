@@ -12,7 +12,8 @@ const CustomerDetails = () => {
     <Box
       p={2}
       ml={4}
-      mt={6}
+      mt={2}
+      mr={-2}
       borderRadius={2}
       bgcolor={(theme) => theme.palette.grey[50]}
       border={(theme) => `2px solid ${theme.palette.grey[100]}`}

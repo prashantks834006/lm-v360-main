@@ -4,9 +4,9 @@ import LaunchIcon from '@mui/icons-material/Launch';
 import IAction from '../../types/action';
 import Chip from '../../components/Chip/Chip';
 
-const ActionCompleted: React.FC<IAction> = ({ id, name, dueDate, tasks, taskOutcome, comment }) => {
+const ActionCompleted: React.FC<IAction> = ({ name, dueDate, tasks, taskOutcome, comment }) => {
   const taskList = tasks.map((task) => (
-    <Box key={id} display="flex" justifyContent="space-between">
+    <Box key={task.id} display="flex" justifyContent="space-between">
       <FormControlLabel
         control={<Checkbox disabled checked sx={{ padding: '0px' }} />}
         label={

@@ -35,6 +35,7 @@ const AppliedFilters: React.FC<IProps> = ({ filterModel, gridRef }) => {
         </Typography>
         {Object.keys(filterModel).map((filter) => (
           <Stack
+            key={filter}
             direction="row"
             gap={1}
             sx={{ padding: '5px 5px 5px 8px', background: 'rgba(69, 107, 217, 0.1)', borderRadius: '3px' }}

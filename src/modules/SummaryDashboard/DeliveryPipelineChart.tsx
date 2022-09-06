@@ -111,7 +111,7 @@ const DeliveryPipelineChart = () => {
         <Box width="100%">
           <Stack direction="row" alignItems="center" justifyContent="space-between" width="100%">
             {[0, 10, 20, 30, 40, 50, 60].map((i) => (
-              <Typography fontSize={11} fontWeight={400} color={(theme) => theme.palette.grey[600]}>
+              <Typography fontSize={11} fontWeight={400} color={(theme) => theme.palette.grey[600]} key={i}>
                 {i}
               </Typography>
             ))}

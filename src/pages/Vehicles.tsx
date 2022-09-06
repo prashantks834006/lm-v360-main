@@ -1,5 +1,5 @@
-import { Divider } from '@mui/material';
 import React from 'react';
+import { Divider } from '@mui/material';
 import VehiclesGrid from '../modules/VehiclesGrid';
 import Page from '../components/Page/Page';
 import Breadcrumbs from '../components/BreadCrumbs/BreadCrumbs';

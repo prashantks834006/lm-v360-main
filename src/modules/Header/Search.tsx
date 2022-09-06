@@ -1,25 +1,21 @@
-import * as React from 'react';
-import useAutocomplete from '@mui/material/useAutocomplete';
+import React, { useEffect, Fragment, useState } from 'react';
+import { useAutocomplete, Typography, Divider, Stack, Box } from '@mui/material';
 import { alpha, styled } from '@mui/material/styles';
 import { autocompleteClasses, createFilterOptions } from '@mui/material/Autocomplete';
 import { Icon } from '@iconify/react';
-import { Typography, Divider, Stack, Box } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
+import useThrottle from '../../hooks/useThrottle';
+import { getVehicleSearch } from '../../services/vehicles';
 import Link from '../../components/Link/Link';
 import { PATHS } from '../../utils/constants';
 import Chip from '../../components/Chip/Chip';
-import {
-  generateRandomName,
-  generateRandomString,
-  generateRandomVehicle,
-  generateRandomStatus,
-} from '../../utils/string';
+import { Vehicle } from '../../types';
 
-const filterOptions = createFilterOptions({
+const filterOptions = createFilterOptions<Vehicle>({
   matchFrom: 'any',
-  stringify: (option: any) => option.id,
+  stringify: (option) => option.VIN + option.reservationId + option.trim,
 });
 
 const Listbox = styled('ul')(({ theme }) => ({
@@ -33,11 +29,11 @@ const Listbox = styled('ul')(({ theme }) => ({
   maxHeight: 800,
   color: theme.palette.common.black,
   marginLeft: 30,
-  width: '80vw',
+  width: '50vw',
   height: '80vh',
   borderRadius: theme.shape.borderRadius,
   boxShadow: theme.shadows[4],
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.up('sm')]: {
     width: '420px',
   },
   [`& li`]: {
@@ -52,15 +48,6 @@ const Listbox = styled('ul')(({ theme }) => ({
     backgroundColor: theme.palette.grey[300],
   },
 }));
-
-const vehicles = [
-  ...[...new Array(20)].map(() => ({
-    id: generateRandomString(15),
-    vehicle: generateRandomVehicle(),
-    customer: generateRandomName(),
-    status: generateRandomStatus(),
-  })),
-];
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -98,21 +85,35 @@ const StyledInputBase = styled('input')(({ theme }) => ({
   paddingRight: theme.spacing(5),
   color: theme.palette.common.white,
   width: '50px',
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.up('sm')]: {
     width: '400px',
   },
 }));
 
+const matchOptions = {
+  insideWords: true,
+  findAllOccurrences: true,
+  requireMatchAll: true,
+};
+
 const SearchBar = () => {
+  const id = React.useId();
+  const [options, setOptions] = useState<Vehicle[]>([]);
+
   const { getRootProps, getInputProps, getListboxProps, getOptionProps, groupedOptions, focused, inputValue } =
-    useAutocomplete({
-      id: 'vehicles-search',
-      options: vehicles,
-      getOptionLabel: (option) => option.id,
+    useAutocomplete<Vehicle>({
+      id,
+      options,
+      getOptionLabel: (option) => option?.VIN || option.reservationId,
       filterOptions,
     });
 
   const { t } = useTranslation();
+  const throttledInputValue = useThrottle(inputValue, 2000);
+
+  useEffect(() => {
+    getVehicleSearch(throttledInputValue).then((data) => setOptions(data.data));
+  }, [throttledInputValue]);
 
   return (
     <div>
@@ -130,44 +131,60 @@ const SearchBar = () => {
       </div>
       {groupedOptions.length > 0 ? (
         <Listbox {...getListboxProps()}>
-          {(groupedOptions as typeof vehicles).map((option, index) => {
-            const matches = match(option.id, inputValue, {
-              insideWords: true,
-              findAllOccurrences: true,
-              requireMatchAll: true,
-            });
-            const parts = parse(option.id, matches);
+          {(groupedOptions as Vehicle[]).map((option, index) => {
+            const VIN = option.VIN || option.reservationId;
+            const matches = match(VIN, inputValue, matchOptions);
+            const parts = parse(VIN, matches);
+
+            const secondaryText = `${option.trim} ordered by stephene nelson`;
+            const secondaryMatches = match(secondaryText, inputValue, matchOptions);
+            const secondaryParts = parse(secondaryText, secondaryMatches);
 
             return (
-              <>
-                <li {...getOptionProps({ option, index })} key={option.id}>
-                  <Link to={PATHS.vahicle(option.id)} sx={{ color: (theme) => theme.palette.common.black }}>
+              <Fragment key={option._id}>
+                <li {...getOptionProps({ option, index })}>
+                  <Link to={PATHS.vahicle(option._id)} sx={{ color: (theme) => theme.palette.common.black }}>
                     <Stack direction="row">
                       <Box sx={{ flexGrow: 1 }}>
                         <Typography sx={{ fontSize: 12, fontWeight: 400 }}>
-                          {parts.map((part) => (
-                            <span
-                              key={part.text}
-                              style={{
-                                fontWeight: part.highlight ? 700 : 400,
-                              }}
-                            >
-                              {part.text}
-                            </span>
-                          ))}
+                          {parts.map((part, i) => {
+                            const key = `${i}-${part}`;
+                            return (
+                              <span
+                                key={key}
+                                style={{
+                                  fontWeight: part.highlight ? 700 : 400,
+                                }}
+                              >
+                                {part.text}
+                              </span>
+                            );
+                          })}
                         </Typography>
                         <Typography sx={{ fontSize: 10 }}>
-                          {option.vehicle} ordered by {option.customer}
+                          {secondaryParts.map((part, i) => {
+                            const key = `${i}-${part}`;
+                            return (
+                              <span
+                                key={key}
+                                style={{
+                                  fontWeight: part.highlight ? 700 : 400,
+                                }}
+                              >
+                                {part.text}
+                              </span>
+                            );
+                          })}
                         </Typography>
                       </Box>
                       <div>
-                        <Chip text={option.status} />
+                        <Chip text={option.currentStatus} />
                       </div>
                     </Stack>
                   </Link>
                 </li>
                 <Divider />
-              </>
+              </Fragment>
             );
           })}
         </Listbox>
