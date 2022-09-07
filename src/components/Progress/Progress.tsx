@@ -2,7 +2,7 @@ import { Box, colors, Stack, Typography } from '@mui/material';
 import React from 'react';
 
 const Progress: React.FC<{ progress: number }> = ({ progress }) => {
-  return (
+  return progress !== null && progress !== undefined ? (
     <Stack direction="row" alignItems="center" justifyContent="center" gap={1}>
       <Box
         bgcolor={colors.grey[300]}
@@ -17,6 +17,8 @@ const Progress: React.FC<{ progress: number }> = ({ progress }) => {
       </Box>
       <Typography fontSize={12}>{progress}%</Typography>
     </Stack>
+  ) : (
+    <span />
   );
 };
 

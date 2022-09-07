@@ -14,7 +14,7 @@ export const getVehicleSearch = async (searchText: string): Promise<Res<Vehicle[
 };
 
 export const getColumnMetaData = async () => {
-  const response = await request.get('v1/ui-metadata?module=HomePage%2FDashbord&subModule=AllVehicles');
+  const response = await request.get('v1/ui-metadata?module=HomePage/Dashboard&subModule=AllVehicles');
   return response.data.data[0].columnDetails as IColumnMetaData[];
 };
 

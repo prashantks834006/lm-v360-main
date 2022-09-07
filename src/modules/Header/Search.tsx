@@ -15,7 +15,7 @@ import { Vehicle } from '../../types';
 
 const filterOptions = createFilterOptions<Vehicle>({
   matchFrom: 'any',
-  stringify: (option) => option.VIN + option.reservationId + option.trim,
+  stringify: (option) => option.VIN + option.reservationId + option.trim + option.First_Name__C + option.Last_Name__C,
 });
 
 const Listbox = styled('ul')(({ theme }) => ({
@@ -136,7 +136,7 @@ const SearchBar = () => {
             const matches = match(VIN, inputValue, matchOptions);
             const parts = parse(VIN, matches);
 
-            const secondaryText = `${option.trim} ordered by stephene nelson`;
+            const secondaryText = `${option.trim} ordered by ${option.First_Name__C} ${option.Last_Name__C}`;
             const secondaryMatches = match(secondaryText, inputValue, matchOptions);
             const secondaryParts = parse(secondaryText, secondaryMatches);
 

@@ -5,6 +5,8 @@ export interface Vehicle {
   currentStatus: string;
   reservationId: string;
   lucidId: string;
+  Last_Name__C: string;
+  First_Name__C: string;
 }
 
 export interface IColumnMetaData {

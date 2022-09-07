@@ -11,8 +11,7 @@ const AuthGuard = ({ children }: Props) => {
   if (authState === null || authState === undefined) {
     return <div> Loading.... </div>;
   }
-
-  if (process.env.NODE_ENV === 'production' && !authState.isAuthenticated) {
+  if (process.env.REACT_APP_DEVELOPMENT !== 'true' && !authState.isAuthenticated) {
     oktaAuth.signInWithRedirect();
     return <div> Loading.... </div>;
   }
