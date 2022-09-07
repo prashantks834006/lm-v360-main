@@ -9,14 +9,13 @@ import {
   generateRandomStage,
   generateRandomCarImage,
 } from '../../utils/string';
-import ICar from '../../types/cars';
 
 const todayStartOfDay = new Date(moment().startOf('day').toISOString());
 const todayEndOfDay = new Date(moment().endOf('day').toISOString());
 const tomorrow = new Date(moment().add(1, 'day').startOf('day').toISOString());
 const nextOneWeek = new Date(moment().add(7, 'day').endOf('day').toISOString());
 
-export const mockCars: ICar[] = [...new Array(10)].map((_, i) => ({
+export const mockCars: any[] = [...new Array(10)].map((_, i) => ({
   customer: generateRandomName(),
   id: generateRandomString(15),
   stage: generateRandomStage(),

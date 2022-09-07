@@ -9,11 +9,13 @@ import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import './custom.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { META_DATA_MODULES, META_DATA_SUB_MODULES } from '../../utils/constants';
 import { RootState } from '../../redux/store';
 import { pushMetadata } from '../../redux/slices/uiMetaDataSlice';
 import GridTopActions from './GridTopActions';
 import AppliedFilters from './AppliedFilters';
 import { getRowData, getColDefs } from '../../services/vehicles';
+import VehicleListLoader from './VehicleListLoader';
 
 LicenseManager.setLicenseKey(process.env.REACT_APP_AG_GRID_LICENSE_KEY as string);
 
@@ -87,7 +89,9 @@ const VehiclesGrid = () => {
 
   useEffect(() => {
     const index = metaData.data.findIndex(
-      (singleMetaData) => singleMetaData.module === 'HomePage/Dashboard' && singleMetaData.subModule === 'AllVehicles'
+      (singleMetaData) =>
+        singleMetaData.module === META_DATA_MODULES.vehicles &&
+        singleMetaData.subModule === META_DATA_SUB_MODULES.vehiclesGrid
     );
     if (index !== -1) {
       setColDefs(metaData.data[index].colDefs);
@@ -96,8 +100,8 @@ const VehiclesGrid = () => {
         setColDefs(newColDefs);
         dispatch(
           pushMetadata({
-            module: 'HomePage/Dashboard',
-            subModule: 'AllVehicles',
+            module: META_DATA_MODULES.vehicles,
+            subModule: META_DATA_SUB_MODULES.vehiclesGrid,
             colDefs: newColDefs,
           })
         );
@@ -117,7 +121,7 @@ const VehiclesGrid = () => {
     gridOptions.rowData = rowData;
   }, [rowData]);
 
-  if (!gridOptions.columnDefs || !gridOptions.rowData) return <>Loading...</>;
+  if (!gridOptions.columnDefs || !gridOptions.rowData) return <VehicleListLoader />;
   return (
     <>
       <GridTopActions onSearch={onSearch} onToggleToolPanelClick={onToggleToolPanelClick} />

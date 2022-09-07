@@ -1,1 +1,3 @@
-export type Stage = 'Reservation' | 'Order' | 'Production' | 'Transit' | 'Inspection' | 'Delivery' | 'OwnerShip';
+import { stages } from '../utils/constants';
+
+export type Stage = typeof stages[number];
