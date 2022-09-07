@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Box } from '@mui/system';
 import moment from 'moment';
 import { isToday } from '../../utils/date';
@@ -9,6 +9,7 @@ import CarTaskItem from './CarTaskItem';
 import Typography from '../../components/Typography/Typography';
 import Filter from '../Filter/Filter';
 import FILTERS from '../Filter/Filter.mock';
+import { getVehicleSummary } from '../../services/VehicleSummary';
 
 function sortUpcomingTasks(items: ICar[]) {
   const cars = items
@@ -37,48 +38,64 @@ function sortUpcomingTasks(items: ICar[]) {
 }
 
 const CarList = () => {
-  const todayTasks = useMemo(() => mockCars.filter((car) => isToday(car.date)), []);
-  const upcomingTasks = useMemo(() => sortUpcomingTasks(mockCars), []);
-  const activeTaskId = useMemo(() => todayTasks[1].id, [todayTasks]);
+  // const todayTasks = useMemo(() => mockCars.filter((car) => isToday(car.date)), []);
+  // const upcomingTasks = useMemo(() => sortUpcomingTasks(mockCars), []);
+  // const activeTaskId = useMemo(() => todayTasks[1].id, [todayTasks]);
 
-  const dueTodayContent = useMemo(
-    () => (
-      <>
-        {todayTasks.map((car) => (
-          <CarTaskItem key={car.id} car={car} isActive={activeTaskId === car.id} />
-        ))}
-      </>
-    ),
-    [activeTaskId, todayTasks]
-  );
-  const upcomingContent = useMemo(
-    () => (
-      <>
-        {Object.keys(upcomingTasks).map((key) => (
-          <Box key={key} mb={1}>
-            <Typography weight={600} size={16} sx={{ textTransform: 'uppercase', my: 2 }}>
-              {key}
-            </Typography>
-            {upcomingTasks[key].map((car) => (
-              <CarTaskItem key={car.id} car={car} isActive={false} />
-            ))}
-          </Box>
-        ))}
-      </>
-    ),
-    [upcomingTasks]
-  );
+  const [navItems, setNavItems] = useState([]);
+  // const dueTodayContent = useMemo(
+  //   () => (
+  //     <>
+  //       {todayTasks.map((car) => (
+  //         <CarTaskItem key={car.id} car={car} isActive={activeTaskId === car.id} />
+  //       ))}
+  //     </>
+  //   ),
+  //   [activeTaskId, todayTasks]
+  // );
+  // const upcomingContent = useMemo(
+  //   () => (
+  //     <>
+  //       {Object.keys(upcomingTasks).map((key) => (
+  //         <Box key={key} mb={1}>
+  //           <Typography weight={600} size={16} sx={{ textTransform: 'uppercase', my: 2 }}>
+  //             {key}
+  //           </Typography>
+  //           {upcomingTasks[key].map((car) => (
+  //             <CarTaskItem key={car.id} car={car} isActive={false} />
+  //           ))}
+  //         </Box>
+  //       ))}
+  //     </>
+  //   ),
+  //   [upcomingTasks]
+  // );
 
-  const navItems = [
-    {
-      label: 'Due today',
-      content: dueTodayContent,
-    },
-    {
-      label: 'Upcoming Tasks',
-      content: upcomingContent,
-    },
-  ];
+  useEffect(() => {
+    getVehicleSummary().then((response) => {
+      const {
+        tabDetails: { tabName },
+      } = response;
+
+      setNavItems(
+        tabName.map((tab: any) => ({
+          label: tab,
+          content: null,
+        }))
+      );
+    });
+  }, []);
+
+  // const navItems = [
+  //   {
+  //     label: 'Due today',
+  //     content: dueTodayContent,
+  //   },
+  //   {
+  //     label: 'Upcoming Tasks',
+  //     content: upcomingContent,
+  //   },
+  // ];
 
   return (
     <Box pl={2} width="56%">
