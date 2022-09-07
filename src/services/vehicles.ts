@@ -65,6 +65,7 @@ export const getRowData = async () => {
   });
 };
 
+
 export const getVehicleSummaryMetaData = async () => {
   return getMetaData(META_DATA_MODULES.dashboard, META_DATA_SUB_MODULES.vehicleSummary);
 };
@@ -78,3 +79,15 @@ export const getVehicleSummary = async (tabName: string) => {
     })
   ).data.data || []) as ISummaryVehicle[];
 };
+
+export const getVehicleDetailsMetaData = async () => {
+  const response = await request.get('v1/ui-metadata?module=V360Page&subModule=VehicleDetailsTabs');
+  return response.data.data[0];
+};
+
+export const getVehicleDetails = async (reservationId: string | null, VIN: string | null, lucidId: string) => {
+  const response = await request.post('v1/vehicleDetail', { reservationId, VIN, lucidId });
+  return response.data.data[0];
+};
+
+export default { getVehicleSearch };
