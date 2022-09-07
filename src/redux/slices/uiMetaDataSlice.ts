@@ -1,10 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface MetaData {
-  module: string;
-  subModule: string;
-  [key: string]: any;
-}
+import { MetaData } from '../../types/metaData';
 
 export interface UiMetaDataSlice {
   data: MetaData[];

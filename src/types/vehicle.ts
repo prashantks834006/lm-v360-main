@@ -1,3 +1,5 @@
+import { Stage } from './stages';
+
 export interface Vehicle {
   _id: string;
   VIN: string;
@@ -33,4 +35,17 @@ export interface IColorColumnMetaData extends IColumnMetaData {
 
 export interface IDateColumnMetaData extends IColumnMetaData {
   dateFormat: string;
+}
+
+export interface ISummaryVehicle {
+  customerName: string;
+  _id: string;
+  VIN: string;
+  currentStage: Stage;
+  currentCustomerstage: string;
+  vehicleStatus: string;
+  scheduledOn?: string | null;
+  totalTasks: number;
+  date: string;
+  imageUrl: string;
 }
