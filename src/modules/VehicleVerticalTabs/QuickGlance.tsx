@@ -1,14 +1,32 @@
 import { Box, Divider, Grid, Stack } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Link from '../../components/Link/Link';
 
-import img from '../../assets/images/image1.png';
 import Typography from '../../components/Typography/Typography';
 import Team from './TeamList';
 import GridLabels from './GridLabels';
-import { vehicleLabels, team } from './VehicleVerticalTabs.mock';
+import { team } from './VehicleVerticalTabs.mock';
+import { getVehicleDetails, getVehicleDetailsMetaData } from '../../services/vehicles';
 
 const QuickGlance = () => {
+  const location = useLocation();
+  const temp = location.pathname.split('/');
+  const lucidId = temp[temp.length - 1];
+  const [metadata, setMetadata] = useState<any>();
+  const [data, setData] = useState<any>();
+  useEffect(() => {
+    getVehicleDetailsMetaData().then((response) => setMetadata(response.selectedTab));
+  }, []);
+  useEffect(() => {
+    getVehicleDetails(null, null, lucidId).then((response) => setData(response));
+  }, []);
+  if (!metadata || !data) return <>Loading...</>;
+  const vehicleLabels = metadata.rows[1].rows.map((row: any) => {
+    return { label: row.propertyName, title: data[row.property] };
+  });
+  const img = data[metadata.rows[0].property];
+  debugger;
   return (
     <Box sx={{ width: '100%' }}>
       <img src={img} alt="car" style={{ width: '300px', display: 'block', objectFit: 'cover' }} />
