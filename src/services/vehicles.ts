@@ -50,4 +50,14 @@ export const getRowData = async () => {
   });
 };
 
+export const getVehicleDetailsMetaData = async () => {
+  const response = await request.get('v1/ui-metadata?module=V360Page&subModule=VehicleDetailsTabs');
+  return response.data.data[0];
+};
+
+export const getVehicleDetails = async (reservationId: string | null, VIN: string | null, lucidId: string) => {
+  const response = await request.post('v1/vehicleDetail', { reservationId, VIN, lucidId });
+  return response.data.data[0];
+};
+
 export default { getVehicleSearch };
