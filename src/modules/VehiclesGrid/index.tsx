@@ -8,6 +8,9 @@ import { LicenseManager } from 'ag-grid-enterprise';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-material.css';
 import './custom.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { pushMetadata } from '../../redux/slices/uiMetaDataSlice';
 import GridTopActions from './GridTopActions';
 import AppliedFilters from './AppliedFilters';
 import { getRowData, getColDefs } from '../../services/vehicles';
@@ -60,6 +63,8 @@ const VehiclesGrid = () => {
   const [colDefs, setColDefs] = useState<any>();
   const [rowData, setRowData] = useState<any>();
   const gridRef = useRef<AgGridReact>(null);
+  const metaData = useSelector((state: RootState) => state.metaData);
+  const dispatch = useDispatch();
 
   const onSearch = useCallback((searchText: string) => {
     gridRef.current?.api.setQuickFilter(searchText);
@@ -81,7 +86,26 @@ const VehiclesGrid = () => {
   const varHeight = filtersApplied ? '200px' : '150px';
 
   useEffect(() => {
-    getColDefs().then((newColDefs) => setColDefs(newColDefs));
+    const index = metaData.data.findIndex(
+      (singleMetaData) => singleMetaData.module === 'HomePage/Dashboard' && singleMetaData.subModule === 'AllVehicles'
+    );
+    if (index !== -1) {
+      setColDefs(metaData.data[index].colDefs);
+    } else {
+      getColDefs().then((newColDefs) => {
+        setColDefs(newColDefs);
+        dispatch(
+          pushMetadata({
+            module: 'HomePage/Dashboard',
+            subModule: 'AllVehicles',
+            colDefs: newColDefs,
+          })
+        );
+      });
+    }
+  }, [dispatch, metaData]);
+
+  useEffect(() => {
     getRowData().then((newRowData) => setRowData(newRowData));
   }, []);
 
