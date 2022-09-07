@@ -26,7 +26,7 @@ export const getMetaData = async (module: string, subModule: string): Promise<Me
   return response.data.data[0];
 };
 
-const CellTypes = {
+export const CellTypes = {
   Link: LinkCell,
   Tag: TagCell,
   Date: DateCell,
@@ -43,7 +43,7 @@ export const getColDefs = async () => {
     const colDef: any = { field: colMetaData.property, headerName: colMetaData.propertyName };
     colDef.width = colMetaData.width;
     colDef.filter = colMetaData.filterType;
-    colDef.cellRenderer = CellTypes[colMetaData.type];
+    colDef.type = colMetaData.type;
     return colDef;
   });
 };
@@ -54,17 +54,8 @@ export const getVehicles = async () => {
 
 export const getRowData = async () => {
   const vehicles = await getVehicles();
-  return vehicles.map((vehicle: any) => {
-    const rowData = { ...vehicle };
-    rowData.color = {
-      label: vehicle.color,
-      color1: '#F0F0F0',
-      color2: '#D5D5D5',
-    };
-    return rowData;
-  });
+  return vehicles;
 };
-
 
 export const getVehicleSummaryMetaData = async () => {
   return getMetaData(META_DATA_MODULES.dashboard, META_DATA_SUB_MODULES.vehicleSummary);
@@ -85,8 +76,8 @@ export const getVehicleDetailsMetaData = async () => {
   return response.data.data[0];
 };
 
-export const getVehicleDetails = async (reservationId: string | null, VIN: string | null, lucidId: string) => {
-  const response = await request.post('v1/vehicleDetail', { reservationId, VIN, lucidId });
+export const getVehicleDetails = async (lucidId: string) => {
+  const response = await request.post('v1/vehicleDetail', { lucidId, reservationId: null, VIN: null });
   return response.data.data[0];
 };
 

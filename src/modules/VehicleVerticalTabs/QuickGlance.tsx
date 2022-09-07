@@ -1,6 +1,6 @@
 import { Box, Divider, Grid, Stack } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import Link from '../../components/Link/Link';
 
 import Typography from '../../components/Typography/Typography';
@@ -8,29 +8,32 @@ import Team from './TeamList';
 import GridLabels from './GridLabels';
 import { team } from './VehicleVerticalTabs.mock';
 import { getVehicleDetails, getVehicleDetailsMetaData } from '../../services/vehicles';
+import QuickGlanceLoader from './QuickGlanceLoader';
 
 const QuickGlance = () => {
-  const location = useLocation();
-  const temp = location.pathname.split('/');
-  const lucidId = temp[temp.length - 1];
+  const { lucidId } = useParams();
   const [metadata, setMetadata] = useState<any>();
   const [data, setData] = useState<any>();
   useEffect(() => {
     getVehicleDetailsMetaData().then((response) => setMetadata(response.selectedTab));
   }, []);
   useEffect(() => {
-    getVehicleDetails(null, null, lucidId).then((response) => setData(response));
-  }, []);
-  if (!metadata || !data) return <>Loading...</>;
-  const vehicleLabels = metadata.rows[1].rows.map((row: any) => {
-    return { label: row.propertyName, title: data[row.property] };
-  });
-  const img = data[metadata.rows[0].property];
-  debugger;
+    if (lucidId) {
+      getVehicleDetails(lucidId).then((response) => setData(response));
+    }
+  }, [lucidId]);
+  if (!metadata || !data) return <QuickGlanceLoader />;
+
+  const vehicleLabels =
+    metadata?.rows?.[1]?.rows?.map((row: any) => {
+      return { label: row.propertyName, title: data[row.property] };
+    }) || [];
+  const img = data[metadata?.rows?.[0]?.property];
+
   return (
     <Box sx={{ width: '100%' }}>
-      <img src={img} alt="car" style={{ width: '300px', display: 'block', objectFit: 'cover' }} />
-      <Grid container spacing={2}>
+      <img src={img} alt="car" style={{ width: '100%', display: 'block', objectFit: 'cover' }} />
+      <Grid container spacing={2} mt={1}>
         <GridLabels labels={vehicleLabels} />
         <Grid item xs={12}>
           <Divider />

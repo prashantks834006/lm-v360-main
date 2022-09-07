@@ -32,7 +32,7 @@ const Routes = () => {
           children: [
             { path: '', element: <Dashboard />, index: true },
             { path: 'vehicles', element: <Vehicles /> },
-            { path: 'vehicles/:vehicleId', element: <Vehicle /> },
+            { path: 'vehicles/:lucidId', element: <Vehicle /> },
           ],
         },
       ],
