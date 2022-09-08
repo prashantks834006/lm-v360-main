@@ -17,9 +17,9 @@ const Label: React.FC<IProps> = ({ label, title, type = 'text', progress = 0 }) 
         {label}
       </Typography>
       {type === 'text' &&
-        (typeof title === 'string' ? (
+        (typeof title === 'string' || !title ? (
           <Typography variant="body2" fontWeight={400} minWidth={100}>
-            {title}
+            {title || '--'}
           </Typography>
         ) : (
           title

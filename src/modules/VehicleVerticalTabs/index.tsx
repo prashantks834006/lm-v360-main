@@ -5,7 +5,7 @@ import tabItems from './tabItems';
 
 const VehicleVerticalTabs = () => {
   return (
-    <Card sx={{ p: 2 }}>
+    <Card sx={{ p: 1 }}>
       <Tabs tabItems={tabItems} orientation="vertical" />
     </Card>
   );

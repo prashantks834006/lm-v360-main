@@ -7,7 +7,6 @@ import { TabPanelProps, TabsProps } from './types';
 
 const CustomTabs = styled(MuiTabs)(() => ({
   minHeight: 35,
-  padding: '0px 10px',
   '& .MuiTabs-indicator': {
     backgroundColor: 'black',
     height: 3,
