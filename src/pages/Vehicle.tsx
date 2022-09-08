@@ -14,9 +14,9 @@ const Vehicle = () => {
 
   return (
     <Page sx={{ backgroundColor: (theme) => theme.palette.grey[100] }}>
-      <Box sx={{ p: 1 }}>
+      <Box>
         <InfoHeader />
-        <Box sx={{ p: 4 }}>
+        <Box sx={{ p: 2 }}>
           <Grid container spacing={2}>
             <Grid item sm={12} md={6} lg={4}>
               <VehicleVerticalTabs />

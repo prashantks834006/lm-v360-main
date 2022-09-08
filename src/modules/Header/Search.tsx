@@ -143,7 +143,7 @@ const SearchBar = () => {
             return (
               <Fragment key={option._id}>
                 <li {...getOptionProps({ option, index })}>
-                  <Link to={PATHS.vahicle(option._id)} sx={{ color: (theme) => theme.palette.common.black }}>
+                  <Link to={PATHS.vahicle(option.lucidId)} sx={{ color: (theme) => theme.palette.common.black }}>
                     <Stack direction="row">
                       <Box sx={{ flexGrow: 1 }}>
                         <Typography sx={{ fontSize: 12, fontWeight: 400 }}>

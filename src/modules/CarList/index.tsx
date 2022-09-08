@@ -1,17 +1,20 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Box } from '@mui/system';
 import moment from 'moment';
+import { Skeleton, Stack } from '@mui/material';
+import { ISummaryVehicle } from '../../types';
+import useMetaData from '../../hooks/useMetaData';
+import { META_DATA_MODULES, META_DATA_SUB_MODULES } from '../../utils/constants';
+import { getVehicleSummary, getVehicleSummaryMetaData } from '../../services/vehicles';
 import { isToday } from '../../utils/date';
-import Tabs from '../../components/Tabs';
+import Tabs, { TabItem } from '../../components/Tabs';
 import { mockCars } from './CarListSection.mock';
-import ICar from '../../types/cars';
 import CarTaskItem from './CarTaskItem';
 import Typography from '../../components/Typography/Typography';
 import Filter from '../Filter/Filter';
 import FILTERS from '../Filter/Filter.mock';
-import { getVehicleSummary } from '../../services/VehicleSummary';
 
-function sortUpcomingTasks(items: ICar[]) {
+function sortUpcomingTasks(items: ISummaryVehicle[]) {
   const cars = items
     .filter((car) => {
       return moment(car.date).isAfter(moment().endOf('day'));
@@ -20,7 +23,7 @@ function sortUpcomingTasks(items: ICar[]) {
       return moment(a.date).diff(moment(b.date));
     });
   const tomorrowFormattedDate = moment().add(1, 'days').format('MMM DD, YYYY');
-  return cars.reduce<{ [key: string]: ICar[] }>((acc, car) => {
+  return cars.reduce<{ [key: string]: ISummaryVehicle[] }>((acc, car) => {
     const formattedDate = moment(car.date).format('MMM DD, YYYY');
     if (formattedDate === tomorrowFormattedDate) {
       if (acc.tomorrow) {
@@ -37,69 +40,79 @@ function sortUpcomingTasks(items: ICar[]) {
   }, {});
 }
 
-const CarList = () => {
-  // const todayTasks = useMemo(() => mockCars.filter((car) => isToday(car.date)), []);
-  // const upcomingTasks = useMemo(() => sortUpcomingTasks(mockCars), []);
-  // const activeTaskId = useMemo(() => todayTasks[1].id, [todayTasks]);
+const carListTabContent = (cars: ISummaryVehicle[]) => {
+  const sortedCarList = sortUpcomingTasks(cars);
+  const hasMultipleDates = Object.keys(sortedCarList).length > 1;
 
-  const [navItems, setNavItems] = useState([]);
-  // const dueTodayContent = useMemo(
-  //   () => (
-  //     <>
-  //       {todayTasks.map((car) => (
-  //         <CarTaskItem key={car.id} car={car} isActive={activeTaskId === car.id} />
-  //       ))}
-  //     </>
-  //   ),
-  //   [activeTaskId, todayTasks]
-  // );
-  // const upcomingContent = useMemo(
-  //   () => (
-  //     <>
-  //       {Object.keys(upcomingTasks).map((key) => (
-  //         <Box key={key} mb={1}>
-  //           <Typography weight={600} size={16} sx={{ textTransform: 'uppercase', my: 2 }}>
-  //             {key}
-  //           </Typography>
-  //           {upcomingTasks[key].map((car) => (
-  //             <CarTaskItem key={car.id} car={car} isActive={false} />
-  //           ))}
-  //         </Box>
-  //       ))}
-  //     </>
-  //   ),
-  //   [upcomingTasks]
-  // );
+  if (hasMultipleDates) {
+    return (
+      <>
+        {Object.keys(sortedCarList).map((key) => (
+          <Box key={key} mb={1}>
+            <Typography weight={500} size={12} sx={{ textTransform: 'uppercase', my: 1 }}>
+              {key}
+            </Typography>
+            {sortedCarList[key].map((car) => (
+              <CarTaskItem key={car.imageUrl} car={car} isActive={false} />
+            ))}
+          </Box>
+        ))}
+      </>
+    );
+  }
+
+  return (
+    <>
+      {cars.map((car) => (
+        <CarTaskItem key={car.imageUrl} car={car} isActive={false} />
+      ))}
+    </>
+  );
+};
+
+const CarList = () => {
+  const [navItems, setNavItems] = useState<TabItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const metaData = useMetaData(META_DATA_MODULES.dashboard, META_DATA_SUB_MODULES.vehicleSummary);
+
+  const getNavItems = useCallback(async () => {
+    if (!!metaData && Object.keys(metaData).length) {
+      const tempNavItems: TabItem[] = [];
+      for (let i = 0; i < metaData.tabs.length; i++) {
+        const tab = metaData.tabs[i];
+        // eslint-disable-next-line no-await-in-loop
+        const vehicleSummaries = await getVehicleSummary(tab.id);
+        tempNavItems.push({
+          label: tab.name,
+          content: carListTabContent(vehicleSummaries),
+        });
+      }
+      setLoading(false);
+      setNavItems(tempNavItems);
+    }
+  }, [metaData]);
 
   useEffect(() => {
-    getVehicleSummary().then((response) => {
-      const {
-        tabDetails: { tabName },
-      } = response;
-
-      setNavItems(
-        tabName.map((tab: any) => ({
-          label: tab,
-          content: null,
-        }))
-      );
-    });
-  }, []);
-
-  // const navItems = [
-  //   {
-  //     label: 'Due today',
-  //     content: dueTodayContent,
-  //   },
-  //   {
-  //     label: 'Upcoming Tasks',
-  //     content: upcomingContent,
-  //   },
-  // ];
+    getNavItems();
+  }, [getNavItems]);
 
   return (
     <Box pl={2} width="56%">
-      <Tabs tabItems={navItems} sibling={<Filter filters={FILTERS} />} />
+      {loading ? (
+        <Box>
+          <Stack direction="row" gap={2} mb={3}>
+            <Skeleton animation="wave" height={30} width={50} />
+            <Skeleton animation="wave" height={30} width={50} />
+          </Stack>
+          <Skeleton animation="wave" height={20} width={80} />
+          <Skeleton animation="wave" height={80} />
+          <Skeleton animation="wave" height={80} />
+          <Skeleton animation="wave" height={20} width={80} />
+          <Skeleton animation="wave" height={80} />
+        </Box>
+      ) : (
+        <Tabs tabItems={navItems} sibling={<Filter filters={FILTERS} />} />
+      )}
     </Box>
   );
 };

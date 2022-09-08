@@ -61,6 +61,7 @@ module.exports = {
     ],
     '@typescript-eslint/no-explicit-any': 'off',
     'no-underscore-dangle': ['error', { allow: ['_id'] }],
+    'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
   },
   settings: {
     'import/resolver': {
