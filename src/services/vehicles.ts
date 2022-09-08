@@ -60,4 +60,14 @@ export const getVehicleDetails = async (reservationId: string | null, VIN: strin
   return response.data.data[0];
 };
 
+export const getVehicleConfigurationMetaData = async () => {
+  const response = await request.get('v1/ui-metadata?module=V360Page&subModule=VehicleConfiguration');
+  return response.data.data[0];
+};
+
+export const getVehicleConfiguration = async (reservationId: string | null, VIN: string | null, lucidId: string) => {
+  const response = await request.post('v1/vehicleconfiguration', { reservationId, VIN, lucidId });
+  return response.data.data[0];
+};
+
 export default { getVehicleSearch };
