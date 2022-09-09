@@ -8,11 +8,13 @@ export const ENDPOINTS = {
 export const META_DATA_MODULES = {
   vehicles: 'Vehicles',
   dashboard: 'Dashboard',
+  v360Page: 'V360Page',
 };
 
 export const META_DATA_SUB_MODULES = {
   vehiclesGrid: 'Grid',
   vehicleSummary: 'VehicleSummary',
+  vehicleDetailsTabs: 'VehicleDetailsTabs',
 };
 
 const path = (route: string) => `/v360-app/${route}`;

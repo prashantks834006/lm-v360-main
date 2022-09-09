@@ -15,7 +15,7 @@ export const Primary: ComponentStory<typeof Tabs> = () => {
     <Box bgcolor="#FAFAFA">
       <Tabs
         tabItems={[
-          { label: 'Due Today', content: <div> Due today</div> },
+          { label: 'Due Today tasks', content: <div> Due today</div> },
           { label: 'Upcoming Tasks', content: <div> Upcoming tasks </div> },
         ]}
       />

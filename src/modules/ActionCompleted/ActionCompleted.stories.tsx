@@ -11,7 +11,7 @@ export default {
 } as ComponentMeta<typeof ActionCompleted>;
 
 export const Primary: ComponentStory<typeof ActionCompleted> = () => (
-  <Box sx={{ backgroundColor: '#FAFAFA' }} padding={5}>
+  <Box sx={{ backgroundColor: '#FAFAFA' }} p={5}>
     <ActionCompleted
       id={1}
       name="Collect Information"

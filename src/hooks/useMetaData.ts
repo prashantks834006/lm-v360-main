@@ -6,10 +6,6 @@ import { RootState } from '../redux/store';
 import { MetaData } from '../types/metaData';
 
 const useMetaData = (module: string, subModule: string): MetaData | undefined => {
-  const [metaData, setMetaData] = useState<MetaData>({
-    module,
-    subModule,
-  });
   const allMetaData = useSelector((state: RootState) => state.metaData.data);
   const dispatch = useDispatch();
   const index = useMemo(
@@ -24,7 +20,16 @@ const useMetaData = (module: string, subModule: string): MetaData | undefined =>
     if (index === -1) {
       getMetaData(module, subModule)
         .then((metaDataResponse) => {
-          dispatch(pushMetadata(metaDataResponse));
+          if (metaDataResponse) {
+            dispatch(pushMetadata(metaDataResponse));
+          } else {
+            dispatch(
+              pushMetadata({
+                module,
+                subModule,
+              })
+            );
+          }
         })
         .catch((error) => {
           dispatch(

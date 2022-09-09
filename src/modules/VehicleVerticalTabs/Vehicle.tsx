@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { getVehicleConfigurationMetaData, getVehicleConfiguration } from '../../services/vehicles';
 import Typography from '../../components/Typography/Typography';
 import FieldList from './FieldList';
+import TabLoader from './TabLoader';
 
 const Vehicle = () => {
   const location = useLocation();
@@ -12,26 +13,17 @@ const Vehicle = () => {
   const [metadata, setMetadata] = useState<any>();
   const [data, setData] = useState<any>();
   useEffect(() => {
-    getVehicleConfigurationMetaData().then((response) => setMetadata(response.configurationDetails));
+    getVehicleConfigurationMetaData().then((response) => setMetadata(response.rows));
   }, []);
+
   useEffect(() => {
     getVehicleConfiguration(null, null, lucidId).then((response) => setData(response));
   }, [lucidId]);
+
   if (!metadata || !data) {
-    return (
-      <Box display="flex" flexDirection="column" gap={1}>
-        <Skeleton animation="wave" height={30} width={250} />
-        {Array(15)
-          .fill(0)
-          .map(() => (
-            <Stack direction="row" display="flex" justifyContent="space-between">
-              <Skeleton animation="wave" height={30} width={100} />
-              <Skeleton animation="wave" height={30} width={150} />
-            </Stack>
-          ))}
-      </Box>
-    );
+    return <TabLoader />;
   }
+
   const vehicleFields = metadata.map((configDetail: any) => {
     return { field: configDetail.propertyName, value: data[configDetail.property] };
   });

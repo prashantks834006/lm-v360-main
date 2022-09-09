@@ -3,8 +3,8 @@ import React from 'react';
 
 const QuickGlanceLoader = () => {
   return (
-    <Box display="flex" flexDirection="column" gap={1}>
-      <Skeleton animation="wave" height={170} width={300} sx={{ transform: 'none' }} />
+    <Stack gap={3}>
+      <Skeleton animation="wave" height={200} sx={{ transform: 'none' }} />
       {Array(3)
         .fill(0)
         .map(() => (
@@ -48,7 +48,7 @@ const QuickGlanceLoader = () => {
         <Skeleton animation="wave" height={15} width={30} />
         <Skeleton animation="wave" height={15} width={80} />
       </Box>
-    </Box>
+    </Stack>
   );
 };
 

@@ -84,7 +84,9 @@ const CarList = () => {
         const vehicleSummaries = await getVehicleSummary(tab.id);
         tempNavItems.push({
           label: tab.name,
-          content: carListTabContent(vehicleSummaries),
+          content: carListTabContent(
+            vehicleSummaries.map((car) => ({ ...car, imageUrl: car.imageUrl.replace('png', 'jpg') }))
+          ),
         });
       }
       setLoading(false);
